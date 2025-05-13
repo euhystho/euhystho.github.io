@@ -1,3 +1,5 @@
+[![pages-build-deployment](https://github.com/euhystho/euhystho.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/pages/pages-build-deployment)
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
