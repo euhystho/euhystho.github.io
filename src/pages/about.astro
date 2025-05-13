@@ -1,13 +1,15 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
+import { Image } from 'astro:assets';
+import myPic from '../assets/about.jpeg';
 ---
 
 <Layout
 	title="About Me"
 	description="Lorem ipsum dolor sit amet"
 	pubDate={new Date('May 16 2025')}
-	heroImage="/about.jpeg"
 >
+	<Image src={myPic} alt="A picture of me on a cliff in Stanley, Hong Kong Island"/>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
