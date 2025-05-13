@@ -6,6 +6,6 @@ import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://euhystho.github.io',
+    site: 'https://eugenehysthompson.com',
     integrations: [mdx(), sitemap(), svelte()],
 });
