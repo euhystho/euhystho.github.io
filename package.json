@@ -1,0 +1,20 @@
+{
+  "name": "eugene-personal-website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/svelte": "^7.0.13",
+    "astro": "^5.7.12",
+    "svelte": "^5.28.6",
+    "typescript": "^5.8.3"
+  }
+}
