@@ -1,5 +1,5 @@
-[![Check Astro](https://github.com/euhystho/euhystho.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/deploy.yml)
-
+[![Build & Lint Astro](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml)
+[![Playwright Tests](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml)
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
