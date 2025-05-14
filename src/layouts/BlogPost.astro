@@ -13,6 +13,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
+    <!-- Preload the image as a webp -->
+    <link rel="preload" as="image" href={heroImage} type="image/webp" />
     <style>
       main {
         width: calc(100% - 2em);
