@@ -1,31 +1,62 @@
+# Eugene's Personal Website
 [![Build & Lint Astro](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml)
 [![Playwright Tests](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml)
-## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, professional aspirations, and writing samples.
+
+## 🥞 Technology Stack
+- **Super-Framework**: [Astro](https://astro.build/) - Site builder with excellent performance and framework flexibility
+- **Components**: [Svelte](https://svelte.dev/) - Reactive component framework
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- **Content**: [MDX](https://mdxjs.com) for rich content with embedded Svelte components 
+- **Deployment**: GitHub Pages, Cloudflare Pages, and GitHub Actions CI/CD for accessibility and performance metrics
+
+## 🔄 Workflows
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+1. **Build & Lint Astro** (`.github/workflows/build.yml`):
+   - Triggered on every push and pull request
+   - Lints the project to verify style and reduce errors
+   - Builds the project to verify there are no errors
+   - Ensures code quality and prevents broken deployments
+2. **Playwright Tests** (`.github/workflows/playwright.yml`):
+   - Triggered on every push and pull request
+   - Installs Playwright browsers for testing
+   - Runs Playwright tests to automate web interactions on multiple browsers and platforms
+
+2. **GitHub Pages Deployment** (auto-configured by GitHub):
+   - Automatically deploys the built website to GitHub Pages
+   - Triggered when changes are pushed to the gh-pages branch
+   - Creates the production build and publishes it
+
+3. **Cloudflare Pages** (configured in Cloudflare dashboard):
+   - Provides additional hosting with Cloudflare's CDN capabilities
+   - Automatically detects changes in the GitHub repository
+   - Offers preview deployments for pull requests
+
+## 🏗️ Project Structure
 
 ```text
-├── public/
+├── .github/workflows/     # CI/CD workflow configurations
+├── public/                # Static assets (images, fonts, etc.)
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   ├── pages/
+│   ├── components/        # Reusable UI components using Astro or Svelte
+│   ├── content/           # Content collections (projects, writing samples, etc.)
+│   ├── layouts/           # Page layout templates
+│   ├── pages/             # Page components and routes
 │   └── styles/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+├── tests/                 # TypeScript Playwright tests
+├── .prettierrc            # Prettier configuration
+├── astro.config.mjs       # Astro configuration
+├── eslint.config.js       # ESLint configuration
+├── lighthouserc.json      # Lighthouse configuration
+├── eslint.config.mjs      # ESLint configuration
+├── playwright.config.ts   # Playwright configuration
+├── sveote.config.ts       # Svelte configuration
+└── tsconfig.json          # TypeScript configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory or in the `assets/` directory.
 
 ## 🧞 Commands
 
@@ -39,3 +70,15 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 🚀 Development Workflow
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Make changes to the codebase
+5. Commit and push changes to GitHub
+6. GitHub Actions will automatically build, test, and deploy your changes
+
+## License
+
+This project is licensed under the MIT License, see the [license](LICENSE) file for details.
