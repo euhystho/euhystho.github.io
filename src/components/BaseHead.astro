@@ -29,21 +29,6 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Google tag (gtag.js) -->
-<script
-  type="text/partytown"
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-DXP67WKXVL"></script>
-<script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(...args);
-  }
-  gtag("js", new Date());
-
-  gtag("config", "G-DXP67WKXVL");
-</script>
-
 <!-- Font preloads -->
 <link
   rel="preload"
