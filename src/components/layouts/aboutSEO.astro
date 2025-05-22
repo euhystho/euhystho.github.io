@@ -1,0 +1,31 @@
+---
+interface Props {
+  job?: string;
+  work?: string;
+}
+const { job, work } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+
+const aboutJSONLD = {
+  "@context": "https://schema.org/",
+  "@type": "Person",
+  name: "Eugene Thompson",
+  email: "hello@eugenehysthompson.com",
+  url: { canonicalURL },
+  image: "images/about.jpeg",
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "Ursinus College",
+  },
+  jobTitle: job || "",
+  worksFor: work || "",
+  sameAs: [
+    "https://github.com/euhystho/",
+    "https://www.linkedin.com/in/eugene-hyst-thompson/",
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(aboutJSONLD)} />
