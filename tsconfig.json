@@ -6,6 +6,7 @@
     "jsx": "preserve",
     "strict": true,
     "strictNullChecks": true,
+    "allowJs": true,
     "types": ["./jsx.d.ts"],
     "esModuleInterop": true,
     "skipLibCheck": true,
