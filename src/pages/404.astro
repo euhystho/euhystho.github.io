@@ -1,0 +1,81 @@
+---
+import "../styles/global.css";
+import BaseHead from "../components/layouts/BaseHead.astro";
+import BunnyAnimation from "../components/common/bunny.svelte";
+import Footer from "../components/layouts/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Oops, Page Was Not Found!"
+      description="Error 404: Your page was not found, enjoy Mayhem the Bunny!"
+    />
+  </head>
+  <body class="bg-primary carrots-pointer overflow-x-hidden">
+    <div class="site">
+      <header
+        class="bg-dark rounded-xs pr-4 pb-4 pl-4 shadow-lg backdrop-blur-md"
+      >
+        <h1 class="p-5 text-center">
+          🎩 Ta-da! ...
+          <br />
+          Wait, that's not right...
+        </h1>
+        <h2 class="pr-5 pl-5 font-sans">
+          Our magician was supposed to pull up your page, but it looks like
+          <a
+            href="https://album.link/s/2MHUaRi9OCyTN02SoyRRBJ"
+            title="🎵 Lady Gaga - Mayhem (2024) - Click to listen"
+            class="mayhem-pointer hover:text-[#d56740] hover:underline hover:decoration-[#d56740] hover:decoration-dotted hover:decoration-from-font"
+            >Mayhem</a
+          >
+          the Bunny got out instead!
+        </h2>
+      </header>
+      <main>
+        <div class="bg-secondary/75 mb-2 rounded-xs p-0.5">
+          <div
+            class="mx-auto flex flex-col items-center justify-center lg:min-h-[50vh] sm:md:lg:w-[60vw]"
+            aria-hidden="true"
+          >
+            <BunnyAnimation
+              client:visible
+              aria-labelledby="animation-title animation-description"
+            />
+          </div>
+        </div>
+
+        <section
+          class="mt-4 overflow-hidden rounded-xs bg-cover backdrop-blur-md"
+        >
+          <h3 class="pb-4">Don't worry! You got some options:</h3>
+          <ul
+            class="relative flex flex-col items-center justify-center gap-5 rounded-2xl p-5 transition-all duration-100 md:flex-row md:gap-10"
+          >
+            <li>
+              <a
+                href="/"
+                aria-label="Go back to homepage"
+                class="bg-accent/65 hover:bg-complementary hover:text-accent flex house-pointer items-center justify-center rounded-2xl border-2 border-transparent p-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:inset-shadow-sm"
+              >
+                <h4>🏠 Guess, I'll go back home then...</h4>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                aria-label="Contact website owner"
+                class="bg-accent/65 hover:text-accent flex megaphone-pointer items-center justify-center rounded-2xl border-2 border-transparent p-2 pt-4 pb-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-red-800 hover:inset-shadow-sm"
+              >
+                <h4>😠 I want to complain to management!!!</h4>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <Footer showSocials={false} />
+    </div>
+  </body>
+</html>

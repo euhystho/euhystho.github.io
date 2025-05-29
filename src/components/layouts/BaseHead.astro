@@ -1,9 +1,9 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import "../../styles/global.css";
-import { SITE_TITLE } from "../../utils/consts";
 import { ClientRouter } from "astro:transitions";
+import "../../styles/global.css";
+import { SITE_AUTHOR, KEYWORDS } from "../../utils/consts";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 interface Props {
@@ -21,24 +21,26 @@ const {
   alt = "Picture of Eugene",
   noRobots = false,
 } = Astro.props;
-
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#335c3b"/>
+<meta name="google-site-verification" content="oYzkW59-L2Pbbf8M6RWCUnGNylWIF8JJZOUlFQQTg68"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
   type="application/rss+xml"
-  title={SITE_TITLE}
+  title={SITE_AUTHOR}
   href={new URL("rss.xml", Astro.site)}
 />
-<meta name="generator" content={Astro.generator} />
+
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -46,7 +48,9 @@ const {
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
+<meta name="author" content={SITE_AUTHOR} />
 <meta name="description" content={description} />
+<meta name="keywords" content={KEYWORDS} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -64,8 +68,7 @@ const {
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 <meta property="twitter:image:alt" content={alt} />
 
-<!-- Robots Opt-Out -->
 {noRobots && <meta name="robots" content="noindex, nofollow" />}
 
-
-<ClientRouter />
+<!-- Astro Transitions -->
+ <ClientRouter/>

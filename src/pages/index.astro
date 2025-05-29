@@ -1,23 +1,29 @@
 ---
+import BaseHead from "../components/layouts/BaseHead.astro";
 import "../styles/global.css";
-import BaseHead from "src/components/layouts/BaseHead.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../utils/consts";
+import { SITE_AUTHOR, SITE_DESCRIPTION } from "../utils/consts";
+import Header from "../components/layouts/Header.astro";
+import Footer from "../components/layouts/Footer.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={SITE_AUTHOR} description={SITE_DESCRIPTION} />
   </head>
   <body class="bg-light dark:bg-dark">
-    <main>
-      <div class="bg-primary pb-2.5">
-        <h1>🧑🏻‍💻 Hello Everyone!</h1>
-      </div>
-      <p class="text-dark dark:text-light text-center text-5xl">
-        This site is still currently in maintenance, please check again next
-        time!
-      </p>
-    </main>
+    <div class="site">
+      <Header />
+      <main>
+        <div class="pt-2.5 pb-2.5">
+          <h2 class="text-dark dark:text-accent">🧑🏻‍💻 Hello Everyone!</h2>
+        </div>
+        <p class="text-dark dark:text-light text-center text-3xl">
+          This site is still currently in maintenance, please check again next
+          time!
+        </p>
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>

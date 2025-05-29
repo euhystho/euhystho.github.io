@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from "../../utils/consts";
+import { SITE_AUTHOR } from "../../utils/consts";
 interface Props {
   title: string;
   //Possible Bug here depending on how Date is formatted:
@@ -23,7 +23,7 @@ const projectJSONLD = isProject && {
   image: { image },
   author: {
     "@type": "Person",
-    name: { SITE_TITLE },
+    name: { SITE_AUTHOR },
   },
   datePublished: { date },
 };
@@ -37,7 +37,7 @@ const writingJSONLD = !isProject && {
   headline: { title },
   author: {
     "@type": "Person",
-    name: { SITE_TITLE },
+    name: { SITE_AUTHOR },
   },
   datePublished: { date },
   dateModified: { modDate },
