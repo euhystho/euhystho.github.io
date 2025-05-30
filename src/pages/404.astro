@@ -37,10 +37,11 @@ import Bunny from "../components/common/bunny.jsx";
       <main>
         <div class="bg-secondary/75 mb-2 rounded-xs p-0.5">
           <div
+            id="bunny-container"
             class="mx-auto flex flex-col items-center justify-center lg:min-h-[50vh] sm:md:lg:w-[60vw]"
             aria-hidden="true"
           >
-          <Bunny client:visible />
+            <Bunny client:visible />
           </div>
         </div>
 
@@ -75,4 +76,30 @@ import Bunny from "../components/common/bunny.jsx";
       <Footer showSocials={false} />
     </div>
   </body>
+
+  <!-- Logic for Bunny Animation Re-initialization because of ClientRouter... -->
+  <script is:inline>
+    document.addEventListener("astro:page-load", () => {
+      const bunnyContainer = document.getElementById("bunny-container");
+
+      // Force re-render of React component by updating data attribute
+      if (bunnyContainer) {
+        const timestamp = Date.now();
+        bunnyContainer.setAttribute("data-reload", timestamp);
+
+        // Find any existing React component and trigger a re-render
+        const reactElement = bunnyContainer.querySelector("[data-astro-cid]");
+        if (reactElement) {
+          // Force React to recognize this as a new component instance
+          reactElement.setAttribute("key", `bunny-${timestamp}`);
+        }
+      }
+    });
+    document.addEventListener("astro:after-swap", () => {
+      const bunnyContainer = document.getElementById("bunny-container");
+      if (bunnyContainer) {
+        bunnyContainer.setAttribute("data-swap-reload", Date.now());
+      }
+    });
+  </script>
 </html>

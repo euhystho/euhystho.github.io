@@ -14,7 +14,7 @@ import CloseMenu from "../../../public/svg/close_menu.svg";
     </h1>
     <button
       id="open-sidebar-button"
-      class="max-header:block hidden cursor-pointer max-header:mt-1 max-header:mb-0.5"
+      class="max-header:block max-header:mt-1 max-header:mb-0.5 hidden cursor-pointer"
       aria-label="open sidebar"
       aria-expanded="false"
       aria-controls="navbar"
@@ -62,18 +62,18 @@ import CloseMenu from "../../../public/svg/close_menu.svg";
 </div>
 <!-- Logic for Mobile Navigation -->
 <script is:inline>
-  document.addEventListener("astro:page-load", () => {
+  function setupNavbarScript() {
     const navbar = document.getElementById("navbar");
     const openButton = document.getElementById("open-sidebar-button");
     const closeButton = document.getElementById("close-sidebar-button");
     const overlay = document.getElementById("overlay");
     const media = window.matchMedia("(width < 700px)");
+
     function updateNavbar(e) {
       const isMobile = e.matches;
       if (isMobile) {
         navbar.setAttribute("inert", "");
       } else {
-        // Is Desktop Device
         navbar.removeAttribute("inert");
       }
     }
@@ -96,5 +96,7 @@ import CloseMenu from "../../../public/svg/close_menu.svg";
     overlay?.addEventListener("click", closeSidebar);
     media.addEventListener("change", (e) => updateNavbar(e));
     updateNavbar(media);
-  });
+  }
+  document.addEventListener("astro:page-load", setupNavbarScript);
+  document.addEventListener("astro:after-swap", setupNavbarScript);
 </script>
