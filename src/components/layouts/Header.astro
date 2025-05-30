@@ -5,7 +5,7 @@ import Menu from "../../../public/svg/menu.svg";
 import CloseMenu from "../../../public/svg/close_menu.svg";
 ---
 
-<header transition:persist>
+<header>
   <div class="flex items-center justify-between">
     <h1
       class="max-header:flex max-header:mb-2 max-header:mt-2 cursor-pointers hover:text-light hidden"
@@ -60,7 +60,6 @@ import CloseMenu from "../../../public/svg/close_menu.svg";
   </div>
   <!-- Logic for Mobile Navigation -->
   <script is:inline>
-    const setupMobileSidebar = () => {
       const navbar = document.getElementById("navbar");
       const openBtn = document.getElementById("open-sidebar-button");
       const closeBtn = document.getElementById("close-sidebar-button");
@@ -90,9 +89,5 @@ import CloseMenu from "../../../public/svg/close_menu.svg";
       overlay?.addEventListener("click", closeSidebar);
       media.addEventListener("change", (e) => setInert(e.matches));
       setInert(media.matches);
-    };
-
-    document.addEventListener("astro:page-load", setupMobileSidebar);
-    document.addEventListener("astro:after-swap", setupMobileSidebar);
   </script>
 </header>

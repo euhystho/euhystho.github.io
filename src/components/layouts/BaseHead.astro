@@ -1,7 +1,6 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import ClientRouter from "astro/components/ClientRouter.astro";
 import "../../styles/global.css";
 import { SITE_AUTHOR, KEYWORDS } from "../../utils/consts";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -72,5 +71,3 @@ const {
 
 {noRobots && <meta name="robots" content="noindex, nofollow" />}
 
-<!-- Astro Transitions -->
-<ClientRouter />
