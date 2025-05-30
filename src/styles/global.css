@@ -136,23 +136,23 @@
 /* Carrot Pointer */
 .carrots-pointer {
   cursor:
-    url("svg/carrot-pointer.svg") 12 8,
+    url("/svg/carrot-pointer.svg") 12 8,
     auto;
 }
 
 .mayhem-pointer {
   cursor:
-    url("svg/music.svg") 24 24,
+    url("/svg/music.svg") 24 24,
     pointer;
 }
 
 .house-pointer {
   cursor:
-    url("svg/key.svg") 12 12,
+    url("/svg/key.svg") 12 12,
     pointer;
 }
 .megaphone-pointer {
   cursor:
-    url("svg/megaphone.svg") 24 24,
+    url("/svg/megaphone.svg") 24 24,
     pointer;
 }
