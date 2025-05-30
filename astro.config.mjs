@@ -14,5 +14,14 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      rollupOptions:{
+        output:{
+          manualChunks:{
+            'lottie-vendor': ['@lottiefiles/dotlottie-react']
+          }
+        }
+      }
+    }
   },
 });
