@@ -39,6 +39,7 @@
 /* My Theme :) */
 @theme {
   --breakpoint-header: 58.125rem;
+  --breakpoint-footer: 36.25rem;
   --font-sans: "Figtree", "Inter", system-ui, sans-serif;
   --font-heading: "Array Semibold", system-ui, sans-serif;
   --font-subheading: "Array Regular", system-ui, sans-serif;

@@ -5,7 +5,7 @@ import Menu from "../../../public/svg/menu.svg";
 import CloseMenu from "../../../public/svg/close_menu.svg";
 ---
 
-<header>
+<header transition:persist>
   <div class="flex items-center justify-between">
     <h1
       class="max-header:flex max-header:mb-2 max-header:mt-2 cursor-pointers hover:text-light hidden"
@@ -51,52 +51,48 @@ import CloseMenu from "../../../public/svg/close_menu.svg";
       </li>
     </ul>
   </nav>
-</header>
+  <!-- Overlay over website content for mobile use only -->
+  <div
+    id="overlay"
+    class="fixed inset-0 z-9 hidden bg-black/50"
+    aria-hidden="true"
+  >
+  </div>
+  <!-- Logic for Mobile Navigation -->
+  <script is:inline>
+    const setupMobileSidebar = () => {
+      const navbar = document.getElementById("navbar");
+      const openBtn = document.getElementById("open-sidebar-button");
+      const closeBtn = document.getElementById("close-sidebar-button");
+      const overlay = document.getElementById("overlay");
+      const media = window.matchMedia("(width < 700px)");
 
-<!-- Overlay over website content for mobile use only -->
-<div
-  id="overlay"
-  class="fixed inset-0 z-9 hidden bg-black/50"
-  aria-hidden="true"
->
-</div>
-<!-- Logic for Mobile Navigation -->
-<script is:inline>
-  function setupNavbarScript() {
-    const navbar = document.getElementById("navbar");
-    const openButton = document.getElementById("open-sidebar-button");
-    const closeButton = document.getElementById("close-sidebar-button");
-    const overlay = document.getElementById("overlay");
-    const media = window.matchMedia("(width < 700px)");
+      const setInert = (mobile) =>
+        mobile
+          ? navbar.setAttribute("inert", "")
+          : navbar.removeAttribute("inert");
 
-    function updateNavbar(e) {
-      const isMobile = e.matches;
-      if (isMobile) {
-        navbar.setAttribute("inert", "");
-      } else {
+      const openSidebar = () => {
+        navbar.classList.add("show");
+        openBtn.setAttribute("aria-expanded", "true");
+        overlay.classList.remove("hidden");
         navbar.removeAttribute("inert");
-      }
-    }
+      };
+      const closeSidebar = () => {
+        navbar.classList.remove("show");
+        openBtn.setAttribute("aria-expanded", "false");
+        overlay.classList.add("hidden");
+        navbar.setAttribute("inert", "");
+      };
 
-    function openSidebar() {
-      navbar.classList.add("show");
-      openButton.setAttribute("aria-expanded", "true");
-      overlay.classList.remove("hidden");
-      navbar.removeAttribute("inert");
-    }
-    function closeSidebar() {
-      navbar.classList.remove("show");
-      openButton.setAttribute("aria-expanded", "false");
-      overlay.classList.add("hidden");
-      navbar.setAttribute("inert", "");
-    }
+      openBtn?.addEventListener("click", openSidebar);
+      closeBtn?.addEventListener("click", closeSidebar);
+      overlay?.addEventListener("click", closeSidebar);
+      media.addEventListener("change", (e) => setInert(e.matches));
+      setInert(media.matches);
+    };
 
-    openButton?.addEventListener("click", openSidebar);
-    closeButton?.addEventListener("click", closeSidebar);
-    overlay?.addEventListener("click", closeSidebar);
-    media.addEventListener("change", (e) => updateNavbar(e));
-    updateNavbar(media);
-  }
-  document.addEventListener("astro:page-load", setupNavbarScript);
-  document.addEventListener("astro:after-swap", setupNavbarScript);
-</script>
+    document.addEventListener("astro:page-load", setupMobileSidebar);
+    document.addEventListener("astro:after-swap", setupMobileSidebar);
+  </script>
+</header>

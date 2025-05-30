@@ -1,10 +1,9 @@
 ---
 name: Tasks
 about: Describe this issue template's purpose here.
-title: ''
-labels: ''
+title: ""
+labels: ""
 assignees: euhystho
-
 ---
 
 **Resources Used:**

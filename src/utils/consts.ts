@@ -3,7 +3,8 @@
 
 // Head Properties
 export const SITE_AUTHOR = "Eugene Thompson";
-export const SITE_DESCRIPTION = "Eugene Thompson's personal website showcasing projects, academic achievements, and professional aspirations";
+export const SITE_DESCRIPTION =
+  "Eugene Thompson's personal website showcasing projects, academic achievements, and professional aspirations";
 export const KEYWORDS = "";
 
 // Theme Properties

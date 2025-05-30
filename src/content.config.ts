@@ -27,7 +27,7 @@ const writingCollection = defineCollection({
     tags: z.array(z.string()),
     featured: z.boolean().default(false),
     date: z.coerce.date(),
-    modDate: z.coerce.date()
+    modDate: z.coerce.date(),
   }),
 });
 

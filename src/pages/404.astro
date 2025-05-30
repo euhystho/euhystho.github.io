@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import BaseHead from "../components/layouts/BaseHead.astro";
 import Footer from "../components/layouts/Footer.astro";
-import Bunny from "../components/common/bunny.jsx";
 ---
 
 <!doctype html>
@@ -37,11 +36,21 @@ import Bunny from "../components/common/bunny.jsx";
       <main>
         <div class="bg-secondary/75 mb-2 rounded-xs p-0.5">
           <div
-            id="bunny-container"
-            class="mx-auto flex flex-col items-center justify-center lg:min-h-[50vh] sm:md:lg:w-[60vw]"
+            class="mx-auto flex w-full max-w-xs flex-col items-center justify-center sm:max-w-sm md:max-w-md lg:min-h-[50vh] sm:md:lg:w-[60vw]"
             aria-hidden="true"
           >
-            <Bunny client:visible />
+            <script
+              src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+              type="module"></script>
+            <dotlottie-player
+              src="/bunny.lottie"
+              background="transparent"
+              speed="0.85"
+              style="width: 100%; height: auto; max-width: 450px;"
+              loop
+              autoplay
+            >
+            </dotlottie-player>
           </div>
         </div>
 
@@ -76,30 +85,4 @@ import Bunny from "../components/common/bunny.jsx";
       <Footer showSocials={false} />
     </div>
   </body>
-
-  <!-- Logic for Bunny Animation Re-initialization because of ClientRouter... -->
-  <script is:inline>
-    document.addEventListener("astro:page-load", () => {
-      const bunnyContainer = document.getElementById("bunny-container");
-
-      // Force re-render of React component by updating data attribute
-      if (bunnyContainer) {
-        const timestamp = Date.now();
-        bunnyContainer.setAttribute("data-reload", timestamp);
-
-        // Find any existing React component and trigger a re-render
-        const reactElement = bunnyContainer.querySelector("[data-astro-cid]");
-        if (reactElement) {
-          // Force React to recognize this as a new component instance
-          reactElement.setAttribute("key", `bunny-${timestamp}`);
-        }
-      }
-    });
-    document.addEventListener("astro:after-swap", () => {
-      const bunnyContainer = document.getElementById("bunny-container");
-      if (bunnyContainer) {
-        bunnyContainer.setAttribute("data-swap-reload", Date.now());
-      }
-    });
-  </script>
 </html>

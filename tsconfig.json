@@ -7,9 +7,7 @@
     "strict": true,
     "strictNullChecks": true,
     "allowJs": true,
-    "types": [
-      "./jsx.d.ts"
-    ],
+    "types": ["./jsx.d.ts"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,14 +15,6 @@
     "jsxImportSource": "react"
   },
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    "src/**/*",
-    "*.astro",
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*", "*.astro", ".astro/types.d.ts", "**/*"],
+  "exclude": ["node_modules", "dist"]
 }

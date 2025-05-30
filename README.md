@@ -1,4 +1,5 @@
 # Eugene's Personal Website
+
 [![Build & Lint Astro](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml)
 [![Playwright Tests](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml)
 [![Created Badge](https://badges.pufler.dev/created/euhystho/euhystho.github.io)](https://badges.pufler.dev)
@@ -6,10 +7,11 @@
 A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, professional aspirations, and writing samples.
 
 ## 🥞 Technology Stack
+
 - **Super-Framework**: [Astro](https://astro.build/) - Site builder with excellent performance and framework flexibility
 - **Components**: [Svelte](https://svelte.dev/) - Reactive component framework
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- **Content**: [MDX](https://mdxjs.com) for rich content with embedded Svelte components 
+- **Content**: [MDX](https://mdxjs.com) for rich content with embedded Svelte components
 - **Deployment**: GitHub Pages, Cloudflare Pages, and GitHub Actions CI/CD for accessibility and performance metrics
 
 ## 🔄 Workflows
@@ -22,16 +24,18 @@ This project uses GitHub Actions for continuous integration and deployment:
    - Builds the project to verify there are no errors
    - Ensures code quality and prevents broken deployments
 2. **Playwright Tests** (`.github/workflows/playwright.yml`):
+
    - Triggered on every push and pull request
    - Installs Playwright browsers for testing
    - Runs Playwright tests to automate web interactions on multiple browsers and platforms
 
-2. **GitHub Pages Deployment** (auto-configured by GitHub):
+3. **GitHub Pages Deployment** (auto-configured by GitHub):
+
    - Automatically deploys the built website to GitHub Pages
    - Triggered when changes are pushed to the gh-pages branch
    - Creates the production build and publishes it
 
-3. **Cloudflare Pages** (configured in Cloudflare dashboard):
+4. **Cloudflare Pages** (configured in Cloudflare dashboard):
    - Provides additional hosting with Cloudflare's CDN capabilities
    - Automatically detects changes in the GitHub repository
    - Offers preview deployments for pull requests
@@ -58,7 +62,6 @@ This project uses GitHub Actions for continuous integration and deployment:
 └── tsconfig.json          # TypeScript configuration
 ```
 
-
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -73,6 +76,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 ## 🚀 Development Workflow
+
 1. Clone the repository
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run dev`
