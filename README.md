@@ -1,6 +1,7 @@
 # Eugene's Personal Website
 [![Build & Lint Astro](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/build.yml)
 [![Playwright Tests](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml)
+[![Created Badge](https://badges.pufler.dev/created/euhystho/euhystho.github.io)](https://badges.pufler.dev)
 
 A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, professional aspirations, and writing samples.
 

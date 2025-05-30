@@ -23,7 +23,7 @@ const projectJSONLD = isProject && {
   image: { image },
   author: {
     "@type": "Person",
-    name: { SITE_AUTHOR },
+    name: SITE_AUTHOR,
   },
   datePublished: { date },
 };
@@ -37,7 +37,7 @@ const writingJSONLD = !isProject && {
   headline: { title },
   author: {
     "@type": "Person",
-    name: { SITE_AUTHOR },
+    name: SITE_AUTHOR,
   },
   datePublished: { date },
   dateModified: { modDate },

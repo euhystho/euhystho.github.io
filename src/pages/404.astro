@@ -1,8 +1,8 @@
 ---
 import "../styles/global.css";
 import BaseHead from "../components/layouts/BaseHead.astro";
-import BunnyAnimation from "../components/common/bunny.svelte";
 import Footer from "../components/layouts/Footer.astro";
+import Bunny from "../components/common/bunny.jsx";
 ---
 
 <!doctype html>
@@ -40,10 +40,7 @@ import Footer from "../components/layouts/Footer.astro";
             class="mx-auto flex flex-col items-center justify-center lg:min-h-[50vh] sm:md:lg:w-[60vw]"
             aria-hidden="true"
           >
-            <BunnyAnimation
-              client:visible
-              aria-labelledby="animation-title animation-description"
-            />
+          <Bunny client:idle/>
           </div>
         </div>
 
@@ -58,7 +55,7 @@ import Footer from "../components/layouts/Footer.astro";
               <a
                 href="/"
                 aria-label="Go back to homepage"
-                class="bg-accent/65 hover:bg-complementary hover:text-accent flex house-pointer items-center justify-center rounded-2xl border-2 border-transparent p-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:inset-shadow-sm"
+                class="bg-accent/65 hover:bg-complementary hover:text-accent house-pointer flex items-center justify-center rounded-2xl border-2 border-transparent p-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:inset-shadow-sm"
               >
                 <h4>🏠 Guess, I'll go back home then...</h4>
               </a>
@@ -67,7 +64,7 @@ import Footer from "../components/layouts/Footer.astro";
               <a
                 href="/contact"
                 aria-label="Contact website owner"
-                class="bg-accent/65 hover:text-accent flex megaphone-pointer items-center justify-center rounded-2xl border-2 border-transparent p-2 pt-4 pb-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-red-800 hover:inset-shadow-sm"
+                class="bg-accent/65 hover:text-accent megaphone-pointer flex items-center justify-center rounded-2xl border-2 border-transparent p-2 pt-4 pb-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-red-800 hover:inset-shadow-sm"
               >
                 <h4>😠 I want to complain to management!!!</h4>
               </a>

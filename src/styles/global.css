@@ -15,7 +15,7 @@
 @font-face {
   font-family: "Array Semibold";
   src: url("/fonts/Array-Semibold.woff2") format("woff2");
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -135,16 +135,24 @@
 
 /* Carrot Pointer */
 .carrots-pointer {
-  cursor: url("svg/carrot-pointer.svg") 12 8, auto;
+  cursor:
+    url("svg/carrot-pointer.svg") 12 8,
+    auto;
 }
 
 .mayhem-pointer {
-  cursor: url("svg/music.svg") 24 24, pointer;
+  cursor:
+    url("svg/music.svg") 24 24,
+    pointer;
 }
 
 .house-pointer {
-  cursor: url("svg/key.svg") 12 12, pointer;
+  cursor:
+    url("svg/key.svg") 12 12,
+    pointer;
 }
 .megaphone-pointer {
-  cursor: url("svg/megaphone.svg") 24 24, pointer;
+  cursor:
+    url("svg/megaphone.svg") 24 24,
+    pointer;
 }
