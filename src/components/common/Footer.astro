@@ -8,7 +8,7 @@ interface Props {
 const { showSocials = true } = Astro.props;
 ---
 
-<footer class="group">
+<footer>
   {
     showSocials && (
       <div class="flex justify-center">
@@ -16,7 +16,7 @@ const { showSocials = true } = Astro.props;
       </div>
     )
   }
-  <section class="bg-tertiary footer:rounded-tl-full footer:rounded-tr-full">
+  <section class="bg-tertiary">
     <h5 class="text-light p-4 text-center">
       Copyright © {currentYear}
       {SITE_AUTHOR}. All Rights Reserved.

@@ -1,27 +1,169 @@
 ---
-import BaseHead from "../components/layouts/BaseHead.astro";
-import "../styles/global.css";
-import { SITE_AUTHOR, SITE_DESCRIPTION } from "../utils/consts";
-import Header from "../components/layouts/Header.astro";
-import Footer from "../components/layouts/Footer.astro";
+import BaseHead from "../components/common/BaseHead.astro";
+import Header from "../components/common/Header.astro";
+import Footer from "../components/common/Footer.astro";
+import { SITE_DESCRIPTION } from "../utils/consts";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_AUTHOR} description={SITE_DESCRIPTION} />
+    <BaseHead description={SITE_DESCRIPTION} />
   </head>
   <body class="bg-light dark:bg-dark">
     <div class="site">
       <Header />
-      <main>
-        <div class="pt-2.5 pb-2.5">
-          <h2 class="text-dark dark:text-accent">🧑🏻‍💻 Hello Everyone!</h2>
-        </div>
-        <p class="text-dark dark:text-light text-center text-3xl">
-          This site is still currently in maintenance, please check again next
-          time!
-        </p>
+      <main class="container m-4 mx-auto snap-y motion-safe:snap-mandatory motion-reduce:snap-proximity px-4">
+        <!-- Hero Section -->
+        <section class="snap-center py-16 text-center">
+          <div class="mx-auto max-w-4xl">
+            <h2
+              class="dark:text-secondary text-primary mb-6 text-5xl md:text-6xl"
+            >
+              Turning complex data into intuitive solutions
+            </h2>
+            <h2 class="text-dark dark:text-light mb-8 text-xl md:text-2xl font-sans">
+              Emerging developer at the intersection of data science, software
+              engineering, and UI design. Finding creative patterns in the most
+              unexpected places: from personal financial literacy to the perfect
+              running playlist.
+            </h2>
+            <div class="flex flex-col justify-center gap-4 sm:flex-row">
+              <a
+                href="#featured-projects"
+                class="bg-accent text-dark hover:bg-accent/90 rounded-full px-8 py-3 font-semibold transition-colors"
+              >
+                View My Work
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="featured-projects" class="snap-center py-16">
+          <div class="mx-auto max-w-6xl">
+            <h2
+              class="dark:text-accent text-primary mb-12 text-center text-5xl"
+            >
+              Featured Projects
+            </h2>
+
+            <!-- RhythmRun Spotlight -->
+            <div class="bg-secondary/20 mb-12 rounded-xl p-8">
+              <div class="grid items-center gap-8 md:grid-cols-2">
+                <div>
+                  <h3
+                    class="font-heading dark:text-accent text-primary mb-4 text-3xl"
+                  >
+                    RhythmRun
+                  </h3>
+                  <p class="text-dark dark:text-light mb-6 text-lg">
+                    A mobile app that matches music to runners' pace and workout
+                    intensity using Spotify's API and BPM analysis. Trying to
+                    solve the age-old problem of finding the perfect workout
+                    soundtrack.
+                  </p>
+                  <div class="mb-6">
+                    <h4 class="text-dark dark:text-light mb-2 font-semibold">
+                      Technical Highlights:
+                    </h4>
+                    <ul class="text-dark dark:text-light space-y-1">
+                      <li>
+                        • Spotify API & SDK integration for real-time music
+                        analysis & playback
+                      </li>
+                      <li>
+                        • iOS Development with Flutter (my gateway to mobile app
+                        development)
+                      </li>
+                      <li>• Supabase for authentication and data management</li>
+                    </ul>
+                  </div>
+                  <div class="flex gap-4 max-md:justify-center">
+                    <a
+                      href="/projects/rhythmrun"
+                      class="bg-accent text-dark hover:bg-accent/90 rounded-full px-6 py-2 font-semibold transition-colors"
+                    >
+                      View Project
+                    </a>
+                  </div>
+                </div>
+                <div class="bg-primary/10 rounded-lg p-8 text-center">
+                  <!-- Placeholder for project image/mockup -->
+                  <div class="mb-4 text-6xl">🏃‍♂️🎵</div>
+                  <p class="text-dark dark:text-light italic">
+                    "Where music meets motion"
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a
+                href="/projects"
+                class="dark:border-accent hover:border-accent dark:text-accent hover:bg-accent hover:text-dark hover:dark:bg-primary hover:dark:text-light rounded-full border-2 px-8 py-3 font-semibold transition-colors hover:dark:border-transparent"
+              >
+                View All Projects
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Overview -->
+        <section class="bg-secondary/10 mb-5 snap-center rounded-xl p-16">
+          <div class="mx-auto max-w-4xl text-center">
+            <h2
+              class="font-heading dark:text-accent text-primary mb-8 text-5xl"
+            >
+              What I Do
+            </h2>
+            <p class="text-dark dark:text-light mb-12 text-2xl">
+              Bridging the gap between data science and thoughtful software
+              design and visualizations, turning complex problems into elegant
+              solutions.
+            </p>
+
+            <div class="grid gap-8 md:grid-cols-3">
+              <div class="text-center">
+                <div class="mb-4 text-4xl">📊</div>
+                <h3
+                  class="font-heading dark:text-accent text-primary mb-3 text-3xl"
+                >
+                  Data Analysis
+                </h3>
+                <h4 class="text-dark dark:text-light">
+                  Finding meaningful patterns in complex datasets, from real
+                  estate market analysis to sentiment analysis.
+                </h4>
+              </div>
+
+              <div class="text-center">
+                <div class="mb-4 text-4xl">💻</div>
+                <h3
+                  class="font-heading dark:text-accent text-primary mb-3 text-3xl"
+                >
+                  Software Development
+                </h3>
+                <h4 class="text-dark dark:text-light">
+                  Full-stack development with modern technologies. Passionate
+                  about API integrations, mobile apps, and scalable
+                  architectures.
+                </h4>
+              </div>
+
+              <div class="text-center">
+                <div class="mb-4 text-4xl">🎨</div>
+                <h3 class="font-heading dark:text-accent text-primary mb-3 text-3xl">
+                  Creative Design
+                </h3>
+                <h4 class="text-dark dark:text-light">
+                  User-centered design thinking meets technical implementation.
+                  Great software should be both powerful and beautiful.
+                </h4>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
