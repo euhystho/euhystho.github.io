@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const projectsCollection = defineCollection({
-  // Load MDX files in the `src/content/projects/` directory.
+  // Load MDX files...
   loader: glob({ base: "./src/projects", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
   schema: z.object({
@@ -18,7 +18,7 @@ const projectsCollection = defineCollection({
 });
 
 const writingCollection = defineCollection({
-  // Load MDX files in the `src/content/projects/` directory.
+  // Load MDX files...
   loader: glob({ base: "./src/writings", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
   schema: z.object({

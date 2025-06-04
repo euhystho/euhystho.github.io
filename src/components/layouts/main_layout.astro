@@ -1,0 +1,33 @@
+---
+import "../../styles/global.css";
+import { SITE_AUTHOR, SITE_DESCRIPTION } from "../../utils/consts";
+import BaseHead from "../common/BaseHead.astro";
+import Header from "../common/Header.astro";
+import Footer from "../common/Footer.astro";
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+const {
+  title = SITE_AUTHOR,
+  description = SITE_DESCRIPTION,
+  image,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body class="bg-light dark:bg-dark">
+    <div class="site">
+      <Header />
+      <main class="m-4">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

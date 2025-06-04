@@ -12,8 +12,8 @@ const aboutJSONLD = {
   "@type": "Person",
   name: "Eugene Thompson",
   email: "hello@eugenehysthompson.com",
-  url: { canonicalURL },
-  image: "images/about.jpeg",
+  url: canonicalURL.toString(),
+  image: new URL("images/about.jpeg", Astro.site).toString(),
   alumniOf: {
     "@type": "EducationalOrganization",
     name: "Ursinus College",

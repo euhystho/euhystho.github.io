@@ -2,7 +2,6 @@
 import { SITE_AUTHOR } from "../../utils/consts";
 interface Props {
   title: string;
-  //Possible Bug here depending on how Date is formatted:
   date: Date;
   modDate?: Date;
   image?: string;
@@ -17,30 +16,30 @@ const projectJSONLD = isProject && {
   "@type": "BlogPosting",
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": { canonicalURL },
+    "@id": canonicalURL.toString(),
   },
-  headline: { title },
-  image: { image },
+  headline: title,
+  image: image,
   author: {
     "@type": "Person",
     name: SITE_AUTHOR,
   },
-  datePublished: { date },
+  datePublished: date.toISOString(),
 };
 const writingJSONLD = !isProject && {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": { canonicalURL },
+    "@id": canonicalURL.toString(),
   },
-  headline: { title },
+  headline: title,
   author: {
     "@type": "Person",
     name: SITE_AUTHOR,
   },
-  datePublished: { date },
-  dateModified: { modDate },
+  datePublished: date.toISOString(),
+  dateModified: modDate?.toISOString(),
 };
 ---
 
