@@ -58,7 +58,7 @@ This project uses GitHub Actions for continuous integration and deployment:
 ├── lighthouserc.json      # Lighthouse configuration
 ├── eslint.config.mjs      # ESLint configuration
 ├── playwright.config.ts   # Playwright configuration
-├── sveote.config.ts       # Svelte configuration
+├── svelte.config.ts       # Svelte configuration
 └── tsconfig.json          # TypeScript configuration
 ```
 
