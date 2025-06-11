@@ -9,7 +9,7 @@
     "astro": "astro",
     "format": "eslint \"**/*.{js,astro}\" --fix && prettier . --write",
     "test:visual": "playwright test --project=chromium --headed",
-    "test:mobile": "playwright test --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:mobile": "playwright test --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
     "test:accessibility": "npx @axe-core/cli http://localhost:4321",
     "test:performance": "concurrently -k \"astro dev --port 4321\" \"wait-on http://localhost:4321 && npx lighthouse http://localhost:4321 --output=html\""
   },
@@ -18,14 +18,18 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
     "@astrojs/svelte": "^7.1.0",
+    "@axe-core/cli": "^4.10.2",
     "@flaticon/flaticon-uicons": "^3.3.1",
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.9.2",
     "astro-icon": "^1.1.5",
+    "concurrently": "^9.1.2",
+    "lighthouse": "^12.6.1",
     "svelte": "^5.32.1",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.0"
+    "typescript-eslint": "^8.34.0",
+    "wait-on": "^8.0.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.53.0",
