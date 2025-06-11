@@ -12,7 +12,6 @@ interface Props {
   description: string;
   image?: string;
   alt?: string;
-  noRobots?: boolean;
 }
 
 const {
@@ -20,7 +19,6 @@ const {
   description,
   image = "images/about.jpeg",
   alt = "Picture of Eugene",
-  noRobots = false,
 } = Astro.props;
 ---
 
@@ -28,25 +26,6 @@ const {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
-<meta name="theme-color" content="#335c3b" />
-<meta
-  name="google-site-verification"
-  content="oYzkW59-L2Pbbf8M6RWCUnGNylWIF8JJZOUlFQQTg68"
-/>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="manifest" href="/site.webmanifest" />
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  title={SITE_AUTHOR}
-  href={new URL("rss.xml", Astro.site)}
-/>
-
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -54,6 +33,27 @@ const {
 <meta name="author" content={SITE_AUTHOR} />
 <meta name="description" content={description} />
 <meta name="keywords" content={KEYWORDS} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Theme and Visual -->
+<meta name="theme-color" content="#335c3b" />
+
+<!-- Icons and Manifest -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Feed and Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_AUTHOR}
+  href={new URL("rss.xml", Astro.site)}
+/>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -71,7 +71,13 @@ const {
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 <meta property="twitter:image:alt" content={alt} />
 
-{noRobots && <meta name="robots" content="noindex, nofollow" />}
+<!-- Verification -->
+<meta
+  name="google-site-verification"
+  content="oYzkW59-L2Pbbf8M6RWCUnGNylWIF8JJZOUlFQQTg68"
+/>
+
+<!-- Performance Critical CSS/JS -->
 <script is:inline>
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   document.documentElement.classList.toggle(

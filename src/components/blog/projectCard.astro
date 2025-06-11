@@ -1,0 +1,112 @@
+---
+import { getCollection } from "astro:content";
+// Get featured projects for homepage showcase
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3); // Show top 3 featured projects
+---
+
+<!-- Featured Projects -->{
+  featuredProjects.length > 0 && (
+    <section
+      class="dark:bg-secondary/5 bg-secondary/50 rounded-4xl py-16"
+      id="featured-projects"
+    >
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="mb-12 text-center">
+          <h2 class="font-heading text-primary dark:text-secondary mb-4 text-3xl md:text-5xl">
+            Featured Projects
+          </h2>
+          <p class="text-dark dark:text-light mx-auto max-w-3xl text-lg">
+            A selection of projects that showcase my growth as a developer -
+            from passionate first attempts to sophisticated solutions that solve
+            real problems.
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <article class="group bg-light dark:bg-dark overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
+              {/* Project Image */}
+              {project.data.image && (
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    src={project.data.image}
+                    alt={project.data.title}
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              )}
+              {/* Project Content */}
+              <div class="p-6">
+                <h3 class="font-heading text-tertiary dark:text-secondary group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-xl transition-colors">
+                  {project.data.title}
+                </h3>
+
+                <p class="text-dark dark:text-light mb-4 text-sm leading-relaxed max-md:text-center">
+                  {project.data.description.length > 121
+                    ? project.data.description.substring(0, 121) + "..."
+                    : project.data.description}
+                </p>
+
+                {/* Key Tags */}
+                <div class="mb-4 flex flex-wrap gap-2 max-md:justify-center">
+                  {project.data.tags.slice(0, 3).map((tag) => (
+                    <span class="bg-secondary/20 text-dark dark:text-light rounded px-2 py-1 text-xs">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div class="max-md:text-center">
+                  <a
+                    href={`/projects/${project.id}`}
+                    class="text-tertiary dark:text-secondary group-hover:text-primary dark:group-hover:text-accent inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                  >
+                    Read the story
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="/projects"
+            class="text-primary dark:text-accent hover:text-dark dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
+          >
+            View All Projects
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}

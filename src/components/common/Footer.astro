@@ -1,6 +1,6 @@
 ---
 import { SITE_AUTHOR } from "src/utils/consts";
-import Social from "../common/social.astro";
+import Social from "./Social.astro";
 const currentYear = new Date().getFullYear();
 interface Props {
   showSocials?: boolean;
@@ -8,7 +8,7 @@ interface Props {
 const { showSocials = true } = Astro.props;
 ---
 
-<footer>
+<footer class="bg-primary transition-colors duration-300 ease-in-out">
   {
     showSocials && (
       <div class="flex justify-center">
@@ -17,9 +17,9 @@ const { showSocials = true } = Astro.props;
     )
   }
   <section class="bg-tertiary">
-    <h5 class="text-light p-4 text-center">
+    <p class="text-light p-4 text-center">
       Copyright © {currentYear}
       {SITE_AUTHOR}. All Rights Reserved.
-    </h5>
+    </p>
   </section>
 </footer>

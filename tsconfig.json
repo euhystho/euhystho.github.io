@@ -7,7 +7,7 @@
     "strict": true,
     "strictNullChecks": true,
     "allowJs": true,
-    "types": ["./jsx.d.ts"],
+    "types": ["./config/jsx.d.ts"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
