@@ -28,7 +28,7 @@
 
 <label
   for="themeToggle"
-  class="flex cursor-pointer w-[2.5em] dark:text-accent text-secondary items-center justify-center transition-colors themeToggle st-sunMoonThemeToggleBtn"
+  class="flex cursor-pointer w-[3em] h-[3em] dark:text-accent text-light max-lg:text-dark items-center justify-center transition-colors themeToggle st-sunMoonThemeToggleBtn"
   aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
 >
   <input
@@ -44,6 +44,7 @@
     viewBox="0 0 20 20"
     fill="currentColor"
     stroke="none"
+    title="Light and Dark Mode Toggle"
   >
     <mask id="moon-mask">
       <rect x="0" y="0" width="20" height="20" fill="white"></rect>
@@ -72,6 +73,10 @@
   .st-sunMoonThemeToggleBtn {
     position: relative;
     cursor: pointer;
+    width: 2.5em;
+    height: 2.5em;
+    min-width: 2.5em;
+    min-height: 2.5em;
   }
 
   .st-sunMoonThemeToggleBtn .themeToggleInput {

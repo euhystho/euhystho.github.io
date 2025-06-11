@@ -24,8 +24,10 @@ const projectJSONLD = isProject && {
     "@type": "Person",
     name: SITE_AUTHOR,
   },
-  datePublished: date.toISOString(),
+  datePublished: date,
+  dateModified: modDate,
 };
+
 const writingJSONLD = !isProject && {
   "@context": "https://schema.org",
   "@type": "BlogPosting",

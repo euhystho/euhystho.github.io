@@ -1,0 +1,134 @@
+---
+title: "Trials of the Archons: Genshin-Inspired Turn-Based Strategy Game"
+description: "A Java Swing game evolved from a simple final project into a complex turn-based strategy game inspired by Genshin Impact."
+image: "/images/projects/cs173-game-screenshot.png"
+tags:
+  [
+    "Java",
+    "Java Swing",
+    "Game Development",
+    "Object-Oriented Programming",
+    "Data Structures",
+  ]
+github: "https://github.com/euhystho/CS173Final"
+featured: true
+date: "2023-05-11"
+modDate: "2025-06-10"
+---
+
+## The Challenge
+
+> _"Use data structures like ArrayList or 2-D Arrays to create a simple game like Connect 4 or Tic Tac Toe."_
+
+That was the assignment. I thought: **"What if I built something I'd actually want to play?"**
+
+I was invested into Genshin Impact at the time, and I loved games like [Summoners War](https://summonerswar.com/en/skyarena) and other turn-based RPGs (e.g. [Epic Seven](https://epic7.onstove.com/)).
+But instead of copying the real-time 3-D combat, I wanted to explore 2-D turn-based mechanics - something more strategic, more thoughtful and familiar.
+
+## The Technical Deep Dive
+
+### What I Started With
+
+- **Required**: ArrayList implementation (assignment requirement)
+- **My knowledge**: Basic Java syntax from intro CS
+- **What I needed to learn**: Literally everything else related to GUI and Java Swing
+
+### What I Taught Myself
+
+**Java Swing & GUI Programming**: Since the course only covered console applications. I spent nights watching [Bro Code](https://youtu.be/Kmgo00avvEw?si=QqgdWWc9chl53Gzj) on YouTube, learning how to create windows, buttons, panels, and other UI elements.
+
+**Event-Driven Programming**: Understanding event listeners was a major breakthrough. How does the program know when I click a button? How do you handle multiple interactions happening simultaneously?
+
+**Object-Oriented Design**: I learned about classes beyond the basics - inheritance, (wish I used polymorphism), and how to structure a game where characters have different abilities and stats.
+
+## The Game Mechanics
+
+### Turn-Based Combat System
+
+I adapted Genshin Impact's ability system into turn-based mechanics:
+
+- **Skill Cooldowns**: Characters couldn't use abilities for a set number of turns after activation
+- **Ultimate Abilities**: More powerful moves with longer cooldowns
+- **Strategic Timing**: Players had to plan when to use powerful abilities vs. basic attacks
+
+### Data Structure Implementation
+
+The ArrayList requirement became the foundation for managing the player's team through
+
+- Selecting characters at the start screen
+- Reviving the team in between boss fights
+- Moving the team throughout boss fights into new GUIs
+
+## The Reality Check
+
+### Code Organization (Or Lack Thereof)
+
+My main GUI (combatGUI.java) class ended up being _almost_ **1,000 lines long**...
+
+Why? Because I was in "haphazard feature addition" mode. Every new button, every new panel, every new game feature had to be all within sight when creating the game mechanics.
+
+- I just tacked it onto the existing code without thinking about organization.
+
+```java
+// This was literally my approach:
+public class combatGUI implements ActionListener {
+    // 900 lines of everything mixed together
+    // Event handlers, game logic, UI setup, data management
+    // All in one massive class
+}
+```
+
+### What I Learned the Hard Way
+
+- **Code organization matters**: I didn't understand MVC patterns yet
+- **Planning beats excitement**: I was so eager to add features that I skipped architectural thinking, which I learned later in Software Engineering
+- **Separation of concerns**: Game logic, UI, and data management **should** be separate
+
+## The Growth
+
+### What This Project Taught Me
+
+**Technical Skills**:
+
+- Event-driven programming fundamentals
+- GUI development from scratch
+- Complex state management
+- Object-oriented design principles (even if messily applied)
+
+**Development Process**:
+
+- The importance of code organization
+- Why game engines exist (they solve problems I was doing badly)
+- How passion projects out of assignments can teach you more than doing the bare minimum
+
+**Problem-Solving**:
+
+- Breaking down complex systems (turn-based combat) into manageable pieces
+- Learning independently when you need knowledge that isn't taught in class
+
+## What I'd Do Differently Now
+
+If I rebuilt this project today:
+
+- **Use a proper game engine** like LibGDX instead of building everything from scratch
+- **Implement MVC architecture** to separate game logic from UI
+- **Start with unit tests** to ensure combat mechanics work correctly
+- **Plan the architecture** before diving into implementation
+
+But honestly? I'm proud of that messy GUI file. It represents me figuring out how to build something complex entirely on my own, learning new concepts as I needed them.
+
+## The Impact
+
+This project changed how I approach learning:
+
+- **Don't wait for permission to learn new things** - YouTube and documentation are your best friends
+- **Passion projects push you further** than following assignments ever will
+- **Messy code is still valuable code** if it teaches you something
+
+It also gave me serious respect for game developers and the tools they use. Building even a simple game from scratch is really complex!
+
+---
+
+### Disclaimer
+
+This project was created for educational purposes only. All Genshin Impact character images and assets used in this project are the intellectual property of HoYoverse and were obtained from the Genshin Impact Fandom Wiki. These materials are used under fair use principles for educational and non-commercial purposes. This project is not affiliated with, sponsored by, or endorsed by HoYoverse.

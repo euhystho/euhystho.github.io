@@ -8,7 +8,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "eslint \"**/*.{js,astro}\" --fix && prettier . --write",
-    "lint": "eslint \"**/*.{js,astro}\""
+    "test:visual": "playwright test --project=chromium --headed",
+    "test:mobile": "playwright test --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:accessibility": "npx @axe-core/cli http://localhost:4321",
+    "test:performance": "concurrently -k \"astro dev --port 4321\" \"wait-on http://localhost:4321 && npx lighthouse http://localhost:4321 --output=html\""
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

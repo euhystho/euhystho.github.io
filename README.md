@@ -6,7 +6,7 @@
 
 A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, professional aspirations, and writing samples.
 
-## 🥞 Technology Stack
+## 💻 Technology Stack
 
 - **Super-Framework**: [Astro](https://astro.build/) - Site builder with excellent performance and framework flexibility
 - **Components**: [Svelte](https://svelte.dev/) - Reactive component framework

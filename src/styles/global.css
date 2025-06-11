@@ -1,31 +1,10 @@
 /* Import Tailwind */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @import "@flaticon/flaticon-uicons/css/all/all";
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Font declarations */
-@font-face {
-  font-family: "Array Regular";
-  src:
-    url("/fonts/Array-Regular.ttf") format("truetype"),
-    url("/fonts/Array-Regular.woff") format("woff"),
-    url("/fonts/Array-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Array Semibold";
-  src:
-    url("/fonts/Array-Semibold.ttf") format("truetype"),
-    url("/fonts/Array-Semibold.woff") format("woff"),
-    url("/fonts/Array-Semibold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 @font-face {
   font-family: "Figtree";
   src: url("/fonts/Figtree-Regular.woff2") format("woff2");
@@ -43,18 +22,18 @@
 
 /* My Theme :) */
 @theme {
-  --font-heading: "Array Semibold", system-ui, sans-serif;
-  --font-subheading: "Array Regular", system-ui, sans-serif;
+  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-subheading: "Montserrat", system-ui, sans-serif;
   --font-sans: "Figtree", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-primary: hsla(132, 29%, 28%, 1); /*  hunter-green  */
-  --color-secondary: hsla(176, 11%, 73%, 1); /*    ash-gray    */
-  --color-complementary: hsla(312, 29%, 28%, 1); /* violete (jtc) */
-  --color-tertiary: hsla(16, 50%, 20%, 1); /* caput mortuum */
-  --color-accent: hsla(45, 100%, 56%, 1); /*  mikado-yellow */
-  --color-dark: hsla(0, 0%, 13%, 1); /*   eerie-black  */
-  --color-light: hsla(60, 30%, 96%, 1); /*   baby-powder  */
+  --color-primary: #2d5a23;
+  --color-secondary: #e8f5e8;
+  --color-complementary: #4a7c59;
+  --color-tertiary: #6b7280;
+  --color-accent: #f59e0b;
+  --color-dark: #1f2937;
+  --color-light: #f9fafb;
 
   --breakpoint-header: 58.125rem;
 
@@ -67,16 +46,29 @@
     @apply flex items-center justify-end;
   }
   nav a {
-    @apply flex h-full items-center p-5 max-lg:box-border max-lg:h-auto max-lg:w-3/4 max-lg:content-start max-lg:p-6;
+    @apply flex h-full items-center p-5 max-lg:box-border max-lg:h-auto max-lg:w-full max-lg:content-start max-lg:p-6;
   }
-  nav a:not(#home-link):hover {
-    @apply bg-secondary/10 inset-10 rounded-full border-[1.5] border-transparent inset-shadow-sm transition-all max-lg:ml-4;
+  nav a:not(#home-link) {
+    @apply relative inline-block overflow-hidden align-middle perspective-near;
+  }
+  nav a:not(#home-link):before {
+    @apply border-accent absolute right-1/2 bottom-0 left-1/2 -z-1 transition-[left,right] duration-300 ease-out content-[""];
+  }
+  nav a:not(#home-link):hover:before,
+  nav a:not(#home-link):focus:before,
+  nav a:not(#home-link):active:before {
+    @apply right-0 left-0 border-2;
   }
   .nav-items {
-    @apply max-lg:text-dark max-lg:dark:text-accent max-lg:text-center;
+    @apply text-secondary max-lg:text-dark max-lg:dark:text-secondary max-lg:text-center;
   }
   .links-container {
-    @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-70 max-lg:flex-col max-lg:items-start max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-lg max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none;
+    @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-70 max-lg:flex-col max-lg:items-start max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none;
+  }
+  @media (max-width: 1024px) and (min-height: 630px) {
+    .links-container {
+      @apply rounded-full;
+    }
   }
   #sidebar-active:checked ~ .links-container {
     @apply right-0;
@@ -91,21 +83,22 @@
     @apply bg-transparent;
   }
   h1 {
-    @apply font-heading text-accent text-center text-5xl tracking-tight;
+    @apply font-heading text-accent text-center text-4xl tracking-tight;
   }
   h2 {
-    @apply font-subheading text-accent text-4xl;
+    @apply font-subheading text-accent text-3xl;
   }
   h3 {
     @apply text-accent text-center font-sans text-3xl;
   }
   h4 {
-    @apply font-sans text-xl;
+    @apply font-sans text-2xl;
   }
   h5 {
     @apply font-sans text-xl;
   }
-  p {
+  p,
+  li {
     @apply dark:text-light font-sans text-lg;
   }
   /* Social Media Buttons */

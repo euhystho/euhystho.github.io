@@ -1,0 +1,192 @@
+---
+title: "RhythmRun: When Team Projects Teach More Than Code"
+description: "A Flutter running companion app integrating Spotify's API, and the real-world lessons learned from managing a small team."
+image: "/images/projects/rhythm-run.jpeg"
+tags:
+  [
+    "Flutter",
+    "Dart",
+    "Spotify API",
+    "iOS Development",
+    "Team Leadership",
+    "Mobile Development",
+  ]
+github: "https://github.com/euhystho/rhythm-run"
+demo: "https://euhystho.github.io/rhythm-run/"
+featured: true
+date: "2025-05-12"
+modDate: "2025-06-10"
+---
+
+## Vision
+
+**Problem**: Whether you're a first-time runner or elite marathon athlete, pacing runs remains one of the most difficult aspects of endurance running.
+
+**Our Solution**: RhythmRun - a Flutter app that syncs your running pace with song BPMs using Spotify's API, making consistent pacing intuitive and engaging.
+
+**Personal Motivation**: I love music and wanted to help solve my friends' problems with running. Why settle for random playlists when technology could actively help maintain a runner's right pace?
+
+## Technical Architecture
+
+### Core Features
+
+- **Spotify integration** for music playback and BPM analysis
+- **Cross-platform mobile app** targeting iOS and Android
+
+### Aspirant Features
+
+- **[Real-time GPS tracking](https://github.com/euhystho/rhythm-run/issues/25)** for pace monitoring
+- **[Pace synchronization](https://github.com/euhystho/rhythm-run/issues/22)** algorithm matching running cadence to song tempo
+
+### My Technical Responsibilities
+
+- **iOS development and optimization**
+- **Backend architecture** for user authentication and data persistence
+- **Spotify API integration** for music control and analysis
+
+### Tech Stack
+
+```
+Frontend: Flutter/Dart
+Music Integration: Spotify SDK + Web API
+Backend: User authentication and data storage through Supabase
+Platform Focus: iOS (with Android support)
+Development Environment: JDK v17, NDK ≥ v27
+```
+
+## Technical Wins
+
+### Spotify Integration Success
+
+The Spotify integration was actually **easier than expected**! The [existing Dart packages](https://pub.dev/packages/spotify_sdk) were relatively well-documented and worked reliably:
+
+```dart
+// Connecting the Spotify's SDK
+  Future<void> connectToSpotifySDK() async {
+    try {
+      loading = true;
+      var result = await SpotifySdk.connectToSpotifyRemote(
+        clientId: clientID,
+        redirectUrl: redirectURI,
+      );
+      loading = false;
+    } on PlatformException catch (e) {
+      loading = false;
+    } on MissingPluginException {
+      loading = false;
+    }
+  }
+```
+
+Following the official API documentation was mostly smooth, except for android.
+
+### iOS Development Discovery
+
+After getting an Apple Developer Account, I was amazed by the **quality and quantity of Apple's development resources**. The documentation is comprehensive, and the customization possibilities are incredible.
+
+**Key iOS insights**:
+
+- Apple's developer ecosystem is genuinely impressive and intimidating once you're inside it
+- Apple's Entitlement system and other integrations were really good and interesting.
+- Platform-specific configurations make a real difference in user experience
+
+After combing through Apple's developer resources, it made me inspired to start coding in [Swift](https://www.swift.org/)!
+
+### Cross-Platform Challenges
+
+Learning how Flutter bridges native iOS/Android code with a unified codebase was fascinating.
+The framework handles most platform differences, but understanding the underlying native implementations was crucial for optimization.
+Especially towards the beginning, with a lot of panicked commits on making sure it works successfully on Android without breaking it on the iOS side as well!
+
+## Reality of a Student Development Team
+
+### Stats
+
+- **5 person team**
+- **3 actively contributing members**
+- **2 teammates** who had a ton of external responsibilities to meaningfully participate
+
+### Leadership Under Pressure
+
+One of our teammates struggled with severe anxiety, which required me to completely adapt my communication and project management style.
+
+**What I learned about leadership**:
+
+- **Compassionate communication** - Different people need different types of support and feedback
+- **Flexible expectations** - Mental health challenges are real and need thoughtful accommodation
+- **Project adaptation** - Sometimes you need to redistribute work to keep everyone contributing meaningfully
+
+This not only taught me about technical skills in software development, but how team dynamics and emotional intelligence matter just as much as code quality.
+
+## Planning Trap
+
+### Timeline Reality
+
+We spent about **63% of the semester planning** the "perfect" app, then rushed development in the final months.
+
+**What happened**:
+
+- Extensive user research and feature specification
+- UI/UX mockups and user flow diagrams
+- Architecture planning and technology evaluation
+- Planning tests before coding based on all of the above
+- **But limited time for actual implementation**
+
+**The lesson**: Perfect planning doesn't necessarily guarantee smooth execution. Real software development always surfaces during unexpected challenges that you can't fully plan for.
+
+**Better approach**:
+
+- Start using the first part of the semester in educating the team on core technologies and workflows
+- Guide the team to finish the Minimal Viable Product (MVP) first, iterate second
+- Start coding sooner to discover unknown unknowns (like Music API integration with Apple Music)
+- Plan in sprints, and don't overload sprints with too much work
+
+## What's Next: Learning Applied
+
+### Rebuild Plan
+
+I'm planning to **rebuild this solo (or with a friend)** with key improvements:
+
+**Swift Integration for Apple Music**: [Flutter packages for Apple Music](https://pub.dev/packages/music_kit/) weren't reliable. Now I have enough iOS experience to implement native Swift integration properly.
+
+**Better Architecture**: Apply lessons learned about:
+
+- Modular code organization
+- API reliability testing
+- User authentication flow optimization
+
+**Refined Scope**: Focus on core functionality first, add advanced features incrementally.
+
+## Real-World Skills Gained
+
+### Technical Competencies
+
+- **Mobile development lifecycle** from concept to deployment
+- **API integration and reliability** patterns
+- **Cross-platform architecture** considerations
+- **iOS-specific development** insights
+
+### Professional Skills
+
+- **Team leadership under pressure**
+- **Compassionate project management**
+- **Timeline and scope management**
+- **Stakeholder communication** (in this case, teammates, instructors, and runners)
+
+### Process Lessons
+
+- **MVP-first development approach**
+- **Agile planning vs. waterfall planning**
+- **Risk assessment and mitigation**
+- **Technical debt management**
+
+## Bigger Picture
+
+This project taught me how **software development is fundamentally collaborative**.
+Even when the code works perfectly, projects can struggle due to team dynamics, communication challenges, or planning issues.
+
+The technical skills I gained were valuable, but the **people skills** I developed are arguably more important for real-world software development.
+
+---
+
+_RhythmRun represents my transition from solo coding projects to collaborative software development. Along with all the challenges and growth opportunities that come with working on a team! 👨🏻‍💻_

@@ -16,7 +16,7 @@ import BaseHead from "../components/common/BaseHead.astro";
       type="module"></script>
   </head>
   <body
-    class="bg-secondary overflow-x-hidden"
+    class="bg-tertiary overflow-x-hidden"
     style="cursor:url('/svg/carrot-pointer.svg') 12 8, auto;"
   >
     <div class="site">
@@ -42,7 +42,7 @@ import BaseHead from "../components/common/BaseHead.astro";
         </h2>
       </header>
       <main>
-        <div class="bg-secondary/75 rounded-xs">
+        <div class="rounded-xs">
           <div
             class="mx-auto flex w-full max-w-xs flex-col items-center justify-center sm:max-w-sm md:max-w-md lg:min-h-[50vh] sm:md:lg:w-[60vw]"
             aria-hidden="true"
@@ -64,13 +64,13 @@ import BaseHead from "../components/common/BaseHead.astro";
       >
         <h3 class="pt-4 pb-4">Don't worry! You got some options:</h3>
         <ul
-          class="relative flex flex-col items-center justify-center gap-5 rounded-2xl p-5 transition-all duration-100 md:flex-row md:gap-10"
+          class="relative m-4 flex flex-col items-center justify-center gap-5 rounded-2xl transition-all duration-100 md:flex-row md:gap-10"
         >
           <li>
             <a
               href="/"
               aria-label="Go back to homepage"
-              class="bg-accent/65 hover:bg-complementary hover:text-accent flex items-center justify-center rounded-2xl border-2 border-transparent p-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:inset-shadow-sm"
+              class="bg-accent/65 hover:bg-complementary hover:text-accent mb-4 flex items-center justify-center rounded-2xl border-2 border-transparent p-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:inset-shadow-sm"
               style="cursor:url('/svg/key.svg') 12 12, pointer;"
             >
               <h4>🏠 Guess, I'll go back home then...</h4>
@@ -80,7 +80,7 @@ import BaseHead from "../components/common/BaseHead.astro";
             <a
               href="/contact"
               aria-label="Contact website owner"
-              class="bg-accent/65 hover:text-accent flex items-center justify-center rounded-2xl border-2 border-transparent p-2 pt-4 pb-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-red-800 hover:inset-shadow-sm"
+              class="bg-accent/65 hover:text-accent mb-4 flex items-center justify-center rounded-2xl border-2 border-transparent p-2 pt-4 pb-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-red-800 hover:inset-shadow-sm"
               style="cursor: url('/svg/megaphone.svg') 24 24, pointer;"
             >
               <h4>😠 I want to complain to management!!!</h4>

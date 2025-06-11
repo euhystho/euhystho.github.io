@@ -9,7 +9,7 @@ export const SITE_DESCRIPTION =
 export const KEYWORDS = "";
 
 // Theme Properties
-export const ACCENT_COLOR = "#FFC40C";
+export const ACCENT_COLOR = "#f59e0b";
 
 //Social Links
 export const GITHUB_LINK = "https://github.com/euhystho";

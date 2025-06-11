@@ -9,7 +9,12 @@ export default defineConfig({
   site: "https://eugenehysthompson.com",
   output: "static",
   integrations: [mdx(), sitemap(), svelte()],
-
+  experimental: {
+    responsiveImages: true,
+  },
+  image: {
+    experimentalLayout: "constrained",
+  },
   vite: {
     plugins: [tailwindcss()],
   },

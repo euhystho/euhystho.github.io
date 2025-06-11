@@ -4,14 +4,17 @@ interface Props {
 }
 
 const { date } = Astro.props;
+
+// Ensure a proper Date object
+const safeDate = new Date(date);
+
+const formatOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 ---
 
-<time datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  }
+<time datetime={safeDate.toISOString()}>
+  {safeDate.toLocaleDateString("en-US", formatOptions)}
 </time>

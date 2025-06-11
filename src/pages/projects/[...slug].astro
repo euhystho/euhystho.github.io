@@ -1,27 +1,196 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "../../components/layouts/main_layout.astro";
+import FormattedDate from "../../components/blog/FormattedDate.astro";
+import BaseHead from "../../components/common/BaseHead.astro";
+import Footer from "../../components/common/Footer.astro";
+import Header from "../../components/common/Header.astro";
+import Image from "astro/components/Image.astro";
+import BlogSEO from "../../components/blog/blogSEO.astro";
+
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },
-   }));
- }
+  }));
+}
 
 const { project } = Astro.props;
-
-if (!project) {
-  return Astro.redirect('/404');
-}
 
 const { Content } = await render(project);
 ---
 
-<Layout 
-  title={project.data.title} 
-  description={project.data.description}
-  image={project.data.image}
->
-   <Content />
- </Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={project.data.title}
+      description={project.data.description}
+    />
+    <BlogSEO
+      title={project.data.title}
+      modDate={project.data.modDate}
+      date={project.data.date}
+      isProject={true}
+    />
+  </head>
+  <body class="bg-light dark:bg-dark">
+    <div class="site">
+      <Header />
+      <main class="max-w-4xl px-2 py-8 md:mx-auto">
+        <!-- Project Header -->
+        <div class="mb-8">
+          <div class="mb-8">
+            <a
+              href="/projects"
+              class="dark:text-accent hover:text-primary hover:dark:text-secondary transition-colors"
+            >
+              ← Back to Projects
+            </a>
+          </div>
+          <div class="mb-6">
+            <h1
+              class="font-heading text-primary dark:text-accent mb-4 text-4xl md:text-5xl"
+            >
+              {project.data.title}
+            </h1>
+            <p class="text-dark dark:text-light mb-4 text-center text-xl">
+              {project.data.description}
+            </p>
+
+            <!-- Project Meta -->
+            <div
+              class="dark:text-secondary mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-sm"
+            >
+              {
+                project.data.featured && (
+                  <span class="bg-accent text-dark rounded-full px-2 py-1 text-xs font-semibold">
+                    Featured
+                  </span>
+                )
+              }
+              <div>
+                Completed on
+                <FormattedDate date={project.data.date} />
+              </div>
+              <div>
+                <i>
+                  Edited on
+                  <FormattedDate date={project.data.modDate} />
+                </i>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="mb-6 flex flex-wrap justify-center gap-2">
+              {
+                project.data.tags.map((tag) => (
+                  <span class="bg-secondary/20 text-dark dark:text-light rounded-full px-3 py-1 text-sm">
+                    {tag}
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Project Image -->
+          {
+            project.data.image && (
+              <div class="mb-8">
+                <Image
+                  src={project.data.image}
+                  alt={project.data.title}
+                  width={800}
+                  height={400}
+                  class="h-auto w-full"
+                />
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Project Links -->
+        <div class="mb-8 flex justify-center gap-4">
+          {
+            project.data.github && (
+              <a
+                href={project.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-primary text-light hover:bg-primary/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
+              >
+                <Image
+                  src="/svg/github.svg"
+                  alt="GitHub logo"
+                  width={32}
+                  height={32}
+                />
+                View Code
+              </a>
+            )
+          }
+
+          {
+            project.data.demo && (
+              <a
+                href={project.data.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-accent text-dark hover:bg-accent/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+                Website
+              </a>
+            )
+          }
+        </div>
+
+        <!-- Project Content -->
+        <article>
+          <Content />
+        </article>
+
+        <!-- Project Navigation -->
+        <div class="border-secondary/20 mt-12 border-t pt-8">
+          <div class="flex items-center justify-between">
+            <a
+              href="/projects"
+              class="text-primary dark:text-accent hover:text-tertiary font-semibold transition-colors"
+            >
+              ← All Projects
+            </a>
+
+            <div class="flex gap-4">
+              {
+                project.data.github && (
+                  <a
+                    href={project.data.github}
+                    target="_blank"
+                    class="text-primary dark:text-accent hover:text-tertiary transition-colors"
+                    title="View source code"
+                  >
+                    View Code →
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

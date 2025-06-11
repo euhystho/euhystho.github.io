@@ -4,10 +4,14 @@ const posts = await getCollection("projects");
 import MainLayout from "../../components/layouts/main_layout.astro";
 ---
 
-<MainLayout>
+<MainLayout
+  title="Projects - Eugene Thompson"
+  description="Explore my technical projects spanning web development, software engineering, and data science."
+  alt="Projects Page"
+>
   {
     posts.length === 0 ? (
-      <div class="flex min-h-full flex-col items-center justify-center">
+      <div class="min-h-full">
         <h2 class="text-dark dark:text-accent mb-4 text-center">
           🧑🏻‍💻 Hello Everyone!
         </h2>
@@ -17,11 +21,13 @@ import MainLayout from "../../components/layouts/main_layout.astro";
         </p>
       </div>
     ) : (
-      <ul>
+      <ul class="flex flex-col items-center justify-center gap-8">
         {posts.map((post) => (
           <li>
             <a href={`/projects/${post.id}`}>
-              <h2>{post.data.title}</h2>
+              <h2 class="dark:text-accent text-primary text-center">
+                {post.data.title}
+              </h2>
             </a>
           </li>
         ))}

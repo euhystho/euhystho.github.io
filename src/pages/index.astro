@@ -3,17 +3,26 @@ import BaseHead from "../components/common/BaseHead.astro";
 import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import { SITE_DESCRIPTION } from "../utils/consts";
+import { getCollection } from "astro:content";
+// Get featured projects for homepage showcase
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3); // Show top 3 featured projects
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <BaseHead description={SITE_DESCRIPTION} />
   </head>
   <body class="bg-light dark:bg-dark">
     <div class="site">
       <Header />
-      <main class="container m-4 mx-auto snap-y motion-safe:snap-mandatory motion-reduce:snap-proximity px-4">
+      <main
+        class="container m-4 mx-auto snap-y px-4 motion-safe:snap-mandatory motion-reduce:snap-proximity"
+      >
         <!-- Hero Section -->
         <section class="snap-center py-16 text-center">
           <div class="mx-auto max-w-4xl">
@@ -22,7 +31,9 @@ import { SITE_DESCRIPTION } from "../utils/consts";
             >
               Turning complex data into intuitive solutions
             </h2>
-            <h2 class="text-dark dark:text-light mb-8 text-xl md:text-2xl font-sans">
+            <h2
+              class="text-dark dark:text-light mb-8 font-sans text-xl md:text-2xl"
+            >
               Emerging developer at the intersection of data science, software
               engineering, and UI design. Finding creative patterns in the most
               unexpected places: from personal financial literacy to the perfect
@@ -39,128 +50,249 @@ import { SITE_DESCRIPTION } from "../utils/consts";
           </div>
         </section>
 
-        <!-- Featured Projects Section -->
-        <section id="featured-projects" class="snap-center py-16">
-          <div class="mx-auto max-w-6xl">
-            <h2
-              class="dark:text-accent text-primary mb-12 text-center text-5xl"
-            >
-              Featured Projects
-            </h2>
-
-            <!-- RhythmRun Spotlight -->
-            <div class="bg-secondary/20 mb-12 rounded-xl p-8">
-              <div class="grid items-center gap-8 md:grid-cols-2">
-                <div>
-                  <h3
-                    class="font-heading dark:text-accent text-primary mb-4 text-3xl"
-                  >
-                    RhythmRun
-                  </h3>
-                  <p class="text-dark dark:text-light mb-6 text-lg">
-                    A mobile app that matches music to runners' pace and workout
-                    intensity using Spotify's API and BPM analysis. Trying to
-                    solve the age-old problem of finding the perfect workout
-                    soundtrack.
+        <!-- Featured Projects -->
+        {
+          featuredProjects.length > 0 && (
+            <section class="bg-secondary/5 py-16" id="featured-projects">
+              <div class="container mx-auto max-w-6xl px-4">
+                <div class="mb-12 text-center">
+                  <h2 class="font-heading text-primary dark:text-secondary mb-4 text-3xl md:text-5xl">
+                    Featured Projects
+                  </h2>
+                  <p class="text-dark dark:text-light mx-auto max-w-3xl text-lg">
+                    A selection of projects that showcase my growth as a
+                    developer - from passionate first attempts to sophisticated
+                    solutions that solve real problems.
                   </p>
-                  <div class="mb-6">
-                    <h4 class="text-dark dark:text-light mb-2 font-semibold">
-                      Technical Highlights:
-                    </h4>
-                    <ul class="text-dark dark:text-light space-y-1">
-                      <li>
-                        • Spotify API & SDK integration for real-time music
-                        analysis & playback
-                      </li>
-                      <li>
-                        • iOS Development with Flutter (my gateway to mobile app
-                        development)
-                      </li>
-                      <li>• Supabase for authentication and data management</li>
-                    </ul>
-                  </div>
-                  <div class="flex gap-4 max-md:justify-center">
-                    <a
-                      href="/projects/rhythmrun"
-                      class="bg-accent text-dark hover:bg-accent/90 rounded-full px-6 py-2 font-semibold transition-colors"
-                    >
-                      View Project
-                    </a>
-                  </div>
                 </div>
-                <div class="bg-primary/10 rounded-lg p-8 text-center">
-                  <!-- Placeholder for project image/mockup -->
-                  <div class="mb-4 text-6xl">🏃‍♂️🎵</div>
-                  <p class="text-dark dark:text-light italic">
-                    "Where music meets motion"
-                  </p>
+
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {featuredProjects.map((project) => (
+                    <article class="group bg-light dark:bg-dark overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
+                      {/* Project Image */}
+                      {project.data.image && (
+                        <div class="relative h-48 overflow-hidden">
+                          <img
+                            src={project.data.image}
+                            alt={project.data.title}
+                            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+                      {/* Project Content */}
+                      <div class="p-6">
+                        <h3 class="font-heading text-tertiary dark:text-secondary group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-xl transition-colors">
+                          {project.data.title}
+                        </h3>
+
+                        <p class="text-dark dark:text-light mb-4 text-sm leading-relaxed max-md:text-center">
+                          {project.data.description.length > 121
+                            ? project.data.description.substring(0, 121) + "..."
+                            : project.data.description}
+                        </p>
+
+                        {/* Key Tags */}
+                        <div class="mb-4 flex flex-wrap gap-2 max-md:justify-center">
+                          {project.data.tags.slice(0, 3).map((tag) => (
+                            <span class="bg-secondary/20 text-dark dark:text-light rounded px-2 py-1 text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div class="max-md:text-center">
+                          <a
+                            href={`/projects/${project.id}`}
+                            class="text-tertiary dark:text-secondary group-hover:text-primary dark:group-hover:text-accent inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                          >
+                            Read the story
+                            <svg
+                              class="h-4 w-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div class="mt-12 text-center">
+                  <a
+                    href="/projects"
+                    class="text-primary dark:text-accent hover:text-dark dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
+                  >
+                    View All Projects
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </a>
                 </div>
               </div>
-            </div>
+            </section>
+          )
+        }
 
-            <div class="mt-12 text-center">
-              <a
-                href="/projects"
-                class="dark:border-accent hover:border-accent dark:text-accent hover:bg-accent hover:text-dark hover:dark:bg-primary hover:dark:text-light rounded-full border-2 px-8 py-3 font-semibold transition-colors hover:dark:border-transparent"
-              >
-                View All Projects
-              </a>
+        <!-- About Preview -->
+        <section class="py-16">
+          <div class="container mx-auto max-w-6xl px-4">
+            <div class="grid items-center gap-12 md:grid-cols-2">
+              <div>
+                <h2
+                  class="font-heading text-primary dark:text-secondary mb-6 text-3xl md:text-4xl"
+                >
+                  Building Through Constant Learning
+                </h2>
+                <div class="text-dark dark:text-light space-y-4">
+                  <p>
+                    My journey in software development started with curiosity
+                    and grew through making mistakes, learning from them, and
+                    building increasingly complex projects.
+                  </p>
+                  <p>
+                    From teaching myself Java Swing by creating a game inspired
+                    by Genshin Impact, leading a Flutter team through real-world
+                    development challenges, to analyzing political data with
+                    personal connections to Hong Kong, each of these projects
+                    has pushed me to grow both technically and professionally.
+                  </p>
+                  <p>
+                    I believe the best way to learn programming is by building
+                    things that matter, collaborating with others, and embracing
+                    the messy reality of real-world development.
+                  </p>
+                </div>
+                <div class="mt-6">
+                  <a
+                    href="/about"
+                    class="text-dark dark:text-accent hover:text-primary dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
+                  >
+                    More about me
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Skills/Technologies -->
+              <div class="bg-secondary/5 rounded-lg p-8">
+                <h3
+                  class="font-heading text-complementary dark:text-secondary mb-6 text-3xl"
+                >
+                  Technologies I Work With
+                </h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <h4
+                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
+                    >
+                      Languages
+                    </h4>
+                    <ul class="text-dark dark:text-light space-y-1">
+                      <li>Python</li>
+                      <li>R</li>
+                      <li>JavaScript/TypeScript</li>
+                      <li>Java</li>
+                      <li>Dart/Flutter</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
+                    >
+                      Frameworks & Tools
+                    </h4>
+                    <ul class="text-dark dark:text-light space-y-1">
+                      <li>Plotly</li>
+                      <li>R Shiny</li>
+                      <li>Astro + Svelte</li>
+                      <li>Flutter</li>
+                      <li>Java Swing</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
+                    >
+                      Data & Analysis
+                    </h4>
+                    <ul class="text-dark dark:text-light space-y-1">
+                      <li>Data Visualization</li>
+                      <li>Statistical Analysis</li>
+                      <li>API Integration</li>
+                      <li>Database Design</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
+                    >
+                      Collaboration
+                    </h4>
+                    <ul class="text-dark dark:text-light space-y-1">
+                      <li>Git/GitHub</li>
+                      <li>Team Leadership</li>
+                      <li>Project Management</li>
+                      <li>Code Review</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-
-        <!-- Skills Overview -->
-        <section class="bg-secondary/10 mb-5 snap-center rounded-xl p-16">
-          <div class="mx-auto max-w-4xl text-center">
+        <!-- Call to Action -->
+        <section class="bg-secondary/5 py-16">
+          <div class="container mx-auto max-w-4xl px-4 text-center">
             <h2
-              class="font-heading dark:text-accent text-primary mb-8 text-5xl"
+              class="font-heading text-primary dark:text-secondary mb-6 text-3xl md:text-4xl"
             >
-              What I Do
+              Let's Connect!
             </h2>
-            <p class="text-dark dark:text-light mb-12 text-2xl">
-              Bridging the gap between data science and thoughtful software
-              design and visualizations, turning complex problems into elegant
-              solutions.
-            </p>
-
-            <div class="grid gap-8 md:grid-cols-3">
-              <div class="text-center">
-                <div class="mb-4 text-4xl">📊</div>
-                <h3
-                  class="font-heading dark:text-accent text-primary mb-3 text-3xl"
-                >
-                  Data Analysis
-                </h3>
-                <h4 class="text-dark dark:text-light">
-                  Finding meaningful patterns in complex datasets, from real
-                  estate market analysis to sentiment analysis.
-                </h4>
-              </div>
-
-              <div class="text-center">
-                <div class="mb-4 text-4xl">💻</div>
-                <h3
-                  class="font-heading dark:text-accent text-primary mb-3 text-3xl"
-                >
-                  Software Development
-                </h3>
-                <h4 class="text-dark dark:text-light">
-                  Full-stack development with modern technologies. Passionate
-                  about API integrations, mobile apps, and scalable
-                  architectures.
-                </h4>
-              </div>
-
-              <div class="text-center">
-                <div class="mb-4 text-4xl">🎨</div>
-                <h3 class="font-heading dark:text-accent text-primary mb-3 text-3xl">
-                  Creative Design
-                </h3>
-                <h4 class="text-dark dark:text-light">
-                  User-centered design thinking meets technical implementation.
-                  Great software should be both powerful and beautiful.
-                </h4>
-              </div>
+            <h4
+              class="text-dark dark:text-light mx-auto mb-8 max-w-2xl text-lg"
+            >
+              I'm always interested in new opportunities, cool challenging
+              problems, and collaborative projects. Whether you're looking for a
+              developer, want to discuss a technical challenge, or just want to
+              chat about code, I'd love to hear from you.
+            </h4>
+            <div class="flex flex-wrap justify-center gap-4">
+              <!-- TODO: Change to Contact Page when Contact Page is finished... -->
+              <a
+                href="mailto:hello@eugenehysthompson.com"
+                class="bg-accent text-dark hover:bg-accent/80 rounded-md px-8 py-3 font-semibold transition-colors"
+              >
+                Get in Touch
+              </a>
             </div>
           </div>
         </section>
