@@ -28,7 +28,7 @@
 
 <label
   for="themeToggle"
-  class="flex cursor-pointer w-[3em] h-[3em] dark:text-accent text-light max-lg:text-dark items-center justify-center transition-colors themeToggle st-sunMoonThemeToggleBtn"
+  class="flex cursor-pointer w-[3em] h-[3em] text-gray-400 dark:text-[#f59e0b] items-center justify-center transition-colors themeToggle st-sunMoonThemeToggleBtn"
   aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
 >
   <input

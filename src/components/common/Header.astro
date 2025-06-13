@@ -3,34 +3,85 @@ import Menu from "../../../public/svg/menu.svg";
 import CloseMenu from "../../../public/svg/close_menu.svg";
 import Toggle from "../../components/common/theme_toggle.svelte";
 ---
+<style scoped>
+    @reference "../../styles/global.css";
+    nav a {
+    @apply flex h-full items-center p-5 max-lg:box-border max-lg:h-auto max-lg:w-full max-lg:content-start max-lg:p-6;
+  }
+  nav a:not(#home-link) {
+    @apply relative inline-block overflow-hidden align-middle perspective-near;
+  }
+  nav a:not(#home-link):before {
+    @apply border-accent absolute right-1/2 bottom-0 left-1/2 -z-1 transition-[left,right] duration-300 ease-out content-[""];
+  }
+  nav a:not(#home-link):hover:before,
+  nav a:not(#home-link):focus:before,
+  nav a:not(#home-link):active:before {
+    @apply right-0 left-0 border-2;
+  }
+  .nav-items {
+    @apply text-secondary dark:text-accent max-lg:text-text max-lg:text-end;
+  }
+  .links-container {
+    @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none
+    lg:flex-row lg:justify-end;
+  }
+  @media (max-width: 1024px) {
+    nav a:not(#home-link) {
+      @apply pt-3 pr-0 pb-3;
+    }
 
+    nav a h2 {
+      font-size: clamp(0.75rem, 0.2rem + 5vh, 1.5rem);
+    }
+
+    .nav-items {
+      @apply mr-7;
+    }
+  }
+  @media (max-width: 1024px) and (max-height: 450px) {
+    .links-container {
+      @apply overflow-y-auto pr-0;
+    }
+
+    nav a:not(#home-link) {
+      @apply justify-around overflow-y-clip p-0;
+    }
+  }
+
+  #sidebar-active:checked ~ .links-container {
+    @apply right-0;
+  }
+  #sidebar-active:checked ~ #overlay {
+    @apply fixed top-0 left-0 z-[9] h-full w-full;
+  }
+</style>
 <header class="bg-primary/95 top-0 z-50 w-full rounded-b-3xl px-4">
-  <nav class="flex items-center justify-end">
-    <!-- Home Page when Mobile -->
-    <a href="/" class="group mr-auto lg:hidden" id="home-link">
-      <h1 class="text-white transition-colors duration-300 text-4xl">Home</h1>
+  <nav class="flex items-center justify-between">
+    <a href="/" class="mr-auto" id="home-link">
+      <h1 class="nav-items hover:text-white text-4xl">Home</h1>
     </a>
+    
     <input type="checkbox" id="sidebar-active" class="hidden" />
     <label for="sidebar-active" class="hidden max-lg:block max-lg:p-5">
       <Menu class="cursor-pointer fill-white" aria-label="Open sidebar" />
     </label>
+    
     <label for="sidebar-active" id="overlay">
       <span class="sr-only">Close sidebar overlay</span>
     </label>
+
     <div class="links-container">
       <label
         for="sidebar-active"
         class="hidden max-lg:flex max-lg:w-full max-lg:items-center max-lg:justify-end max-lg:pt-20 max-lg:pr-4"
       >
         <CloseMenu
-          class="fill-dark dark:fill-accent cursor-pointer"
+          class="fill-text text-bg cursor-pointer"
           aria-label="Close sidebar"
         />
       </label>
-      <!-- Home Page when Desktop -->
-      <a href="/" class="group mr-auto max-lg:hidden">
-        <h1 class="text-light transition-colors duration-300 text-4xl">Home</h1>
-      </a>
+
       <a href="/about">
         <h2 class="nav-items">About</h2>
       </a>
@@ -43,8 +94,10 @@ import Toggle from "../../components/common/theme_toggle.svelte";
       <a href="/contact">
         <h2 class="nav-items">Contact</h2>
       </a>
+
       <div
-        class="max-lg:mt-2 max-lg:flex max-lg:w-full max-lg:justify-end max-lg:pr-16"
+        class="max-lg:flex max-lg:w-full max-lg:justify-center max-lg:pb-20 max-lg:pl-13"
+        id="toggle-mode"
       >
         <Toggle client:only="svelte" />
       </div>

@@ -3,7 +3,7 @@ import BaseHead from "../components/common/BaseHead.astro";
 import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import { SITE_DESCRIPTION } from "../utils/consts";
-import ProjectCard from "src/components/blog/projectCard.astro";
+import FeaturedCard from "src/components/blog/featuredCard.astro";
 ---
 
 <!doctype html>
@@ -11,23 +11,17 @@ import ProjectCard from "src/components/blog/projectCard.astro";
   <head>
     <BaseHead description={SITE_DESCRIPTION} />
   </head>
-  <body class="bg-light dark:bg-dark">
+  <body class="bg-background">
     <div class="site">
       <Header />
-      <main
-        class="container m-4 mx-auto snap-y px-4 motion-safe:snap-mandatory motion-reduce:snap-proximity"
-      >
+      <main class="container m-4 mx-auto px-4">
         <!-- Hero Section -->
         <section class="snap-center py-16 text-center">
           <div class="mx-auto max-w-4xl">
-            <h1
-              class="dark:text-secondary text-primary mb-6 text-5xl md:text-6xl"
-            >
+            <h1 class="text-primary dark:text-accent mb-6 text-5xl md:text-6xl">
               Turning complex data into intuitive solutions
             </h1>
-            <p
-              class="text-dark dark:text-light mb-8 font-sans text-xl md:text-2xl"
-            >
+            <p class="text-text mb-8 font-sans text-xl md:text-2xl">
               Emerging developer at the intersection of data science, software
               engineering, and UI design. Finding creative patterns in the most
               unexpected places: from personal financial literacy to the perfect
@@ -36,25 +30,26 @@ import ProjectCard from "src/components/blog/projectCard.astro";
             <div class="flex flex-col justify-center gap-4 sm:flex-row">
               <a
                 href="#featured-projects"
-                class="bg-accent text-dark hover:bg-accent/90 rounded-full px-8 py-3 font-semibold transition-colors"
+                class="dark:bg-accent dark:text-primary text-white bg-primary hover:bg-accent/90 rounded-full px-8 py-3 font-semibold transition-colors"
               >
                 View My Work
               </a>
             </div>
           </div>
         </section>
-        <ProjectCard />
+        <FeaturedCard type="projects" />
+
         <!-- About Preview -->
         <section class="py-16">
           <div class="container mx-auto max-w-6xl px-4">
             <div class="grid items-center gap-12 md:grid-cols-2">
               <div>
                 <h2
-                  class="font-heading text-primary dark:text-secondary mb-6 text-3xl md:text-4xl"
+                  class="font-heading text-primary dark:text-accent mb-6 text-3xl md:text-4xl"
                 >
                   Building Through Constant Learning
                 </h2>
-                <div class="text-dark dark:text-light space-y-4">
+                <div class="text-text space-y-4">
                   <p>
                     My journey in software development started with curiosity
                     and grew through making mistakes, learning from them, and
@@ -76,7 +71,7 @@ import ProjectCard from "src/components/blog/projectCard.astro";
                 <div class="mt-6">
                   <a
                     href="/about"
-                    class="text-dark dark:text-accent hover:text-primary dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
+                    class="text-text hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
                   >
                     More about me
                     <svg
@@ -96,20 +91,16 @@ import ProjectCard from "src/components/blog/projectCard.astro";
               </div>
 
               <!-- Skills/Technologies -->
-              <div class="dark:bg-secondary/5 bg-secondary/50 rounded-4xl p-8">
+              <div class="dark:bg-secondary/10 bg-secondary/50 rounded-4xl p-8">
                 <h3
-                  class="font-heading text-complementary dark:text-secondary mb-6 text-3xl"
+                  class="font-heading text-text dark:text-accent mb-6 text-3xl"
                 >
                   Technologies I Work With
                 </h3>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <h4
-                      class="text-dark dark:text-secondary mb-2 font-semibold"
-                    >
-                      Languages
-                    </h4>
-                    <ul class="text-tertiary dark:text-light space-y-1">
+                    <h4 class="text-text mb-2 font-semibold">Languages</h4>
+                    <ul class="text-text space-y-1">
                       <li>Python</li>
                       <li>R</li>
                       <li>JavaScript & TypeScript</li>
@@ -118,12 +109,10 @@ import ProjectCard from "src/components/blog/projectCard.astro";
                     </ul>
                   </div>
                   <div>
-                    <h4
-                      class="text-dark dark:text-secondary mb-2 font-semibold"
-                    >
+                    <h4 class="text-text mb-2 font-semibold">
                       Frameworks & Tools
                     </h4>
-                    <ul class="text-tertiary dark:text-light space-y-1">
+                    <ul class="text-text space-y-1">
                       <li>Plotly</li>
                       <li>R Shiny</li>
                       <li>Astro + Svelte</li>
@@ -132,12 +121,10 @@ import ProjectCard from "src/components/blog/projectCard.astro";
                     </ul>
                   </div>
                   <div>
-                    <h4
-                      class="text-dark dark:text-secondary mb-2 font-semibold"
-                    >
+                    <h4 class="text-text mb-2 font-semibold">
                       Data & Analysis
                     </h4>
-                    <ul class="text-tertiary dark:text-light space-y-1">
+                    <ul class="text-text space-y-1">
                       <li>Data Visualization</li>
                       <li>Statistical Analysis</li>
                       <li>API Integration</li>
@@ -145,12 +132,8 @@ import ProjectCard from "src/components/blog/projectCard.astro";
                     </ul>
                   </div>
                   <div>
-                    <h4
-                      class="text-dark dark:text-secondary mb-2 font-semibold"
-                    >
-                      Collaboration
-                    </h4>
-                    <ul class="text-tertiary dark:text-light space-y-1">
+                    <h4 class="text-text mb-2 font-semibold">Collaboration</h4>
+                    <ul class="text-text space-y-1">
                       <li>Git/GitHub</li>
                       <li>Team Leadership</li>
                       <li>Project Management</li>
@@ -162,17 +145,16 @@ import ProjectCard from "src/components/blog/projectCard.astro";
             </div>
           </div>
         </section>
+
         <!-- Call to Action -->
         <section class="dark:bg-secondary/5 bg-secondary/50 rounded-4xl py-16">
           <div class="container mx-auto max-w-4xl px-4 text-center">
             <h2
-              class="font-heading text-primary dark:text-secondary mb-6 text-3xl md:text-4xl"
+              class="font-heading text-primary dark:text-accent mb-6 text-3xl md:text-4xl"
             >
               Let's Connect!
             </h2>
-            <p
-              class="text-dark dark:text-light mx-auto mb-8 max-w-2xl text-lg"
-            >
+            <p class="text-text mx-auto mb-8 max-w-2xl text-lg">
               I'm always interested in new opportunities, cool challenging
               problems, and collaborative projects. Whether you're looking for a
               developer, want to discuss a technical challenge, or just want to
@@ -182,7 +164,7 @@ import ProjectCard from "src/components/blog/projectCard.astro";
               <!-- TODO: Change to Contact Page when Contact Page is finished... -->
               <a
                 href="mailto:hello@eugenehysthompson.com"
-                class="bg-accent text-dark hover:bg-accent/80 rounded-full px-8 py-3 font-semibold transition-colors"
+                class="dark:bg-accent dark:text-primary text-white bg-primary hover:bg-accent/80 dark:hover:bg-primary/50 rounded-full px-8 py-3 font-semibold transition-colors"
               >
                 Get in Touch
               </a>

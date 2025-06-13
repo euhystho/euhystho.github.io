@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --config config/astro.config.mjs",
+    "build": "astro build --config config/astro.config.mjs",
     "preview": "astro build --config config/astro.config.mjs && astro preview --config config/astro.config.mjs",
     "astro": "astro --config config/astro.config.mjs",
     "format": "prettier . --write",

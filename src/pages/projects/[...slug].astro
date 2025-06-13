@@ -1,10 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import FormattedDate from "../../components/blog/FormattedDate.astro";
 import BaseHead from "../../components/common/BaseHead.astro";
 import Footer from "../../components/common/Footer.astro";
 import Header from "../../components/common/Header.astro";
-import Image from "astro/components/Image.astro";
 import BlogSEO from "../../components/blog/blogSEO.astro";
 
 export async function getStaticPaths() {
@@ -34,16 +34,16 @@ const { Content } = await render(project);
       isProject={true}
     />
   </head>
-  <body class="bg-light dark:bg-dark">
+  <body class="bg-background">
     <div class="site">
       <Header />
-      <main class="max-w-4xl px-2 py-8 md:mx-auto">
+      <main class="max-w-5xl px-2 py-8 md:mx-auto">
         <!-- Project Header -->
         <div class="mb-8">
           <div class="mb-8">
             <a
               href="/projects"
-              class="dark:text-accent hover:text-primary hover:dark:text-secondary transition-colors"
+              class="dark:text-accent hover:text-primary dark:hover:text-text transition-colors"
             >
               ← Back to Projects
             </a>
@@ -54,17 +54,17 @@ const { Content } = await render(project);
             >
               {project.data.title}
             </h1>
-            <p class="text-dark dark:text-light mb-4 text-center text-xl">
+            <p class="text-text mb-4 text-center text-xl">
               {project.data.description}
             </p>
 
             <!-- Project Meta -->
             <div
-              class="dark:text-secondary mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-sm"
+              class="text-primary dark:text-accent mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-base"
             >
               {
                 project.data.featured && (
-                  <span class="bg-accent text-dark rounded-full px-2 py-1 text-xs font-semibold">
+                  <span class="bg-secondary dark:bg-primary text-text rounded-full px-2 py-1 text-sm font-semibold">
                     Featured
                   </span>
                 )
@@ -85,7 +85,7 @@ const { Content } = await render(project);
             <div class="mb-6 flex flex-wrap justify-center gap-2">
               {
                 project.data.tags.map((tag) => (
-                  <span class="bg-secondary/20 text-dark dark:text-light rounded-full px-3 py-1 text-sm">
+                  <span class="bg-secondary/20 text-text rounded-full px-3 py-1 text-sm">
                     {tag}
                   </span>
                 ))
@@ -117,7 +117,7 @@ const { Content } = await render(project);
                 href={project.data.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-primary text-light hover:bg-primary/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
+                class="bg-primary dark:bg-accent/80 text-accent dark:text-background hover:bg-primary/80 dark:hover:bg-secondary/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
               >
                 <Image
                   src="/svg/github.svg"
@@ -136,7 +136,7 @@ const { Content } = await render(project);
                 href={project.data.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-accent text-dark hover:bg-accent/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
+                class="bg-accent text-text hover:bg-accent/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
               >
                 <svg
                   class="h-5 w-5"
@@ -178,7 +178,7 @@ const { Content } = await render(project);
                   <a
                     href={project.data.github}
                     target="_blank"
-                    class="text-primary dark:text-accent hover:text-tertiary transition-colors"
+                    class="text-primary dark:text-accent dark:hover:text-secondary hover:text-text transition-colors"
                     title="View source code"
                   >
                     View Code →

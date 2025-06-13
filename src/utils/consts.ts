@@ -16,3 +16,6 @@ export const GITHUB_LINK = "https://github.com/euhystho";
 export const GITHUB_COLOR = "#181717";
 export const EMAIL = "mailto:hello@eugenehysthompson.com";
 export const EMAIL_COLOR = "#212121";
+
+// Content Collection Types
+export type ContentType = "projects" | "writings";

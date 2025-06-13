@@ -14,6 +14,7 @@ export default defineConfig({
   },
   image: {
     experimentalLayout: "constrained",
+    experimentalDefaultStyles: false,
   },
   vite: {
     plugins: [tailwindcss()],
