@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BlogSEO from "src/components/blog/blogSEO.astro";
 import BaseHead from "src/components/common/BaseHead.astro";
+import Footer from "src/components/common/Footer.astro";
 import Header from "src/components/common/Header.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("writings");
@@ -29,5 +30,6 @@ const { Content } = await render(post);
   <body>
     <Header />
     <Content />
+    <Footer/>
   </body>
 </html>

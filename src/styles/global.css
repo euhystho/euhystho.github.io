@@ -1,6 +1,6 @@
 /* Import Tailwind */
 @import "tailwindcss";
-@import "./typography.css";
+@import "../styles/typography.css";
 @import "@flaticon/flaticon-uicons/css/all/all";
 @custom-variant dark (&:where(.dark, .dark *));
 
