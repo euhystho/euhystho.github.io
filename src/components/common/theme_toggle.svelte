@@ -22,6 +22,7 @@
       "(prefers-color-scheme: dark)",
     ).matches;
     isDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
+    document.addEventListener("astro:after-swap", applyTheme);
     applyTheme();
   });
 </script>

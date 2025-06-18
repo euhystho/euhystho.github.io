@@ -1,6 +1,7 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import ClientRouter from "astro/components/ClientRouter.astro";
 import "../../styles/global.css";
 import { SITE_AUTHOR, SITE_TITLE, KEYWORDS } from "../../utils/consts";
 const canonicalURL = Astro.site
@@ -77,8 +78,7 @@ const {
   content="oYzkW59-L2Pbbf8M6RWCUnGNylWIF8JJZOUlFQQTg68"
 />
 
-<!-- Performance Critical CSS/JS -->
-<script is:inline>
+<script is:inline data-astro-rerun>
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   document.documentElement.classList.toggle(
     "dark",
@@ -87,3 +87,4 @@ const {
         window.matchMedia("(prefers-color-scheme: dark)").matches),
   );
 </script>
+<ClientRouter client:load/>

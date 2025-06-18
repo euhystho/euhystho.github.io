@@ -19,16 +19,14 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <BaseHead title={title} description={description} image={image} alt={alt} />
   </head>
   <body class="bg-background">
     <div class="site">
       <Header />
-      <main class="m-4 flex flex-col items-center justify-center">
-        <slot />
-      </main>
+      <slot />
       <Footer />
     </div>
   </body>

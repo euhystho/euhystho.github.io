@@ -45,23 +45,22 @@
   }
 
   h1 {
-    @apply font-heading text-text text-center text-4xl tracking-tight;
-  }
+    @apply text-text font-heading text-center text-4xl tracking-tight subpixel-antialiased font-bold;
+  } 
   h2 {
-    @apply font-subheading text-text text-3xl;
+    @apply text-text font-subheading text-3xl subpixel-antialiased font-semibold;
   }
   h3 {
-    @apply text-text font-sans text-2xl;
+    @apply text-text font-sans text-2xl subpixel-antialiased;
   }
   h4 {
-    @apply text-text font-sans text-xl;
+    @apply text-text font-sans text-xl subpixel-antialiased;
   }
   h5 {
-    @apply text-text font-sans text-lg;
+    @apply text-text font-sans text-lg subpixel-antialiased;
   }
   p,
   li {
-    @apply text-text font-sans text-lg;
+    @apply text-text font-sans text-lg subpixel-antialiased;
   }
-  
 }

@@ -8,7 +8,17 @@ interface Props {
 const { showSocials = true } = Astro.props;
 ---
 
-<footer class="bg-primary transition-colors duration-300 ease-in-out">
+<style scoped>
+  @reference "../../styles/global.css";
+  footer:has(.socials-container:hover) {
+    @apply bg-transparent;
+  }
+</style>
+
+<footer
+  class="bg-accent dark:bg-secondary/40 transition-colors duration-300 ease-in-out"
+  transition:persist
+>
   {
     showSocials && (
       <div class="flex justify-center">
@@ -16,7 +26,7 @@ const { showSocials = true } = Astro.props;
       </div>
     )
   }
-  <section class="dark:bg-accent/10 bg-gray-500/75">
+  <section class="bg-primary">
     <p class="p-4 text-center text-white">
       Copyright © {currentYear}
       {SITE_AUTHOR}. All Rights Reserved.

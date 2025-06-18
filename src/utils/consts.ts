@@ -3,7 +3,7 @@
 
 // Head Properties
 export const SITE_AUTHOR = "Eugene Thompson";
-export const SITE_TITLE = "Hi 👋🏻 I'm Eugene!";
+export const SITE_TITLE = "Hi, I'm Eugene! 👋🏻";
 export const SITE_DESCRIPTION =
   "Eugene Thompson's personal website showcasing projects, academic achievements, and professional aspirations";
 export const KEYWORDS = "";

@@ -1,3 +1,89 @@
 ---
 import { getCollection } from "astro:content";
+import type { ContentType } from "../../utils/consts";
+import { capitalize } from "../../utils/helper";
+import { Image } from "astro:assets";
+interface Props {
+  type: ContentType; // "projects" or "writings"
+}
+const { type } = Astro.props;
+const allPosts = await getCollection(type);
+const capitalizedType = capitalize(type);
 ---
+
+{
+  allPosts.length === 0 ? (
+    <div class="min-h-full">
+      <h2 class="text-text mb-4 text-center">🧑🏻‍💻 Hello Everyone!</h2>
+      <p class="text-text text-center text-3xl">
+        Unfortunately, there are no posts on this page yet, <br /> please check
+        again next time!
+      </p>
+    </div>
+  ) : (
+    <main class="bg-secondary/50 dark:bg-secondary/5 m-4 mx-16 my-8 flex flex-col gap-4 rounded-4xl">
+      <div class="bg-accent/25 dark:bg-primary/40 flex flex-col items-center rounded-t-4xl">
+        <h2 class="font-heading dark:text-accent text-primary m-8 self-center text-4xl max-lg:-order-2 md:text-5xl">
+          My {capitalizedType}
+        </h2>
+      </div>
+
+      <div class="flex flex-col lg:flex-row">
+        <section class="flex shrink grow flex-col items-stretch justify-between gap-12 rounded-4xl p-16 lg:gap-8">
+          {allPosts.map((post) => (
+            <article class="bg-background group flex items-center overflow-hidden rounded-3xl p-4 shadow-lg backdrop-blur-3xl max-lg:flex-col">
+              {"image" in post.data && post.data.image && (
+                <div class="relative h-full w-full max-w-md overflow-hidden max-lg:mb-8 max-lg:max-w-full lg:mr-8 lg:rounded-l-2xl">
+                  <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    width={600}
+                    height={300}
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-95 group-hover:max-lg:rounded-t-3xl group-hover:lg:rounded-l-3xl"
+                  />
+                </div>
+              )}
+              <a href={`/${type}/${post.id}`} class="p-2">
+                {/* Item Content */}
+                <div class="flex flex-col items-center lg:flex-row">
+                  <h2 class="font-heading text-text group-hover:text-accent dark:group-hover:text-accent mb-3 cursor-pointer text-xl transition-colors max-lg:text-center max-lg:text-2xl lg:text-3xl">
+                    {post.data.title}
+                  </h2>
+                  {"icon" in post.data && post.data.icon && (
+                    <Image
+                      src={post.data.icon}
+                      alt={`${post.data.title} icon`}
+                      width={120}
+                      height={120}
+                      class="ml-2 align-middle opacity-0 transition-all duration-300 group-hover:inline-block group-hover:opacity-100 max-lg:hidden"
+                    />
+                  )}
+                </div>
+
+                <p class="text-text mb-4 text-base leading-relaxed max-lg:text-center">
+                  {post.data.description.length > 121
+                    ? post.data.description.substring(0, 121) + "..."
+                    : post.data.description}
+                </p>
+
+                {/* Key Tags */}
+                <div class="mb-4 flex flex-wrap gap-2 max-md:justify-center">
+                  {post.data.tags.map((tag) => (
+                    <span class="bg-accent/20 text-text rounded-full p-2 text-center text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            </article>
+          ))}
+        </section>
+        {type === "writings" && (
+          <aside class="bg-accent/25 dark:bg-primary/40 m-16 flex h-auto basis-3/10 items-stretch justify-center rounded-4xl p-8 max-lg:-order-1">
+            <p>Search</p>
+          </aside>
+        )}
+      </div>
+    </main>
+  )
+}

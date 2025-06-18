@@ -3,9 +3,10 @@ import Menu from "../../../public/svg/menu.svg";
 import CloseMenu from "../../../public/svg/close_menu.svg";
 import Toggle from "../../components/common/theme_toggle.svelte";
 ---
+
 <style scoped>
-    @reference "../../styles/global.css";
-    nav a {
+  @reference "../../styles/global.css";
+  nav a {
     @apply flex h-full items-center p-5 max-lg:box-border max-lg:h-auto max-lg:w-full max-lg:content-start max-lg:p-6;
   }
   nav a:not(#home-link) {
@@ -23,8 +24,7 @@ import Toggle from "../../components/common/theme_toggle.svelte";
     @apply text-secondary dark:text-accent max-lg:text-text max-lg:text-end;
   }
   .links-container {
-    @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none
-    lg:flex-row lg:justify-end;
+    @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none lg:flex-row lg:justify-end;
   }
   @media (max-width: 1024px) {
     nav a:not(#home-link) {
@@ -59,14 +59,16 @@ import Toggle from "../../components/common/theme_toggle.svelte";
 <header class="bg-primary/95 top-0 z-50 w-full rounded-b-3xl px-4">
   <nav class="flex items-center justify-between">
     <a href="/" class="mr-auto" id="home-link">
-      <h1 class="nav-items hover:text-white text-4xl">Home</h1>
+      <h1 class="text-secondary dark:text-accent text-4xl hover:text-white">
+        Home
+      </h1>
     </a>
-    
+
     <input type="checkbox" id="sidebar-active" class="hidden" />
     <label for="sidebar-active" class="hidden max-lg:block max-lg:p-5">
       <Menu class="cursor-pointer fill-white" aria-label="Open sidebar" />
     </label>
-    
+
     <label for="sidebar-active" id="overlay">
       <span class="sr-only">Close sidebar overlay</span>
     </label>
@@ -99,7 +101,7 @@ import Toggle from "../../components/common/theme_toggle.svelte";
         class="max-lg:flex max-lg:w-full max-lg:justify-center max-lg:pb-20 max-lg:pl-13"
         id="toggle-mode"
       >
-        <Toggle client:only="svelte" />
+        <Toggle client:only="svelte" transition:persist />
       </div>
     </div>
   </nav>
