@@ -1,0 +1,195 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import FormattedDate from "../blog/FormattedDate.astro";
+import BaseHead from "./BaseHead.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import BlogSEO from "../SEO/blogSEO.astro";
+import { slugify } from "src/utils/utils";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={project.data.title}
+      description={project.data.description}
+      image={project.data.image?.src}
+    />
+    <BlogSEO
+      title={project.data.title}
+      modDate={project.data.modDate}
+      date={project.data.date}
+      image={project.data.image?.src}
+      isProject={true}
+    />
+  </head>
+  <body class="bg-background">
+    <div class="site">
+      <Header />
+      <main
+        class="dark:bg-secondary/10 bg-secondary/50 mx-12 my-12 max-w-5xl rounded-4xl p-16 shadow-lg md:mx-auto"
+      >
+        <!-- Project Header -->
+        <div class="mb-8">
+          <div class="mb-12">
+            <a
+              href="/projects"
+              class="dark:text-accent hover:text-primary dark:hover:text-text transition-colors"
+            >
+              ← Back to Projects
+            </a>
+          </div>
+          <div class="mb-6">
+            <h1
+              class="font-heading text-primary dark:text-accent mb-4 text-4xl md:text-5xl"
+            >
+              {project.data.title}
+            </h1>
+            <p class="text-text mb-4 text-center text-xl">
+              {project.data.description}
+            </p>
+
+            <!-- Project Meta -->
+            <div
+              class="text-primary dark:text-accent mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-base"
+            >
+              <div>
+                Completed on
+                <FormattedDate date={project.data.date} />
+              </div>
+              <div>
+                <i>
+                  Edited on
+                  <FormattedDate date={project.data.modDate} />
+                </i>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="mb-6 flex flex-wrap justify-center gap-2">
+              {
+                project.data.tags.map((tag) => (
+                  <a
+                    href={`/projects/tag/${slugify(tag)}`}
+                    class="bg-secondary dark:bg-secondary/20 text-text rounded-full px-3 py-1 text-sm"
+                  >
+                    {tag}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Project Image -->
+          {
+            project.data.image && (
+              <div class="mb-8">
+                <Image
+                  src={project.data.image.src}
+                  alt={project.data.image.alt}
+                  width={800}
+                  height={400}
+                  class="h-auto w-full"
+                />
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Project Links -->
+        <div class="relative mb-8 flex justify-center gap-4">
+          {
+            project.data.github && (
+              <a
+                href={project.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-accent/50 dark:bg-accent/60 text-text hover:bg-accent/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
+              >
+                <Image
+                  src="/svg/github.svg"
+                  alt="GitHub logo"
+                  width={32}
+                  height={32}
+                />
+                View Code
+              </a>
+            )
+          }
+
+          {
+            project.data.demo && (
+              <a
+                href={project.data.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-accent/50 dark:bg-accent/60 text-text hover:bg-accent/80 inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+                Website
+              </a>
+            )
+          }
+        </div>
+
+        <!-- Project Content -->
+        <article>
+          <slot />
+        </article>
+
+        <!-- Project Navigation -->
+        <div class="border-secondary/20 mt-12 border-t pt-8">
+          <div class="flex items-center justify-between">
+            <a
+              href="/projects"
+              class="text-primary dark:text-accent hover:text-tertiary font-semibold transition-colors"
+            >
+              ← All Projects
+            </a>
+
+            <div class="flex gap-4">
+              {
+                project.data.github && (
+                  <a
+                    href={project.data.github}
+                    target="_blank"
+                    class="text-primary dark:text-accent dark:hover:text-secondary hover:text-text transition-colors"
+                    title="View source code"
+                  >
+                    View Code →
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

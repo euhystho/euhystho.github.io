@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  let isDark = false;
+  let isDark = $state(false);
 
   function applyTheme() {
     if (isDark) {
@@ -37,7 +37,7 @@
     type="checkbox"
     class="themeToggleInput"
     bind:checked={isDark}
-    on:change={toggleTheme}
+    onchange={toggleTheme}
   />
   <svg
     width="18"

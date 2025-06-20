@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from "astro:content";
-import BlogSEO from "src/components/blog/blogSEO.astro";
-import BaseHead from "src/components/common/BaseHead.astro";
-import Footer from "src/components/common/Footer.astro";
-import Header from "src/components/common/Header.astro";
+import BaseHead from "src/components/layouts/BaseHead.astro";
+import Footer from "src/components/layouts/Footer.astro";
+import Header from "src/components/layouts/Header.astro";
+import BlogSEO from "src/components/SEO/blogSEO.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("writings");
   return posts.map((post) => ({
@@ -30,6 +30,6 @@ const { Content } = await render(post);
   <body>
     <Header />
     <Content />
-    <Footer/>
+    <Footer />
   </body>
 </html>

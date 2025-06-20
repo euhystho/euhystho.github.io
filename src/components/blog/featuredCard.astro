@@ -1,51 +1,23 @@
 ---
 import { getCollection } from "astro:content";
-import type { ContentType } from "../../utils/consts";
-import { Image } from "astro:assets";
+import { type ContentType, ContentConfig } from "../../utils/consts";
+import Image from "astro/components/Image.astro";
+import { capitalize, filterPosts } from "../../utils/utils";
+// Get properties
 interface Props {
   type: ContentType; // "projects" or "writings"
 }
-
 const { type } = Astro.props as Props;
 
-// Content configurations based on type
-const contentConfig: Record<
-  ContentType,
-  {
-    title: string;
-    description: string;
-    viewAllText: string;
-    viewAllLink: string;
-    itemLinkText: string;
-  }
-> = {
-  projects: {
-    title: "Featured Projects",
-    description:
-      "A selection of projects that showcase my growth as a developer: from passionate first attempts to sophisticated solutions that solve real problems.",
-    viewAllText: "View All Projects",
-    viewAllLink: "/projects",
-    itemLinkText: "Read the story",
-  },
-  writings: {
-    title: "Featured Writings",
-    description:
-      "A collection of my thoughts, experiences, and insights on software development, data science, and personal growth.",
-    viewAllText: "View All Writings",
-    viewAllLink: "/writings",
-    itemLinkText: "Read article",
-  },
-};
-
 // Get current content config
-const config = contentConfig[type];
+const config = ContentConfig[type];
 
 // Get featured items
 const allItems = await getCollection(type);
-const featuredItems = allItems
-  .filter((item) => item.data.featured)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3); // Show top 3 featured items
+const featuredItems = filterPosts(allItems, {
+  limit: 3,
+  filterByFeatured: true,
+});
 ---
 
 {
@@ -58,7 +30,7 @@ const featuredItems = allItems
         {/* Details about the Featured Posts */}
         <div class="mb-12 text-center">
           <h2 class="font-heading dark:text-accent text-primary mb-4 text-3xl md:text-5xl">
-            {config.title}
+            {`Featured ${capitalize(type)}`}
           </h2>
           <p class="text-text mx-auto max-w-3xl text-lg">
             {config.description}
@@ -70,21 +42,20 @@ const featuredItems = allItems
             <article class="group bg-background overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
               {/* Item Image */}
               {"image" in item.data && item.data.image && (
-                <div class="relative h-48 overflow-hidden">
+                <div class="h-48 overflow-hidden">
                   <Image
-                    src={item.data.image}
-                    alt={item.data.title}
+                    src={item.data.image.src}
+                    alt={item.data.image.alt}
                     width={600}
                     height={300}
                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-95 group-hover:rounded-t-3xl"
                   />
-
                 </div>
               )}
               {/* Item Content */}
               <div class="p-6">
                 <a href={`/${type}/${item.id}`}>
-                  <h3 class="font-heading text-text group-hover:text-accent dark:group-hover:text-accent mb-3 cursor-pointer text-center text-xl transition-colors">
+                  <h3 class="font-heading text-text group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-center text-xl transition-colors">
                     {item.data.title}
                   </h3>
                 </a>
@@ -106,7 +77,7 @@ const featuredItems = allItems
                 <div class="max-md:text-center">
                   <a
                     href={`/${type}/${item.id}`}
-                    class="text-text group-hover:text-accent inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                    class="text-text group-hover:text-primary dark:group-hover:text-accent inline-flex items-center gap-2 text-sm font-semibold transition-colors"
                   >
                     {config.itemLinkText}
                     <svg
@@ -130,10 +101,10 @@ const featuredItems = allItems
         </div>
         <div class="mt-12 text-center">
           <a
-            href={config.viewAllLink}
-            class="text-text hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
+            href={`/${type}`}
+            class="text-text hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
           >
-            {config.viewAllText}
+            {`View All ${capitalize(type)}`}
             <svg
               class="h-4 w-4"
               fill="none"

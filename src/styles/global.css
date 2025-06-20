@@ -45,10 +45,10 @@
   }
 
   h1 {
-    @apply text-text font-heading text-center text-4xl tracking-tight subpixel-antialiased font-bold;
-  } 
+    @apply text-text font-heading text-center text-4xl font-bold tracking-tight subpixel-antialiased;
+  }
   h2 {
-    @apply text-text font-subheading text-3xl subpixel-antialiased font-semibold;
+    @apply text-text font-subheading text-3xl font-semibold subpixel-antialiased;
   }
   h3 {
     @apply text-text font-sans text-2xl subpixel-antialiased;

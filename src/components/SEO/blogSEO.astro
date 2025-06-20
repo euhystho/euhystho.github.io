@@ -24,8 +24,8 @@ const projectJSONLD = isProject && {
     "@type": "Person",
     name: SITE_AUTHOR,
   },
-  datePublished: date,
-  dateModified: modDate,
+  datePublished: date.toISOString(),
+  dateModified: modDate?.toISOString(),
 };
 
 const writingJSONLD = !isProject && {

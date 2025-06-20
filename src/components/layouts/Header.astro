@@ -1,7 +1,7 @@
 ---
-import Menu from "../../../public/svg/menu.svg";
-import CloseMenu from "../../../public/svg/close_menu.svg";
-import Toggle from "../../components/common/theme_toggle.svelte";
+import Menu from "public/svg/menu.svg";
+import CloseMenu from "public/svg/close_menu.svg";
+import Toggle from "../common/theme_toggle.svelte";
 ---
 
 <style scoped>
@@ -101,7 +101,7 @@ import Toggle from "../../components/common/theme_toggle.svelte";
         class="max-lg:flex max-lg:w-full max-lg:justify-center max-lg:pb-20 max-lg:pl-13"
         id="toggle-mode"
       >
-        <Toggle client:only="svelte" transition:persist/>
+        <Toggle client:only="svelte" transition:persist />
       </div>
     </div>
   </nav>

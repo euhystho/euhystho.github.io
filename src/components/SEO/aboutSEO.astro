@@ -18,8 +18,8 @@ const aboutJSONLD = {
     "@type": "EducationalOrganization",
     name: "Ursinus College",
   },
-  jobTitle: job || "",
-  worksFor: work || "",
+  ...(job && { jobTitle: job }),
+  ...(work && { worksFor: work }),
   sameAs: [
     "https://github.com/euhystho/",
     "https://www.linkedin.com/in/eugene-hyst-thompson/",
