@@ -39,37 +39,45 @@ const featuredItems = filterPosts(allItems, {
 
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredItems.map((item) => (
-            <article class="group bg-background overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+            <article
+              id={item.id}
+              class="group bg-background flex flex-col overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl"
+            >
               {/* Item Image */}
               {"image" in item.data && item.data.image && (
-                <div class="h-48 overflow-hidden">
+                <div class="h-[180px] w-full overflow-hidden">
                   <Image
-                    src={item.data.image.src}
-                    alt={item.data.image.alt}
-                    width={600}
-                    height={300}
-                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-95 group-hover:rounded-t-3xl"
+                    src={item.data.image}
+                    alt={item.data.imageAlt}
+                    width={item.data.image.width}
+                    height={item.data.image.height}
+                    loading="lazy"
+                    class="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-95 group-hover:max-lg:rounded-3xl"
                   />
                 </div>
               )}
               {/* Item Content */}
-              <div class="p-6">
+              <div class="flex flex-grow flex-col p-6">
                 <a href={`/${type}/${item.id}`}>
-                  <h3 class="font-heading text-text group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-center text-xl transition-colors">
+                  <h3 class="font-heading text-text group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-center text-2xl transition-colors">
                     {item.data.title}
                   </h3>
                 </a>
-
-                <p class="text-text mb-4 text-base leading-relaxed max-md:text-center">
-                  {item.data.description.length > 121
-                    ? item.data.description.substring(0, 121) + "..."
-                    : item.data.description}
-                </p>
+                <div class="mt-auto mb-4 items-center">
+                  <p class="text-text flex-grow text-sm leading-relaxed max-md:text-center">
+                    {item.data.description.length > 120
+                      ? item.data.description.substring(0, 120) + "..."
+                      : item.data.description}
+                  </p>
+                </div>
 
                 {/* Key Tags */}
-                <div class="mb-4 flex flex-wrap gap-2 max-md:justify-center">
+                <div class="mt-auto mb-4 flex flex-wrap gap-2 max-md:justify-center">
                   {item.data.tags.slice(0, 3).map((tag) => (
-                    <span class="bg-accent/20 text-text rounded px-2 py-1 text-xs">
+                    <span
+                      id={tag}
+                      class="bg-accent/20 text-text rounded px-2 py-1 text-xs"
+                    >
                       {tag}
                     </span>
                   ))}

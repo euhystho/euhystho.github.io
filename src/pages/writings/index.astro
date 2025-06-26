@@ -27,5 +27,89 @@ const filteredPosts = filterPosts(allPosts);
       ))
     )
   }
-  <aside slot="navigation"></aside>
 </BlogLayout>
+<script is:inline data-astro-rerun>
+  // Wait for PageFind UI to render, then attach listeners
+  function setupPageFindFilterListeners() {
+    // Use MutationObserver to wait for PageFind Search has been fully rendered
+    const observer = new MutationObserver(() => {
+      const filterCheckboxes = document.querySelectorAll(
+        ".pagefind-ui__filter-checkbox",
+      );
+
+      if (filterCheckboxes.length > 0) {
+        filterCheckboxes.forEach((checkbox) => {
+          if (!checkbox.hasAttribute("data-listener-attached")) {
+            checkbox.addEventListener("change", handleFilterChange);
+            checkbox.setAttribute("data-listener-attached", "true");
+          }
+        });
+      }
+    });
+
+    // Start observing
+    const searchContainer = document.querySelector("#search");
+    if (searchContainer) {
+      observer.observe(searchContainer, {
+        childList: true,
+        subtree: true,
+      });
+    }
+  }
+
+  function handleFilterChange() {
+    // Get all currently checked filters
+    const checkedFilters = getActiveFilters();
+
+    // Filter posts based on active filters
+    filterPosts(checkedFilters);
+  }
+
+  function getActiveFilters() {
+    const activeFilters = {};
+    const checkedBoxes = document.querySelectorAll(
+      ".pagefind-ui__filter-checkbox:checked",
+    );
+
+    checkedBoxes.forEach((checkbox) => {
+      const filterName = checkbox.name;
+      const filterValue = checkbox.value;
+
+      if (!activeFilters[filterName]) {
+        activeFilters[filterName] = [];
+      }
+      activeFilters[filterName].push(filterValue);
+    });
+
+    return activeFilters;
+  }
+
+  function filterPosts(activeFilters) {
+    const allCards = document.querySelectorAll("[data-blog-card]");
+
+    if (Object.keys(activeFilters).length === 0) {
+      // Show all cards when no filters active
+      allCards.forEach((card) => (card.style.display = "block"));
+      return;
+    }
+
+    allCards.forEach((card) => {
+      const shouldShow = checkCardMatchesFilters(card, activeFilters);
+      card.style.display = shouldShow ? "block" : "none";
+    });
+  }
+
+  function checkCardMatchesFilters(card, activeFilters) {
+    const cardCategory = card.getAttribute("data-category") || "";
+
+    // Check if card matches active category filters
+    if (activeFilters.category && activeFilters.category.length > 0) {
+      return activeFilters.category.includes(cardCategory);
+    }
+
+    return true;
+  }
+
+  // Initialize when page has loaded
+  document.addEventListener("astro:page-load", setupPageFindFilterListeners);
+</script>

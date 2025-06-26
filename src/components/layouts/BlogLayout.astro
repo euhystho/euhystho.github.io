@@ -1,5 +1,6 @@
 ---
 import { SITE_AUTHOR, type ContentType } from "../../utils/consts";
+import Search from "astro-pagefind/components/Search";
 import { capitalize } from "../../utils/utils";
 import MainLayout from "./MainLayout.astro";
 interface Props {
@@ -25,8 +26,17 @@ const { type, title, description } = Astro.props;
     </section>
     {
       type === "writings" && (
-        <aside class="bg-accent/25 dark:bg-primary/40 m-16 flex h-auto basis-3/10 flex-col items-center justify-start rounded-4xl p-8 max-lg:-order-1">
-          <slot name="navigation" />
+        <aside class="bg-accent/25 dark:bg-primary/40 m-16 flex h-auto basis-6/10 flex-col items-center justify-start rounded-4xl p-8">
+          <Search
+            id="search"
+            slot="navigation"
+            className="pagefind-ui"
+            uiOptions={{
+              showSubResults: true,
+              resetStyles: false,
+              showImages: false,
+            }}
+          />
         </aside>
       )
     }

@@ -6,10 +6,21 @@ export function capitalize(text: ContentType) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+// Get URL based on Content Type and Content ID
 export function getURL(id: string, type: ContentType) {
   return `/${type}/${id}`;
 }
 
+// PageFind Helpers
+export function getPageFindDate(date: Date) {
+  return `date:${new Date(date).toISOString().split("T")[0]}`;
+}
+export function getTags(posts: any) {
+  const allTags = posts
+    .map((post: { data: { tags: any } }) => post.data.tags)
+    .flat();
+  return [...new Set(allTags)].sort();
+}
 // Slugifies the route
 export function slugify(text: string) {
   return text

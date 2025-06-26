@@ -24,13 +24,11 @@ This project uses GitHub Actions for continuous integration and deployment:
    - Builds the project to verify there are no errors
    - Ensures code quality and prevents broken deployments
 2. **Playwright Tests** (`.github/workflows/playwright.yml`):
-
    - Triggered on every push and pull request
    - Installs Playwright browsers for testing
    - Runs Playwright tests to automate web interactions on multiple browsers and platforms
 
 3. **GitHub Pages Deployment** (auto-configured by GitHub):
-
    - Automatically deploys the built website to GitHub Pages
    - Triggered when changes are pushed to the gh-pages branch
    - Creates the production build and publishes it

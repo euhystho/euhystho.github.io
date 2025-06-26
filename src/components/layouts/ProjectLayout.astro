@@ -97,10 +97,10 @@ const { project } = Astro.props;
             project.data.image && (
               <div class="mb-8">
                 <Image
-                  src={project.data.image.src}
-                  alt={project.data.image.alt}
-                  width={800}
-                  height={400}
+                  src={project.data.image}
+                  alt={project.data.imageAlt}
+                  width={project.data.image.width}
+                  height={project.data.image.height}
                   class="h-auto w-full"
                 />
               </div>

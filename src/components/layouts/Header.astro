@@ -1,7 +1,7 @@
 ---
 import Menu from "public/svg/menu.svg";
 import CloseMenu from "public/svg/close_menu.svg";
-import Toggle from "../common/theme_toggle.svelte";
+import Toggle from "../ui/theme_toggle.svelte";
 ---
 
 <style scoped>
@@ -70,7 +70,9 @@ import Toggle from "../common/theme_toggle.svelte";
     </label>
 
     <label for="sidebar-active" id="overlay">
-      <span class="sr-only">Close sidebar overlay</span>
+      <span class="text-background dark:text-text sr-only"
+        >Close sidebar overlay</span
+      >
     </label>
 
     <div class="links-container">

@@ -1,9 +1,12 @@
 ---
 import { getCollection, render } from "astro:content";
+import FormattedDate from "src/components/blog/FormattedDate.astro";
 import BaseHead from "src/components/layouts/BaseHead.astro";
 import Footer from "src/components/layouts/Footer.astro";
 import Header from "src/components/layouts/Header.astro";
 import BlogSEO from "src/components/SEO/blogSEO.astro";
+import { getPageFindDate, slugify } from "../../utils/utils";
+import { Image } from "astro:assets";
 export async function getStaticPaths() {
   const posts = await getCollection("writings");
   return posts.map((post) => ({
@@ -27,9 +30,105 @@ const { Content } = await render(post);
       isProject={false}
     />
   </head>
-  <body>
-    <Header />
-    <Content />
-    <Footer />
+  <body class="bg-background">
+    <div class="site">
+      <Header />
+      <main
+        class="dark:bg-secondary/10 bg-secondary/50 mx-12 my-12 max-w-5xl rounded-4xl p-16 shadow-lg md:mx-auto"
+        data-pagefind-body
+      >
+        <!-- Project Header -->
+        <div class="mb-8">
+          <div class="mb-12">
+            <a
+              href="/writings"
+              class="dark:text-accent hover:text-primary dark:hover:text-text transition-colors"
+            >
+              ← Back to Writings
+            </a>
+          </div>
+          <div class="mb-6">
+            <h1
+              class="font-heading text-primary dark:text-accent mb-4 text-4xl md:text-5xl"
+              data-pagefind-meta="title"
+            >
+              {post.data.title}
+            </h1>
+            <p class="text-text mb-4 text-center text-xl">
+              {post.data.description}
+            </p>
+
+            <!-- Project Meta -->
+            <div
+              class="text-primary dark:text-accent mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-base"
+            >
+              <div data-pagefind-sort={getPageFindDate(post.data.date)}>
+                Completed on
+                <FormattedDate date={post.data.date} />
+              </div>
+              <div>
+                <i>
+                  Edited on
+                  <FormattedDate date={post.data.modDate} />
+                </i>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div
+              class="mb-6 flex flex-wrap justify-center gap-2"
+              data-pagefind-filter="category[data-category]"
+              data-category={post.data.category}
+            >
+              {
+                post.data.tags.map((tag) => (
+                  <a
+                    href={`/writings/tag/${slugify(tag)}`}
+                    class="bg-secondary dark:bg-secondary/20 text-text rounded-full px-3 py-1 text-sm"
+                  >
+                    {tag}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Writing Image -->
+          {
+            post.data.image && (
+              <div class="mb-8">
+                <Image
+                  data-pagefind-meta="image[src], image_alt[alt]"
+                  src={post.data.image}
+                  alt={post.data.imageAlt}
+                  width={post.data.image.width}
+                  height={post.data.image.height}
+                  class="h-auto w-full"
+                />
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Writing Content -->
+        <article>
+          <Content />
+        </article>
+
+        <!-- Writings Navigation -->
+        <div class="border-secondary/20 mt-12 border-t pt-8">
+          <div class="flex items-center justify-between">
+            <a
+              href="/writings"
+              class="text-primary dark:text-accent hover:text-tertiary font-semibold transition-colors"
+            >
+              ← All Writings
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   </body>
 </html>

@@ -1,16 +1,19 @@
 ---
-import { SITE_AUTHOR } from "../../utils/consts";
+import { SITE_AUTHOR } from "src/utils/consts";
 const currentYear = new Date().getFullYear();
 interface Props {
   showSocials?: boolean;
 }
 const { showSocials = true } = Astro.props;
+// Obtained from Simple Icons
+import GitHub from "public/svg/github.svg";
+import Email from "public/svg/email.svg";
 import {
   GITHUB_LINK,
   GITHUB_COLOR,
   EMAIL,
   EMAIL_COLOR,
-} from "../../utils/consts";
+} from "src/utils/consts";
 ---
 
 <style scoped>
@@ -56,12 +59,7 @@ import {
             data-social="GitHub"
             style={`--accent-color: ${GITHUB_COLOR};`}
           >
-            <img
-              src="/svg/github.svg"
-              alt="GitHub"
-              height="32"
-              class="hover:fill-white"
-            />
+            <GitHub height={32} class="hover:fill-white" aria-label="GitHub" />
           </a>
           <a
             href={EMAIL}
@@ -69,12 +67,7 @@ import {
             data-social="Email"
             style={`--accent-color: ${EMAIL_COLOR};`}
           >
-            <img
-              src="/svg/email.svg"
-              alt="Email"
-              height="32"
-              class="hover:fill-white"
-            />
+            <Email height={32} class="hover:fill-white" />
           </a>
         </div>
       </div>

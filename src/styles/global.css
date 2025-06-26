@@ -1,6 +1,7 @@
 /* Import Tailwind */
 @import "tailwindcss";
-@import "../styles/typography.css";
+@import "./typography.css";
+@import "./shadcn.css";
 @import "@flaticon/flaticon-uicons/css/all/all";
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -33,6 +34,28 @@
 
   --ease-social: cubic-bezier(0.42, 0, 0.44, 1.68);
 }
+/* PageFind Properties */
+:root {
+  --pagefind-ui-font: "Figtree", system-ui, sans-serif;
+  --pagefind-ui-primary: var(--color-primary);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-background);
+  --pagefind-ui-border: var(--color-accent);
+  --pagefind-ui-tag: var(--color-secondary);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: var(--radius-4xl);
+}
+/* Dark mode variables */
+html.dark {
+  --pagefind-ui-primary: var(--color-accent);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-background);
+  --pagefind-ui-border: var(--color-secondary);
+  --pagefind-ui-tag: var(--color-secondary);
+}
+.pagefind-ui__search-input::placeholder {
+  color: var(--color-text);
+}
 
 @layer base {
   /* Dark Mode Color Palette */
@@ -62,5 +85,8 @@
   p,
   li {
     @apply text-text font-sans text-lg subpixel-antialiased;
+  }
+  code {
+    @apply relative rounded-4xl px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
   }
 }

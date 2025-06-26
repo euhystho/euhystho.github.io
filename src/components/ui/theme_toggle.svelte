@@ -12,18 +12,27 @@
   }
 
   function toggleTheme() {
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    try {
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch (error) {
+      console.warn("Failed to save theme preference:", error);
+    }
     applyTheme();
   }
 
   onMount(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    isDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
-    document.addEventListener("astro:after-swap", applyTheme);
-    applyTheme();
+    try {
+      const savedTheme = localStorage.getItem("theme");
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      isDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
+      document.addEventListener("astro:after-swap", applyTheme);
+      applyTheme();
+    } catch (error) {}
+    console.warn("Theme initialization failed:", error);
+    // Fallback to system preference
+    isDark = false;
   });
 </script>
 
@@ -62,7 +71,6 @@
       <circle class="sunRay sunRay6" cx="14" cy="3.1718" r="1.5"></circle>
     </g>
   </svg>
-
 </label>
 
 <style>
