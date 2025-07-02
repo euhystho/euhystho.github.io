@@ -32,5 +32,5 @@ pnpm-debug.log*
 /blob-report/
 /playwright/.cache/
 
-# Lighthouse reports
-reports/lighthouse/**/*.html
+# Lighthouse and Playwright reports
+reports/

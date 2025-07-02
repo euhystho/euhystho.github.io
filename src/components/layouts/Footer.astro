@@ -1,0 +1,82 @@
+---
+import { SITE_AUTHOR } from "src/utils/consts";
+const currentYear = new Date().getFullYear();
+interface Props {
+  showSocials?: boolean;
+}
+const { showSocials = true } = Astro.props;
+// Obtained from Simple Icons
+import GitHub from "public/svg/github.svg";
+import Email from "public/svg/email.svg";
+import {
+  GITHUB_LINK,
+  GITHUB_COLOR,
+  EMAIL,
+  EMAIL_COLOR,
+} from "src/utils/consts";
+---
+
+<style scoped>
+  @reference "../../styles/global.css";
+  footer:has(.socials-container:hover) {
+    @apply bg-transparent;
+  }
+  /* Social Media Buttons */
+  .socials-container {
+    @apply hover:bg-accent/85 min-header:max-2xl:w-1/3 flex w-8/10 items-end justify-center gap-5 rounded-t-full p-4 transition-colors duration-300 ease-in-out sm:w-1/2 2xl:w-1/4;
+  }
+  .socials-container a {
+    @apply bg-background dark:fill-text relative mt-0 box-border grid h-16 w-16 shrink-0 place-items-center rounded-[50%] p-4 shadow-md transition-all duration-300 motion-reduce:transition-none;
+  }
+  .socials-container a::before {
+    @apply ease-social absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[38px] rotate-0 rounded-[100px] bg-[var(--accent-color)] px-3 py-1 text-white no-underline opacity-0 transition duration-300 content-[attr(data-social)];
+  }
+  .socials-container a::after {
+    @apply ease-social absolute top-0 left-1/2 h-0 w-0 -translate-x-1/2 -translate-y-[18px] border-t-10 border-r-8 border-l-8 border-t-[var(--accent-color)] border-r-transparent border-l-transparent opacity-0 transition duration-300 content-[''];
+  }
+  .socials-container a:hover {
+    @apply bg-[var(--accent-color)] fill-white opacity-[1] motion-reduce:transition-none;
+  }
+  .socials-container a:hover::before {
+    @apply -translate-y-[45px] opacity-[1];
+  }
+  .socials-container a:hover::after {
+    @apply -translate-y-[15px] opacity-[1];
+  }
+</style>
+
+<footer
+  class="bg-accent dark:bg-secondary/40 transition-colors duration-300 ease-in-out"
+  transition:persist
+>
+  {
+    showSocials && (
+      <div class="flex justify-center">
+        <div class="socials-container">
+          <a
+            href={GITHUB_LINK}
+            aria-label="Visit my GitHub profile"
+            data-social="GitHub"
+            style={`--accent-color: ${GITHUB_COLOR};`}
+          >
+            <GitHub height={32} class="hover:fill-white" aria-label="GitHub" />
+          </a>
+          <a
+            href={EMAIL}
+            aria-label="Send me an email"
+            data-social="Email"
+            style={`--accent-color: ${EMAIL_COLOR};`}
+          >
+            <Email height={32} class="hover:fill-white" />
+          </a>
+        </div>
+      </div>
+    )
+  }
+  <section class="bg-primary">
+    <p class="p-4 text-center text-white">
+      Copyright © {currentYear}
+      {SITE_AUTHOR}. All Rights Reserved.
+    </p>
+  </section>
+</footer>

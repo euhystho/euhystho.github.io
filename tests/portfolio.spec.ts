@@ -27,7 +27,7 @@ test.describe("Accessibility", () => {
 
     const h1 = page.getByRole("heading", { level: 1 });
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText("Eugene Thompson");
+    await expect(h1).toContainText("Home");
   });
 
   test("all images have alt text", async ({ page }) => {

@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import { filterPosts, getURL, slugify } from "../../../utils/utils";
+import BlogLayout from "../../../components/layouts/BlogLayout.astro";
+import BlogCard from "src/components/blog/blogCard.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("projects");
+  const filteredPosts = filterPosts(allPosts);
+  const allTags = [
+    ...new Set(filteredPosts.map((post) => post.data.tags).flat()),
+  ];
+
+  return allTags.map((tag) => {
+    const tagPosts = filteredPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    );
+    return {
+      params: { tag: slugify(tag) },
+      props: {
+        posts: tagPosts,
+        tagName: tag,
+      },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts, tagName = tag } = Astro.props;
+---
+
+<BlogLayout
+  title={`${tagName} Posts`}
+  description={`All posts tagged with ${tagName}`}
+  type="projects"
+>
+  <h1 class="text-3xl font-bold">
+    Posts tagged with {tagName}
+  </h1>
+  {
+    posts.length === 0 ? (
+      <p class="py-8 text-center">No posts found with this tag.</p>
+    ) : (
+      posts.map((post) => (
+        <BlogCard
+          frontmatter={post.data}
+          url={getURL(post.id, "projects")}
+          type="projects"
+        />
+      ))
+    )
+  }
+</BlogLayout>

@@ -1,7 +1,10 @@
 ---
 title: "RhythmRun: When Team Projects Teach More Than Code"
 description: "A Flutter running companion app integrating Spotify's API, and the real-world lessons learned from managing a small team."
-image: "/images/projects/rhythm-run.jpeg"
+image: "./images/rhythm-run.jpeg"
+imageAlt: "GitHub Respository for Rhythm-Run"
+icon: "./icons/run.png"
+iconAlt: "Orange Sneaker"
 tags:
   [
     "Flutter",
@@ -40,7 +43,7 @@ modDate: "2025-06-10"
 
 ### My Technical Responsibilities
 
-- **iOS development and optimization**
+- **iOS development and configuation** for Xcode specific configurations (e.g. entitlements)
 - **Backend architecture** for user authentication and data persistence
 - **Spotify API integration** for music control and analysis
 
@@ -58,7 +61,7 @@ Development Environment: JDK v17, NDK ≥ v27
 
 ### Spotify Integration Success
 
-The Spotify integration was actually **easier than expected**! The [existing Dart packages](https://pub.dev/packages/spotify_sdk) were relatively well-documented and worked reliably:
+The Spotify integration was actually **easier than expected!** The [existing Dart packages](https://pub.dev/packages/spotify_sdk) were relatively well-documented and worked reliably:
 
 ```dart
 // Connecting the Spotify's SDK
@@ -77,8 +80,10 @@ The Spotify integration was actually **easier than expected**! The [existing Dar
     }
   }
 ```
+Plus, the example that the package provides works nicely: 
+![Lady Gaga's Disease song playing on SpotifySDK Example app ](images/rhythm-run/spotifysdk.png)
 
-Following the official API documentation was mostly smooth, except for android.
+Following the official API documentation was mostly smooth, except for Android.
 
 ### iOS Development Discovery
 
@@ -90,7 +95,7 @@ After getting an Apple Developer Account, I was amazed by the **quality and quan
 - Apple's Entitlement system and other integrations were really good and interesting.
 - Platform-specific configurations make a real difference in user experience
 
-After combing through Apple's developer resources, it made me inspired to start coding in [Swift](https://www.swift.org/)!
+After combing through Apple's developer resources, it made me inspired to start coding in [Swift!](https://www.swift.org/)
 
 ### Cross-Platform Challenges
 
@@ -110,7 +115,7 @@ Especially towards the beginning, with a lot of panicked commits on making sure 
 
 One of our teammates struggled with severe anxiety, which required me to completely adapt my communication and project management style.
 
-**What I learned about leadership**:
+**What I Learned About Leadership**:
 
 - **Compassionate communication** - Different people need different types of support and feedback
 - **Flexible expectations** - Mental health challenges are real and need thoughtful accommodation
@@ -122,32 +127,48 @@ This not only taught me about technical skills in software development, but how 
 
 ### Timeline Reality
 
-We spent about **63% of the semester planning** the "perfect" app, then rushed development in the final months.
+We spent about **63% of the semester planning** the "perfect" app, then rushed development in the final months:
 
-**What happened**:
+import PictureCarousel from "src/components/ui/image_carousel.astro";
+import DesignDiagram from "./images/rhythm-run/design_diagram.png";
+import Flowchart from "./images/rhythm-run/flowchart.png";
+import Whiteboard from "./images/rhythm-run/whiteboard_brainstorm.png";
+
+<PictureCarousel 
+  images={[
+    { src:DesignDiagram, alt: "RhythmRun design diagram showing app architecture" },
+    { src: Flowchart, alt: "RhythmRun development flowchart" },
+    { src: Whiteboard, alt: "RhythmRun development brainstorm" }
+  ]} 
+/>
+
+**What Happened**:
 
 - Extensive user research and feature specification
 - UI/UX mockups and user flow diagrams
 - Architecture planning and technology evaluation
 - Planning tests before coding based on all of the above
-- **But limited time for actual implementation**
+- _**But limited time for actual implementation...**_
 
 **The lesson**: Perfect planning doesn't necessarily guarantee smooth execution. Real software development always surfaces during unexpected challenges that you can't fully plan for.
 
-**Better approach**:
+**Better Approach**:
 
 - Start using the first part of the semester in educating the team on core technologies and workflows
 - Guide the team to finish the Minimal Viable Product (MVP) first, iterate second
 - Start coding sooner to discover unknown unknowns (like Music API integration with Apple Music)
 - Plan in sprints, and don't overload sprints with too much work
 
-## What's Next: Learning Applied
+## What's Next?
 
 ### Rebuild Plan
 
 I'm planning to **rebuild this solo (or with a friend)** with key improvements:
 
-**Swift Integration for Apple Music**: [Flutter packages for Apple Music](https://pub.dev/packages/music_kit/) weren't reliable. Now I have enough iOS experience to implement native Swift integration properly.
+**Swift Integration for Apple Music**: [Flutter packages for Apple Music](https://pub.dev/packages/music_kit/) weren't reliable since I could never change the PlayerState or PlayerQueue, as shown below:
+![Apple Music](images/rhythm-run/applemusic.jpeg)
+Now I have enough iOS experience to implement native Swift integration properly.
+
 
 **Better Architecture**: Apply lessons learned about:
 
@@ -171,7 +192,7 @@ I'm planning to **rebuild this solo (or with a friend)** with key improvements:
 - **Team leadership under pressure**
 - **Compassionate project management**
 - **Timeline and scope management**
-- **Stakeholder communication** (in this case, teammates, instructors, and runners)
+- **Stakeholder communication** (team members, instructors, and runners)
 
 ### Process Lessons
 
@@ -188,5 +209,4 @@ Even when the code works perfectly, projects can struggle due to team dynamics, 
 The technical skills I gained were valuable, but the **people skills** I developed are arguably more important for real-world software development.
 
 ---
-
-_RhythmRun represents my transition from solo coding projects to collaborative software development. Along with all the challenges and growth opportunities that come with working on a team! 👨🏻‍💻_
+*RhythmRun represents my transition from solo coding projects to collaborative software development. Along with all the challenges and growth opportunities that come with working on a team!* 👨🏻‍💻

@@ -1,0 +1,45 @@
+---
+import type { Page } from "astro";
+import { getCollection } from "astro:content";
+import { filterPosts, getURL } from "../../utils/utils";
+import BlogCard from "../../components/blog/blogCard.astro";
+import BlogLayout from "../../components/layouts/BlogLayout.astro";
+import NoPosts from "../../components/blog/NoPosts.astro";
+import PaginationSvelte from "../../components/ui/pagination.svelte";
+
+// @ts-ignore
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection("projects");
+  const filteredPosts = filterPosts(allPosts);
+  return paginate(filteredPosts, {
+    pageSize: 3,
+  });
+}
+const { page } = Astro.props as {
+  page: Page;
+};
+---
+
+<BlogLayout
+  type={"projects"}
+  description="Explore my technical projects spanning web development, software engineering, and data science."
+>
+  {
+    page.data.length === 0 ? (
+      <NoPosts />
+    ) : (
+      page.data.map((post) => (
+        <BlogCard
+          frontmatter={post.data}
+          url={getURL(post.id, "projects")}
+          type={"projects"}
+        />
+      ))
+    )
+  }
+  {
+    page.size != page.total && (
+      <PaginationSvelte client:load="svelte" page={page} />
+    )
+  }
+</BlogLayout>
