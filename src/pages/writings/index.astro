@@ -28,6 +28,30 @@ const filteredPosts = filterPosts(allPosts);
     )
   }
 </BlogLayout>
+<style scoped>
+  /* PageFind Properties */
+  :root {
+    --pagefind-ui-font: "Figtree", system-ui, sans-serif;
+    --pagefind-ui-primary: var(--color-primary);
+    --pagefind-ui-text: var(--color-text);
+    --pagefind-ui-background: var(--color-background);
+    --pagefind-ui-border: var(--color-accent);
+    --pagefind-ui-tag: var(--color-secondary);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: var(--radius-4xl);
+  }
+  /* Dark mode variables */
+  html.dark {
+    --pagefind-ui-primary: var(--color-accent);
+    --pagefind-ui-text: var(--color-text);
+    --pagefind-ui-background: var(--color-background);
+    --pagefind-ui-border: var(--color-secondary);
+    --pagefind-ui-tag: var(--color-secondary);
+  }
+  .pagefind-ui__search-input::placeholder {
+    color: var(--color-text);
+  }
+</style>
 <script is:inline data-astro-rerun>
   // Wait for PageFind UI to render, then attach listeners
   function setupPageFindFilterListeners() {

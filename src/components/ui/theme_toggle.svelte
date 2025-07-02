@@ -29,10 +29,11 @@
       isDark = savedTheme ? savedTheme === "dark" : systemPrefersDark;
       document.addEventListener("astro:after-swap", applyTheme);
       applyTheme();
-    } catch (error) {}
-    console.warn("Theme initialization failed:", error);
-    // Fallback to system preference
-    isDark = false;
+    } catch (error) {
+      console.warn("Theme initialization failed:", error);
+      // Fallback to system preference
+      isDark = false;
+    }
   });
 </script>
 

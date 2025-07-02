@@ -1,8 +1,7 @@
 /* Import Tailwind */
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "./typography.css";
-@import "./shadcn.css";
-@import "@flaticon/flaticon-uicons/css/all/all";
 @custom-variant dark (&:where(.dark, .dark *));
 
 * {
@@ -34,29 +33,6 @@
 
   --ease-social: cubic-bezier(0.42, 0, 0.44, 1.68);
 }
-/* PageFind Properties */
-:root {
-  --pagefind-ui-font: "Figtree", system-ui, sans-serif;
-  --pagefind-ui-primary: var(--color-primary);
-  --pagefind-ui-text: var(--color-text);
-  --pagefind-ui-background: var(--color-background);
-  --pagefind-ui-border: var(--color-accent);
-  --pagefind-ui-tag: var(--color-secondary);
-  --pagefind-ui-border-width: 1px;
-  --pagefind-ui-border-radius: var(--radius-4xl);
-}
-/* Dark mode variables */
-html.dark {
-  --pagefind-ui-primary: var(--color-accent);
-  --pagefind-ui-text: var(--color-text);
-  --pagefind-ui-background: var(--color-background);
-  --pagefind-ui-border: var(--color-secondary);
-  --pagefind-ui-tag: var(--color-secondary);
-}
-.pagefind-ui__search-input::placeholder {
-  color: var(--color-text);
-}
-
 @layer base {
   /* Dark Mode Color Palette */
   @variant dark {
@@ -86,7 +62,13 @@ html.dark {
   li {
     @apply text-text font-sans text-lg subpixel-antialiased;
   }
-  code {
-    @apply relative rounded-4xl px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  /* Class-based dark mode (e.g., with Tailwind) */
+  html.dark .prose .astro-code,
+  html.dark .prose .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+  .project-content {
+    @apply prose-a:decoration-dotted prose-h2:text-primary prose-h2:font-bold dark:prose-h2:text-accent prose-h3:text-primary/90 dark:prose-h3:text-accent/90 prose-h2:text-center prose-img:rounded-2xl prose-img:h-1/2 prose-img:w-1/2 prose-img:mx-auto dark:prose-code:rounded-xs prose-code:font-mono prose-code:text-sm;
   }
 }

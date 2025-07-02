@@ -1,19 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
-
-  let {
-    link,
-    iconLeft,
-    iconRight,
-    name
-  } = $props();
-
-  // Validate required props
-  run(() => {
-    if (!link) {
-      console.warn("Button component requires a valid link prop");
-    }
-  });
+  let { link, iconLeft, iconRight, name } = $props();
 </script>
 
 <a

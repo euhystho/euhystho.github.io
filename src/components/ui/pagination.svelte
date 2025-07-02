@@ -2,16 +2,16 @@
   import * as Pagination from "$lib/components/ui/pagination/index.js";
   interface Props {
     page: {
-    currentPage: number;
-    lastPage: number;
-    total: number;
-    size: number;
-    url: {
-      prev?: string;
-      next?: string;
-      current: string;
+      currentPage: number;
+      lastPage: number;
+      total: number;
+      size: number;
+      url: {
+        prev?: string;
+        next?: string;
+        current: string;
+      };
     };
-  };
   }
 
   let { page }: Props = $props();

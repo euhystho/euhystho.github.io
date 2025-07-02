@@ -10,14 +10,23 @@ export default defineConfig({
   site: "https://eugenehysthompson.com",
   output: "static",
   build: { format: "file" },
-  integrations: [mdx(), sitemap(), svelte(), pagefind()],
+  integrations: [
+    mdx({
+      shikiConfig: {
+        themes: { light: "min-light", dark: "everforest-dark" },
+      },
+      defaultColor: false,
+    }),
+    sitemap(),
+    svelte(),
+    pagefind(),
+  ],
   image: {
     responsiveStyles: true,
-    service: {
-      entrypoint: "astro/assets/services/sharp",
-    },
     layout: "constrained",
+    objectFit: "fill",
   },
+
   vite: {
     plugins: [tailwindcss()],
   },
