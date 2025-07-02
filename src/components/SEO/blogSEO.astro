@@ -1,0 +1,66 @@
+---
+import { SITE_AUTHOR } from "../../utils/consts";
+interface Props {
+  title: string;
+  date: Date;
+  modDate?: Date;
+  image?: string;
+  isProject: boolean;
+}
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, date, modDate, image, isProject } = Astro.props;
+
+const projectJSONLD = isProject && {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalURL.toString(),
+  },
+  headline: title,
+  image: image,
+  author: {
+    "@type": "Person",
+    name: SITE_AUTHOR,
+  },
+  datePublished: date.toISOString(),
+  dateModified: modDate?.toISOString(),
+};
+
+const writingJSONLD = !isProject && {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalURL.toString(),
+  },
+  headline: title,
+  author: {
+    "@type": "Person",
+    name: SITE_AUTHOR,
+  },
+  datePublished: date.toISOString(),
+  dateModified: modDate?.toISOString(),
+};
+---
+
+{
+  projectJSONLD && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(projectJSONLD)}
+    />
+  )
+}
+
+{
+  writingJSONLD && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(writingJSONLD)}
+    />
+  )
+}

@@ -2,12 +2,16 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "Node16",
+    "paths": {
+      "$lib": ["./src/lib"],
+      "$lib/*": ["./src/lib/*"]
+    },
     "moduleResolution": "node16",
     "jsx": "react-jsx",
     "strict": true,
     "strictNullChecks": true,
     "allowJs": true,
-    "types": ["./jsx.d.ts"],
+    "types": ["./config/jsx.d.ts"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,6 +19,12 @@
     "jsxImportSource": "react"
   },
   "extends": "astro/tsconfigs/strict",
-  "include": ["src/**/*", "*.astro", ".astro/types.d.ts", "**/*"],
+  "include": [
+    "src/**/*",
+    "*.astro",
+    ".astro/types.d.ts",
+    "**/*",
+    "components.json"
+  ],
   "exclude": ["node_modules", "dist"]
 }

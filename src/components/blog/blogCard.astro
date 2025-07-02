@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import type { ProjectSchema, WritingSchema } from "../../content.config";
+import { slugify } from "src/utils/utils";
+import type { ContentType } from "src/utils/consts";
+
+type ContentFrontMatter = ProjectSchema | WritingSchema;
+interface Props {
+  type: ContentType;
+  frontmatter: ContentFrontMatter;
+  url: string;
+}
+const { type, frontmatter, url } = Astro.props;
+---
+
+<article
+  class="bg-background group flex items-center overflow-hidden rounded-3xl p-4 shadow-lg backdrop-blur-3xl max-lg:flex-col"
+  data-blog-card
+  data-category={"category" in frontmatter ? frontmatter.category : ""}
+>
+  {
+    "image" in frontmatter && frontmatter.image && (
+      <div class="bg-background flex h-full w-full max-w-md items-center justify-center overflow-hidden max-lg:mb-8 max-lg:max-w-full lg:mr-8 lg:rounded-l-2xl">
+        <Image
+          src={frontmatter.image}
+          alt={frontmatter.imageAlt}
+          width={frontmatter.image.width}
+          height={frontmatter.image.height}
+          class="transition-transform duration-300 group-hover:scale-105 group-hover:max-lg:rounded-t-3xl group-hover:lg:rounded-l-3xl"
+        />
+      </div>
+    )
+  }
+  <div>
+    <a href={url}>
+      <!-- Title and Representative Skeumorphic Icon from https://www.thiings.co/things -->
+      <div class="flex flex-col items-center lg:flex-row">
+        <h2
+          class="font-heading text-text group-hover:text-primary dark:group-hover:text-accent cursor-pointer text-xl transition-colors max-lg:text-center max-lg:text-2xl lg:text-3xl"
+        >
+          {frontmatter.title}
+        </h2>
+        {
+          "icon" in frontmatter && frontmatter.icon && (
+            <Image
+              src={frontmatter.icon}
+              alt={frontmatter.iconAlt}
+              width={120}
+              height={120}
+              class="m-2 align-middle opacity-0 transition-all duration-300 group-hover:inline-block group-hover:opacity-100 max-lg:hidden"
+            />
+          )
+        }
+      </div>
+    </a>
+    <!-- Description -->
+    <p
+      class="text-text mt-2 mb-4 text-base leading-relaxed max-lg:text-center max-lg:text-sm"
+    >
+      {
+        frontmatter.description.length > 121
+          ? frontmatter.description.substring(0, 121) + "..."
+          : frontmatter.description
+      }
+    </p>
+
+    <!-- All Tags -->
+    <div class="mb-4 flex flex-wrap gap-2 max-lg:justify-center">
+      {
+        type === "projects" &&
+          frontmatter.tags.map((tag) => (
+            <a
+              href={`/${type}/tag/${slugify(tag)}`}
+              class="bg-accent/20 text-text rounded-full p-2 text-center text-sm"
+            >
+              {tag}
+            </a>
+          ))
+      }
+      {
+        type === "writings" &&
+          frontmatter.tags.map((tag) => (
+            <p class="bg-accent/20 text-text rounded-full p-2 text-center text-sm">
+              {tag}
+            </p>
+          ))
+      }
+    </div>
+  </div>
+</article>

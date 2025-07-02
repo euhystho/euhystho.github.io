@@ -1,303 +1,155 @@
 ---
-import BaseHead from "../components/common/BaseHead.astro";
-import Header from "../components/common/Header.astro";
-import Footer from "../components/common/Footer.astro";
-import { SITE_DESCRIPTION } from "../utils/consts";
-import { getCollection } from "astro:content";
-// Get featured projects for homepage showcase
-const allProjects = await getCollection("projects");
-const featuredProjects = allProjects
-  .filter((project) => project.data.featured)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3); // Show top 3 featured projects
+import { SITE_DESCRIPTION, SITE_TITLE } from "../utils/consts";
+import FeaturedCard from "src/components/blog/featuredCard.astro";
+import MainLayout from "src/components/layouts/MainLayout.astro";
+import Skills from "src/components/ui/skills.astro";
+import Button from "../components/ui/button.svelte";
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <BaseHead description={SITE_DESCRIPTION} />
-  </head>
-  <body class="bg-light dark:bg-dark">
-    <div class="site">
-      <Header />
-      <main
-        class="container m-4 mx-auto snap-y px-4 motion-safe:snap-mandatory motion-reduce:snap-proximity"
-      >
-        <!-- Hero Section -->
-        <section class="snap-center py-16 text-center">
-          <div class="mx-auto max-w-4xl">
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main class="container m-4 mx-auto px-4">
+    <!-- Hero Section -->
+    <section class="py-16 text-center">
+      <div class="mx-auto max-w-4xl">
+        <h1 class="text-primary dark:text-accent mb-6 text-5xl md:text-6xl text-shadow-lg/5">
+          Turning complex data into intuitive solutions
+        </h1>
+        <p class="text-text mb-8 text-xl md:text-2xl text-shadow-md/30 text-shadow-accent dark:text-shadow-primary">
+          Emerging developer at the intersection of data science, software
+          engineering, and UI design.
+        </p>
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+          <Button
+            client:load="svelte"
+            link="#featured-projects"
+            name="View My Work"
+          />
+        </div>
+      </div>
+    </section>
+    <FeaturedCard type="projects" />
+
+    <!-- About Preview -->
+    <section class="py-16">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="grid items-center gap-12 md:grid-cols-2">
+          <div>
             <h2
-              class="dark:text-secondary text-primary mb-6 text-5xl md:text-6xl"
+              class="font-heading text-primary text-shadow-lg/10 dark:text-accent mb-6 text-3xl md:text-4xl"
             >
-              Turning complex data into intuitive solutions
+              Building Through Constant Learning
             </h2>
-            <h2
-              class="text-dark dark:text-light mb-8 font-sans text-xl md:text-2xl"
-            >
-              Emerging developer at the intersection of data science, software
-              engineering, and UI design. Finding creative patterns in the most
-              unexpected places: from personal financial literacy to the perfect
-              running playlist.
-            </h2>
-            <div class="flex flex-col justify-center gap-4 sm:flex-row">
+            <div class="text-text space-y-4">
+              <p>
+                My journey in software development started with curiosity and
+                grew through making mistakes, learning from them, and building
+                increasingly complex projects.
+              </p>
+              <p>
+                From teaching myself Java Swing by creating a game inspired by
+                Genshin Impact, leading a Flutter team through real-world
+                development challenges, to analyzing political data with
+                personal connections to Hong Kong, each of these projects has
+                pushed me to grow both technically and professionally.
+              </p>
+              <p>
+                I believe the best way to learn programming is by building
+                things that matter, collaborating with others, and embracing the
+                messy reality of real-world development.
+              </p>
+            </div>
+            <div class="mt-6">
               <a
-                href="#featured-projects"
-                class="bg-accent text-dark hover:bg-accent/90 rounded-full px-8 py-3 font-semibold transition-colors"
+                href="/about"
+                class="text-text hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
               >
-                View My Work
+                More about me
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
               </a>
             </div>
           </div>
-        </section>
 
-        <!-- Featured Projects -->
-        {
-          featuredProjects.length > 0 && (
-            <section class="bg-secondary/5 py-16" id="featured-projects">
-              <div class="container mx-auto max-w-6xl px-4">
-                <div class="mb-12 text-center">
-                  <h2 class="font-heading text-primary dark:text-secondary mb-4 text-3xl md:text-5xl">
-                    Featured Projects
-                  </h2>
-                  <p class="text-dark dark:text-light mx-auto max-w-3xl text-lg">
-                    A selection of projects that showcase my growth as a
-                    developer - from passionate first attempts to sophisticated
-                    solutions that solve real problems.
-                  </p>
-                </div>
-
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {featuredProjects.map((project) => (
-                    <article class="group bg-light dark:bg-dark overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
-                      {/* Project Image */}
-                      {project.data.image && (
-                        <div class="relative h-48 overflow-hidden">
-                          <img
-                            src={project.data.image}
-                            alt={project.data.title}
-                            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        </div>
-                      )}
-                      {/* Project Content */}
-                      <div class="p-6">
-                        <h3 class="font-heading text-tertiary dark:text-secondary group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-xl transition-colors">
-                          {project.data.title}
-                        </h3>
-
-                        <p class="text-dark dark:text-light mb-4 text-sm leading-relaxed max-md:text-center">
-                          {project.data.description.length > 121
-                            ? project.data.description.substring(0, 121) + "..."
-                            : project.data.description}
-                        </p>
-
-                        {/* Key Tags */}
-                        <div class="mb-4 flex flex-wrap gap-2 max-md:justify-center">
-                          {project.data.tags.slice(0, 3).map((tag) => (
-                            <span class="bg-secondary/20 text-dark dark:text-light rounded px-2 py-1 text-xs">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <div class="max-md:text-center">
-                          <a
-                            href={`/projects/${project.id}`}
-                            class="text-tertiary dark:text-secondary group-hover:text-primary dark:group-hover:text-accent inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-                          >
-                            Read the story
-                            <svg
-                              class="h-4 w-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-
-                <div class="mt-12 text-center">
-                  <a
-                    href="/projects"
-                    class="text-primary dark:text-accent hover:text-dark dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
-                  >
-                    View All Projects
-                    <svg
-                      class="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </section>
-          )
-        }
-
-        <!-- About Preview -->
-        <section class="py-16">
-          <div class="container mx-auto max-w-6xl px-4">
-            <div class="grid items-center gap-12 md:grid-cols-2">
-              <div>
-                <h2
-                  class="font-heading text-primary dark:text-secondary mb-6 text-3xl md:text-4xl"
-                >
-                  Building Through Constant Learning
-                </h2>
-                <div class="text-dark dark:text-light space-y-4">
-                  <p>
-                    My journey in software development started with curiosity
-                    and grew through making mistakes, learning from them, and
-                    building increasingly complex projects.
-                  </p>
-                  <p>
-                    From teaching myself Java Swing by creating a game inspired
-                    by Genshin Impact, leading a Flutter team through real-world
-                    development challenges, to analyzing political data with
-                    personal connections to Hong Kong, each of these projects
-                    has pushed me to grow both technically and professionally.
-                  </p>
-                  <p>
-                    I believe the best way to learn programming is by building
-                    things that matter, collaborating with others, and embracing
-                    the messy reality of real-world development.
-                  </p>
-                </div>
-                <div class="mt-6">
-                  <a
-                    href="/about"
-                    class="text-dark dark:text-accent hover:text-primary dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
-                  >
-                    More about me
-                    <svg
-                      class="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Skills/Technologies -->
-              <div class="bg-secondary/5 rounded-lg p-8">
-                <h3
-                  class="font-heading text-complementary dark:text-secondary mb-6 text-3xl"
-                >
-                  Technologies I Work With
-                </h3>
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <h4
-                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
-                    >
-                      Languages
-                    </h4>
-                    <ul class="text-dark dark:text-light space-y-1">
-                      <li>Python</li>
-                      <li>R</li>
-                      <li>JavaScript/TypeScript</li>
-                      <li>Java</li>
-                      <li>Dart/Flutter</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4
-                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
-                    >
-                      Frameworks & Tools
-                    </h4>
-                    <ul class="text-dark dark:text-light space-y-1">
-                      <li>Plotly</li>
-                      <li>R Shiny</li>
-                      <li>Astro + Svelte</li>
-                      <li>Flutter</li>
-                      <li>Java Swing</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4
-                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
-                    >
-                      Data & Analysis
-                    </h4>
-                    <ul class="text-dark dark:text-light space-y-1">
-                      <li>Data Visualization</li>
-                      <li>Statistical Analysis</li>
-                      <li>API Integration</li>
-                      <li>Database Design</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4
-                      class="text-tertiary dark:text-secondary mb-2 font-semibold"
-                    >
-                      Collaboration
-                    </h4>
-                    <ul class="text-dark dark:text-light space-y-1">
-                      <li>Git/GitHub</li>
-                      <li>Team Leadership</li>
-                      <li>Project Management</li>
-                      <li>Code Review</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+          <!-- Skills/Technologies -->
+          <div class="bg-secondary/50 dark:bg-secondary/10 rounded-4xl p-8">
+            <h3
+              class="font-heading text-primary text-shadow-lg/10 dark:text-accent mb-6 text-3xl md:text-4xl"
+            >
+              Technologies I Work With
+            </h3>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <Skills
+                title="Languages"
+                items={[
+                  "Python",
+                  "R",
+                  "JavaScript & TypeScript",
+                  "Java",
+                  "HTML/CSS",
+                ]}
+              />
+              <Skills
+                title="Frameworks & Tools"
+                items={[
+                  "Plotly",
+                  "R Shiny",
+                  "Astro & Svelte",
+                  "Flutter",
+                  "Java Swing",
+                ]}
+              />
+              <Skills
+                title="Data & Analysis"
+                items={[
+                  "Data Visualization",
+                  "Statistical Analysis",
+                  "API Integration",
+                  "Database Design",
+                ]}
+              />
+              <Skills
+                title="Collaboration"
+                items={[
+                  "Git/GitHub",
+                  "Team Leadership",
+                  "Project Management",
+                  "Code Review",
+                ]}
+              />
             </div>
           </div>
-        </section>
-        <!-- Call to Action -->
-        <section class="bg-secondary/5 py-16">
-          <div class="container mx-auto max-w-4xl px-4 text-center">
-            <h2
-              class="font-heading text-primary dark:text-secondary mb-6 text-3xl md:text-4xl"
-            >
-              Let's Connect!
-            </h2>
-            <h4
-              class="text-dark dark:text-light mx-auto mb-8 max-w-2xl text-lg"
-            >
-              I'm always interested in new opportunities, cool challenging
-              problems, and collaborative projects. Whether you're looking for a
-              developer, want to discuss a technical challenge, or just want to
-              chat about code, I'd love to hear from you.
-            </h4>
-            <div class="flex flex-wrap justify-center gap-4">
-              <!-- TODO: Change to Contact Page when Contact Page is finished... -->
-              <a
-                href="mailto:hello@eugenehysthompson.com"
-                class="bg-accent text-dark hover:bg-accent/80 rounded-md px-8 py-3 font-semibold transition-colors"
-              >
-                Get in Touch
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
-  </body>
-</html>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="dark:bg-secondary/5 bg-secondary/50 rounded-4xl py-16">
+      <div class="container mx-auto max-w-4xl px-4 text-center">
+        <h2
+          class="font-heading text-primary text-shadow-lg/10 dark:text-accent mb-6 text-3xl md:text-4xl"
+        >
+          Let's Connect!
+        </h2>
+        <h3 class="text-text mx-auto mb-8 max-w-2xl text-lg">
+          I'm always interested in new opportunities, cool challenging problems,
+          and collaborative projects. Whether you're looking for a developer,
+          want to discuss a technical challenge, or just want to chat about
+          code, I'd love to hear from you.
+        </h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          <Button client:load="svelte" link="/contact" name="Get in Touch" />
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>
