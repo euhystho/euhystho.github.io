@@ -69,6 +69,6 @@
     background-color: var(--shiki-dark-bg) !important;
   }
   .project-content {
-    @apply prose-a:decoration-dotted prose-h2:text-primary prose-h2:font-bold dark:prose-h2:text-accent prose-h3:text-primary/90 dark:prose-h3:text-accent/90 prose-h2:text-center prose-img:rounded-2xl prose-img:h-1/2 prose-img:w-1/2 prose-img:mx-auto dark:prose-code:rounded-xs prose-code:font-mono prose-code:text-sm;
+    @apply prose-a:decoration-dotted prose-h2:text-primary prose-h2:text-shadow-lg/20 prose-h2:text-shadow-accent dark:prose-h2:text-shadow-primary prose-h2:font-bold dark:prose-h2:text-accent prose-h3:text-primary/90 dark:prose-h3:text-accent/90 prose-h2:text-center prose-img:rounded-2xl prose-img:h-1/2 prose-img:w-1/2 prose-img:mx-auto dark:prose-code:rounded-xs prose-code:font-mono prose-code:text-sm;
   }
 }

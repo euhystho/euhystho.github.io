@@ -29,7 +29,7 @@ const featuredItems = filterPosts(allItems, {
       <div class="container mx-auto max-w-6xl px-4">
         {/* Details about the Featured Posts */}
         <div class="mb-12 text-center">
-          <h2 class="font-heading dark:text-accent text-primary mb-4 text-3xl md:text-5xl">
+          <h2 class="font-heading text-shadow-lg/10 dark:text-accent text-primary mb-4 text-3xl md:text-5xl">
             {`Featured ${capitalize(type)}`}
           </h2>
           <p class="text-text mx-auto max-w-3xl text-lg">
@@ -59,7 +59,7 @@ const featuredItems = filterPosts(allItems, {
               {/* Item Content */}
               <div class="flex flex-grow flex-col p-6">
                 <a href={`/${type}/${item.id}`}>
-                  <h3 class="font-heading text-text group-hover:text-primary dark:group-hover:text-accent mb-3 cursor-pointer text-center text-2xl transition-colors">
+                  <h3 class="font-heading text-text group-hover:text-primary text-shadow-lg/10 text-shadow-accent dark:group-hover:text-accent mb-3 cursor-pointer text-center text-2xl transition-colors">
                     {item.data.title}
                   </h3>
                 </a>
