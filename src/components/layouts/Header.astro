@@ -21,7 +21,7 @@ import Toggle from "../ui/theme_toggle.svelte";
     @apply right-0 left-0 border-2;
   }
   .nav-items {
-    @apply text-secondary dark:text-accent text-shadow-lg/15 max-lg:text-shadow-primary max-lg:text-text max-lg:text-end;
+    @apply text-secondary dark:text-accent max-lg:text-shadow-primary max-lg:text-text text-shadow-lg/15 max-lg:text-end;
   }
   .links-container {
     @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none lg:flex-row lg:justify-end;
@@ -59,7 +59,9 @@ import Toggle from "../ui/theme_toggle.svelte";
 <header class="bg-primary/95 top-0 z-50 w-full rounded-b-3xl px-4">
   <nav class="flex items-center justify-between">
     <a href="/" class="mr-auto" id="home-link">
-      <h1 class="text-secondary dark:text-accent text-4xl hover:text-white text-shadow-lg">
+      <h1
+        class="text-secondary dark:text-accent text-4xl text-shadow-lg hover:text-white"
+      >
         Home
       </h1>
     </a>
