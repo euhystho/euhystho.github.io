@@ -27,7 +27,7 @@
     "astro-pagefind": "^1.8.3",
     "concurrently": "^9.2.0",
     "embla-carousel-autoplay": "^8.6.0",
-    "lighthouse": "^12.7.0",
+    "lighthouse": "^12.7.1",
     "svelte": "^5.34.9",
     "svelte-radix": "^2.0.1",
     "tailwindcss": "^4.1.11",

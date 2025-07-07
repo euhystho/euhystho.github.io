@@ -16,7 +16,7 @@
         "astro-pagefind": "^1.8.3",
         "concurrently": "^9.2.0",
         "embla-carousel-autoplay": "^8.6.0",
-        "lighthouse": "^12.7.0",
+        "lighthouse": "^12.7.1",
         "svelte": "^5.34.9",
         "svelte-radix": "^2.0.1",
         "tailwindcss": "^4.1.11",
@@ -1011,7 +1011,7 @@
 
     "lie": ["lie@3.3.0", "", { "dependencies": { "immediate": "~3.0.5" } }, "sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ=="],
 
-    "lighthouse": ["lighthouse@12.7.0", "", { "dependencies": { "@paulirish/trace_engine": "0.0.56", "@sentry/node": "^9.28.1", "axe-core": "^4.10.3", "chrome-launcher": "^1.2.0", "configstore": "^7.0.0", "csp_evaluator": "1.1.5", "devtools-protocol": "0.0.1478340", "enquirer": "^2.3.6", "http-link-header": "^1.1.1", "intl-messageformat": "^10.5.3", "jpeg-js": "^0.4.4", "js-library-detector": "^6.7.0", "lighthouse-logger": "^2.0.1", "lighthouse-stack-packs": "1.12.2", "lodash-es": "^4.17.21", "lookup-closest-locale": "6.2.0", "metaviewport-parser": "0.3.0", "open": "^8.4.0", "parse-cache-control": "1.0.1", "puppeteer-core": "^24.10.2", "robots-parser": "^3.0.1", "semver": "^5.3.0", "speedline-core": "^1.4.3", "third-party-web": "^0.27.0", "tldts-icann": "^6.1.16", "ws": "^7.0.0", "yargs": "^17.3.1", "yargs-parser": "^21.0.0" }, "bin": { "lighthouse": "cli/index.js", "smokehouse": "cli/test/smokehouse/frontends/smokehouse-bin.js", "chrome-debug": "core/scripts/manual-chrome-launcher.js" } }, "sha512-Pr0ZUYpr+B6kwmLVpG2CRbDn/zrmP8YxieSKHN7IZWzRQAabZ8+hW4umLH01kBaezDD4X6Gmoq6TPgr4/SlTaQ=="],
+    "lighthouse": ["lighthouse@12.7.1", "", { "dependencies": { "@paulirish/trace_engine": "0.0.56", "@sentry/node": "^9.28.1", "axe-core": "^4.10.3", "chrome-launcher": "^1.2.0", "configstore": "^7.0.0", "csp_evaluator": "1.1.5", "devtools-protocol": "0.0.1478340", "enquirer": "^2.3.6", "http-link-header": "^1.1.1", "intl-messageformat": "^10.5.3", "jpeg-js": "^0.4.4", "js-library-detector": "^6.7.0", "lighthouse-logger": "^2.0.1", "lighthouse-stack-packs": "1.12.2", "lodash-es": "^4.17.21", "lookup-closest-locale": "6.2.0", "metaviewport-parser": "0.3.0", "open": "^8.4.0", "parse-cache-control": "1.0.1", "puppeteer-core": "^24.10.2", "robots-parser": "^3.0.1", "semver": "^5.3.0", "speedline-core": "^1.4.3", "third-party-web": "^0.27.0", "tldts-icann": "^6.1.16", "ws": "^7.0.0", "yargs": "^17.3.1", "yargs-parser": "^21.0.0" }, "bin": { "lighthouse": "cli/index.js", "smokehouse": "cli/test/smokehouse/frontends/smokehouse-bin.js", "chrome-debug": "core/scripts/manual-chrome-launcher.js" } }, "sha512-AfiLXG8gnisMPFqNK4+Y36A+JrirTYsogIiuIL1pQsAkwPHaTnBXN+ldt+TiLssEbKIkIpaWhViDQjUJbrbxnQ=="],
 
     "lighthouse-logger": ["lighthouse-logger@2.0.1", "", { "dependencies": { "debug": "^2.6.9", "marky": "^1.2.2" } }, "sha512-ioBrW3s2i97noEmnXxmUq7cjIcVRjT5HBpAYy8zE11CxU9HqlWHHeRxfeN1tn8F7OEMVPIC9x1f8t3Z7US9ehQ=="],
 
