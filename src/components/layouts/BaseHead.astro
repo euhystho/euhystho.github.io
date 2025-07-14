@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import ClientRouter from "astro/components/ClientRouter.astro";
+import { Font } from "astro:assets";
 import "../../styles/global.css";
 import { SITE_AUTHOR, SITE_TITLE, KEYWORDS } from "../../utils/consts";
 const canonicalURL = Astro.site
@@ -39,9 +40,9 @@ const {
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Preload Fonts -->
-<link rel="preload" as="font" type="font/woff2" href="/fonts/Montserrat-Regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/Figtree-Regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/JetBrainsMono-Regular.woff2" crossorigin>
+<Font cssVariable="--font-heading" preload />
+<Font cssVariable="--font-sans" preload />
+<Font cssVariable="--font-mono" preload />
 
 <!-- Theme and Visual -->
 <meta name="theme-color" content="#335c3b" />

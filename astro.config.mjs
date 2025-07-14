@@ -30,7 +30,49 @@ export default defineConfig({
     layout: "constrained",
     objectFit: "fill",
   },
-
+  experimental: {
+    fonts: [
+      {
+        provider: "local",
+        name: "Montserrat",
+        cssVariable: "--font-heading",
+        fallbacks: ["system-ui", "sans-serif"],
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/Montserrat-Regular.woff2"],
+          },
+        ],
+      },
+      {
+        provider: "local",
+        name: "Figtree",
+        cssVariable: "--font-sans",
+        fallbacks: ["system-ui", "sans-serif"],
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/Figtree-Regular.woff2"],
+          },
+        ],
+      },
+      {
+        provider: "local",
+        name: "JetBrains Mono",
+        cssVariable: "--font-mono",
+        fallbacks: ["monospace"],
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/JetBrainsMono-Regular.woff2"],
+          },
+        ],
+      },
+    ],
+  },
   vite: {
     plugins: [tailwindcss()],
   },
