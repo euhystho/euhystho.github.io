@@ -23,7 +23,7 @@
     "src/**/*",
     "*.astro",
     ".astro/types.d.ts",
-    "**/*",
+    "config/**/*",
     "components.json"
   ],
   "exclude": ["node_modules", "dist"]

@@ -18,7 +18,11 @@ export default defineConfig({
       defaultColor: false,
     }),
     sitemap(),
-    svelte(),
+    svelte({
+      compilerOptions: {
+        css: "injected",
+      },
+    }),
     pagefind(),
   ],
   image: {
