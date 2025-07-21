@@ -39,7 +39,7 @@
     "@lucide/svelte": "^0.525.0",
     "@playwright/test": "^1.54.1",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.0.15",
     "autoprefixer": "^10.4.21",
     "bits-ui": "^2.8.11",
     "clsx": "^2.1.1",
