@@ -31,7 +31,7 @@
     "svelte": "^5.36.12",
     "svelte-radix": "^2.0.1",
     "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "wait-on": "^8.0.3"
   },
   "devDependencies": {
