@@ -6,12 +6,13 @@ interface Props {
     src: ImageMetadata;
     alt: string;
   }[];
+  slideSize?: number; //must be a percent
 }
 
-const { images } = Astro.props;
+const { images, slideSize = 100 } = Astro.props;
 ---
 
-<div class="embla" id="embla">
+<div class="embla" id="embla" style={`--slide-size: ${slideSize}%;`}>
   <div class="embla__container">
     {
       images.map((image) => (
@@ -52,7 +53,7 @@ const { images } = Astro.props;
 <style>
   .embla {
     overflow: hidden;
-    max-width: 750px;
+    max-width: 85vw;
     margin: 0 auto;
     --slide-height: 30rem;
     --slide-spacing: 1rem;
@@ -71,7 +72,7 @@ const { images } = Astro.props;
   }
   .embla__parallax {
     border-radius: 1.8rem;
-    height: 100%;
+    height: var(--slide-height);
     overflow: hidden;
   }
   .embla__parallax__layer {
@@ -84,7 +85,7 @@ const { images } = Astro.props;
   .embla__parallax__img {
     max-width: none;
     flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
-    height: var(--slide-height);
+    height: 100%;
     object-fit: cover;
   }
 </style>

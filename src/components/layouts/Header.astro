@@ -24,7 +24,7 @@ import Toggle from "../ui/theme_toggle.svelte";
     @apply text-secondary dark:text-accent max-lg:text-shadow-primary max-lg:text-text text-shadow-lg/15 max-lg:text-end;
   }
   .links-container {
-    @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none lg:flex-row lg:justify-end;
+    @apply dark:max-lg:bg-primary/80 flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none lg:flex-row lg:justify-end;
   }
   @media (max-width: 1024px) {
     nav a:not(#home-link) {
@@ -94,9 +94,9 @@ import Toggle from "../ui/theme_toggle.svelte";
       <a href="/projects">
         <h2 class="nav-items">Projects</h2>
       </a>
-      <a href="/writings">
+      <!-- <a href="/writings">
         <h2 class="nav-items">Writings</h2>
-      </a>
+      </a> -->
       <a href="/contact">
         <h2 class="nav-items">Contact</h2>
       </a>

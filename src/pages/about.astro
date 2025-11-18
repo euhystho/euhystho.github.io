@@ -1,13 +1,54 @@
 ---
-import MainLayout from "../components/layouts/MainLayout.astro";
+import "../styles/global.css";
+import AboutPic from "../../public/images/about.jpeg";
+import BaseHead from "../components/layouts/BaseHead.astro";
+import Header from "../components/layouts/Header.astro";
+import Footer from "../components/layouts/Footer.astro";
+import ImageCarousel from "../components/ui/image_carousel.astro";
 ---
 
-<MainLayout title="About Eugene">
-  <main class="flex min-h-full flex-col items-center justify-center">
-    <h2 class="mb-4 text-center">🧑🏻‍💻 Hello Everyone!</h2>
-    <p class="text-center text-3xl">
-      Unfortunately, this page is still currently in maintenance, <br />{" "}
-      please check again next time!
-    </p>
-  </main>
-</MainLayout>
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <BaseHead
+      title="About Eugene"
+      description="Learn more about Eugene from professional aspirations to hobbies..."
+    />
+  </head>
+  <body class="relative min-h-screen">
+    <div class="site dark:bg-primary/30">
+      <Header />
+      <main class="m-auto min-h-full">
+        <div
+          class="flex flex-col items-center justify-center gap-8 rounded-2xl xl:flex-row"
+        >
+          <div class="min-w-0 xl:w-1/2 pt-8 pb-8">
+            <ImageCarousel
+              images={[
+                {
+                  src: AboutPic,
+                  alt: "Headshot of Eugene sitting in Stanley, Hong Kong",
+                },
+              ]}
+              slideSize={100}
+            />
+          </div>
+          <div class="max-w-prose min-w-0 xl:w-1/2">
+            <h1 class="mb-4 text-center wrap-break-word">
+              Eugene, a passionate software developer who loves creating
+              applications that models real-world situations, while being
+              delightful.
+            </h1>
+            <p class="wrap-break-word hyphens-auto">
+              My journey in technology started at an early age, curious about
+              how technology works, which further evolved into a career focused
+              on full-stack development, user experience, and clean and
+              functional design.
+            </p>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
