@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { type ContentType, ContentConfig } from "../../utils/consts";
+import { type ContentType, ContentConfig } from "../../utils/consts.ts";
 import Image from "astro/components/Image.astro";
-import { capitalize, filterPosts } from "../../utils/utils";
+import { capitalize, filterPosts } from "../../utils/utils.ts";
 // Get properties
 interface Props {
-  type: ContentType; // "projects" or "writings"
+  type: ContentType; // "projects"  or other types in the future
 }
 const { type } = Astro.props as Props;
 
@@ -45,7 +45,7 @@ const featuredItems = filterPosts(allItems, {
             >
               {/* Item Image */}
               {"image" in item.data && item.data.image && (
-                <div class="h-[180px] w-full overflow-hidden">
+                <div class="h-45 w-full overflow-hidden">
                   <Image
                     src={item.data.image}
                     alt={item.data.imageAlt}
@@ -57,14 +57,14 @@ const featuredItems = filterPosts(allItems, {
                 </div>
               )}
               {/* Item Content */}
-              <div class="flex flex-grow flex-col p-6">
+              <div class="flex grow flex-col p-6">
                 <a href={`/${type}/${item.id}`}>
                   <h3 class="font-heading text-text group-hover:text-primary text-shadow-accent dark:group-hover:text-accent mb-3 cursor-pointer text-center text-2xl transition-colors text-shadow-lg/10">
                     {item.data.title}
                   </h3>
                 </a>
                 <div class="mt-auto mb-4 items-center">
-                  <p class="text-text flex-grow text-sm leading-relaxed max-md:text-center">
+                  <p class="text-text grow text-sm leading-relaxed max-md:text-center">
                     {item.data.description.length > 120
                       ? item.data.description.substring(0, 120) + "..."
                       : item.data.description}

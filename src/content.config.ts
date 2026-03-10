@@ -34,7 +34,7 @@ const baseWritingSchema = z.object({
 
 // Export the generated types
 export type ProjectSchema = z.infer<typeof baseProjectSchema>;
-export type WritingSchema = z.infer<typeof baseWritingSchema>;
+// export type WritingSchema = z.infer<typeof baseWritingSchema>;
 
 // Define Project Schema
 const projectSchema = ({ image }: { image: any }) =>
@@ -78,15 +78,14 @@ const writingSchema = ({ image }: { image: any }) =>
     modDate: z.coerce.date(),
   });
 
-const writingCollection = defineCollection({
-  loader: glob({
-    base: "./src/writingposts",
-    pattern: "**/*.mdx",
-  }),
-  schema: writingSchema,
-});
+// const writingCollection = defineCollection({
+//   loader: glob({
+//     base: "./src/writingposts",
+//     pattern: "**/*.mdx",
+//   }),
+//   schema: writingSchema,
+// });
 
 export const collections = {
   projects: projectsCollection,
-  writings: writingCollection,
 };

@@ -1,7 +1,7 @@
 ---
-import { SITE_AUTHOR, type ContentType } from "../../utils/consts";
+import { SITE_AUTHOR, type ContentType } from "../../utils/consts.ts";
 import Search from "astro-pagefind/components/Search";
-import { capitalize } from "../../utils/utils";
+import { capitalize } from "../../utils/utils.ts";
 import MainLayout from "./MainLayout.astro";
 interface Props {
   type: ContentType;
@@ -25,7 +25,7 @@ const { type, title, description } = Astro.props;
       <slot />
     </section>
     {
-      type === "writings" && (
+      type != "projects" && (
         <aside class="bg-accent/25 dark:bg-primary/40 m-16 flex h-auto basis-6/10 flex-col items-center justify-start rounded-4xl p-8">
           <Search
             id="search"

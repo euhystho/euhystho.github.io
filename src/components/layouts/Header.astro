@@ -53,7 +53,7 @@ import Toggle from "../ui/theme_toggle.svelte";
     @apply right-0;
   }
   #sidebar-active:checked ~ #overlay {
-    @apply fixed top-0 left-0 z-[9] h-full w-full;
+    @apply fixed top-0 left-0 z-9 h-full w-full;
   }
 </style>
 <header class="bg-primary/95 top-0 z-50 w-full rounded-b-3xl px-4">
@@ -93,9 +93,6 @@ import Toggle from "../ui/theme_toggle.svelte";
       </a>
       <a href="/projects">
         <h2 class="nav-items">Projects</h2>
-      </a>
-      <a href="/writings">
-        <h2 class="nav-items">Writings</h2>
       </a>
       <a href="/contact">
         <h2 class="nav-items">Contact</h2>

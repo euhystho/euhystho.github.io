@@ -1,5 +1,5 @@
 ---
-import { SITE_AUTHOR } from "../../utils/consts";
+import { SITE_AUTHOR } from "../../utils/consts.ts";
 interface Props {
   title: string;
   date: Date;
@@ -27,22 +27,6 @@ const projectJSONLD = isProject && {
   datePublished: date.toISOString(),
   dateModified: modDate?.toISOString(),
 };
-
-const writingJSONLD = !isProject && {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": canonicalURL.toString(),
-  },
-  headline: title,
-  author: {
-    "@type": "Person",
-    name: SITE_AUTHOR,
-  },
-  datePublished: date.toISOString(),
-  dateModified: modDate?.toISOString(),
-};
 ---
 
 {
@@ -51,16 +35,6 @@ const writingJSONLD = !isProject && {
       is:inline
       type="application/ld+json"
       set:html={JSON.stringify(projectJSONLD)}
-    />
-  )
-}
-
-{
-  writingJSONLD && (
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(writingJSONLD)}
     />
   )
 }

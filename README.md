@@ -2,7 +2,7 @@
 
 [![Playwright Tests](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml)
 
-A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, professional aspirations, and writing samples.
+A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, and professional aspirations.
 
 ## 💻 Technology Stack
 
@@ -26,13 +26,8 @@ This project uses GitHub Actions for continuous integration and deployment:
    - Installs Playwright browsers for testing
    - Runs Playwright tests to automate web interactions on multiple browsers and platforms
 
-3. **GitHub Pages Deployment** (auto-configured by GitHub):
-   - Automatically deploys the built website to GitHub Pages
-   - Triggered when changes are pushed to the gh-pages branch
-   - Creates the production build and publishes it
-
-4. **Cloudflare Pages** (configured in Cloudflare dashboard):
-   - Provides additional hosting with Cloudflare's CDN capabilities
+3. **Cloudflare Pages** (configured in Cloudflare dashboard):
+   - Provides website hosting with Cloudflare's CDN capabilities
    - Automatically detects changes in the GitHub repository
    - Offers preview deployments for pull requests
 
@@ -43,7 +38,7 @@ This project uses GitHub Actions for continuous integration and deployment:
 ├── public/                # Static assets (images, fonts, etc.)
 ├── src/
 │   ├── components/        # Reusable UI components using Astro or Svelte
-│   ├── content/           # Content collections (projects, writing samples, etc.)
+│   ├── content/           # Content collections (projects, etc.)
 │   ├── layouts/           # Page layout templates
 │   ├── pages/             # Page components and routes
 │   └── styles/
@@ -64,18 +59,18 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `bun install`             | Installs dependencies                            |
+| `bun run dev`             | Starts local dev server at `localhost:4321`      |
+| `bun run build`           | Build your production site to `./dist/`          |
+| `bun run preview`         | Preview your build locally, before deploying     |
+| `bun run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun run astro -- --help` | Get help using the Astro CLI                     |
 
 ## 🚀 Development Workflow
 
 1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
+2. Install dependencies: `bun install`
+3. Start the development server: `bun run dev`
 4. Make changes to the codebase
 5. Commit and push changes to GitHub
 6. GitHub Actions will automatically build, test, and deploy your changes

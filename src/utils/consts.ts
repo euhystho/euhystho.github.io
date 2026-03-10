@@ -18,7 +18,7 @@ export const EMAIL = "mailto:hello@eugenehysthompson.com";
 export const EMAIL_COLOR = "#212121";
 
 // Content Collection Types
-export type ContentType = "projects" | "writings";
+export type ContentType = "projects";
 
 // Content configurations based on type
 export const ContentConfig: Record<
@@ -32,10 +32,5 @@ export const ContentConfig: Record<
     description:
       "A selection of projects that showcase my growth as a developer: from passionate first attempts to sophisticated solutions that solve real problems.",
     itemLinkText: "Read the story",
-  },
-  writings: {
-    description:
-      "A collection of my thoughts, experiences, and insights on software development, data science, and personal growth.",
-    itemLinkText: "Read article",
   },
 };

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -33,43 +33,49 @@ export default defineConfig({
   experimental: {
     fonts: [
       {
-        provider: "local",
+        provider: fontProviders.local(),
         name: "Montserrat",
         cssVariable: "--font-heading",
         fallbacks: ["system-ui", "sans-serif"],
-        variants: [
-          {
-            weight: 400,
-            style: "normal",
-            src: ["./src/assets/fonts/Montserrat-Regular.woff2"],
-          },
-        ],
+        options: {
+          variants: [
+            {
+              weight: 400,
+              style: "normal",
+              src: ["./src/assets/fonts/Montserrat-Regular.woff2"],
+            },
+          ],
+        },
       },
       {
-        provider: "local",
+        provider: fontProviders.local(),
         name: "Figtree",
         cssVariable: "--font-sans",
         fallbacks: ["system-ui", "sans-serif"],
-        variants: [
-          {
-            weight: 400,
-            style: "normal",
-            src: ["./src/assets/fonts/Figtree-Regular.woff2"],
-          },
-        ],
+        options: {
+          variants: [
+            {
+              weight: 400,
+              style: "normal",
+              src: ["./src/assets/fonts/Figtree-Regular.woff2"],
+            },
+          ],
+        },
       },
       {
-        provider: "local",
+        provider: fontProviders.local(),
         name: "JetBrains Mono",
         cssVariable: "--font-mono",
         fallbacks: ["monospace"],
-        variants: [
-          {
-            weight: 400,
-            style: "normal",
-            src: ["./src/assets/fonts/JetBrainsMono-Regular.woff2"],
-          },
-        ],
+        options: {
+          variants: [
+            {
+              weight: 400,
+              style: "normal",
+              src: ["./src/assets/fonts/JetBrainsMono-Regular.woff2"],
+            },
+          ],
+        },
       },
     ],
   },

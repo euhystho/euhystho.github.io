@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import type { ProjectSchema, WritingSchema } from "../../content.config";
-import { slugify } from "src/utils/utils";
-import type { ContentType } from "src/utils/consts";
+import type { ProjectSchema } from "../../content.config.ts";
+import { slugify } from "../../utils/utils.ts";
+import type { ContentType } from "../../utils/consts.ts";
 
-type ContentFrontMatter = ProjectSchema | WritingSchema;
+type ContentFrontMatter = ProjectSchema;
 interface Props {
   type: ContentType;
   frontmatter: ContentFrontMatter;
@@ -78,7 +78,7 @@ const { type, frontmatter, url } = Astro.props;
           ))
       }
       {
-        type === "writings" &&
+        type != "projects" &&
           frontmatter.tags.map((tag) => (
             <p class="bg-accent/20 text-text rounded-full p-2 text-center text-sm">
               {tag}
