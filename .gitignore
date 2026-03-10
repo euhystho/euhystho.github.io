@@ -34,3 +34,6 @@ pnpm-debug.log*
 
 # Lighthouse and Playwright reports
 reports/
+
+#typescript config
+tsconfig.tsbuildinfo
