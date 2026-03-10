@@ -18,11 +18,7 @@ export default defineConfig({
       defaultColor: false,
     }),
     sitemap(),
-    svelte({
-      compilerOptions: {
-        css: "injected",
-      },
-    }),
+    svelte(),
     pagefind(),
   ],
   image: {
@@ -30,66 +26,67 @@ export default defineConfig({
     layout: "constrained",
     objectFit: "fill",
   },
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.local(),
-        name: "Montserrat",
-        cssVariable: "--font-heading",
-        fallbacks: ["system-ui", "sans-serif"],
-        options: {
-          variants: [
-            {
-              weight: 400,
-              style: "normal",
-              src: ["./src/assets/fonts/Montserrat-Regular.woff2"],
-            },
-          ],
-        },
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "Montserrat",
+      cssVariable: "--font-heading",
+      fallbacks: ["system-ui", "sans-serif"],
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/Montserrat-Regular.woff2"],
+          },
+        ],
       },
-      {
-        provider: fontProviders.local(),
-        name: "Figtree",
-        cssVariable: "--font-sans",
-        fallbacks: ["system-ui", "sans-serif"],
-        options: {
-          variants: [
-            {
-              weight: 400,
-              style: "normal",
-              src: ["./src/assets/fonts/Figtree-Regular.woff2"],
-            },
-          ],
-        },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Figtree",
+      cssVariable: "--font-sans",
+      fallbacks: ["system-ui", "sans-serif"],
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/Figtree-Regular.woff2"],
+          },
+        ],
       },
-      {
-        provider: fontProviders.local(),
-        name: "JetBrains Mono",
-        cssVariable: "--font-mono",
-        fallbacks: ["monospace"],
-        options: {
-          variants: [
-            {
-              weight: 400,
-              style: "normal",
-              src: ["./src/assets/fonts/JetBrainsMono-Regular.woff2"],
-            },
-          ],
-        },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "JetBrains Mono",
+      cssVariable: "--font-mono",
+      fallbacks: ["monospace"],
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/JetBrainsMono-Regular.woff2"],
+          },
+        ],
       },
-    ],
-  },
+    },
+  ],
   vite: {
     build: {
       rollupOptions: {
         output: {
-          manualChunks(id){
-            if (id.includes('node_modules/svelte') || id.includes('node_modules/svelte-toolbelt')){
-              return 'svelte-vendor';
+          manualChunks(id) {
+            if (
+              id.includes("node_modules/svelte") ||
+              id.includes("node_modules/svelte-toolbelt")
+            ) {
+              return "svelte-vendor";
             }
-          }
-        }
-      }
+          },
+        },
+      },
     },
     plugins: [tailwindcss()],
   },

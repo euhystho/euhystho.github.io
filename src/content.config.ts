@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import type { ImageMetadata } from "astro";
 
@@ -11,8 +12,8 @@ const baseProjectSchema = z.object({
   icon: z.custom<ImageMetadata>().optional(),
   iconAlt: z.string().optional(),
   tags: z.array(z.string()),
-  github: z.string().url().optional(),
-  demo: z.string().url().optional(),
+  github: z.url().optional(),
+  demo: z.url().optional(),
   featured: z.boolean().default(false),
   date: z.coerce.date(),
   modDate: z.coerce.date(),
@@ -46,8 +47,8 @@ const projectSchema = ({ image }: { image: any }) =>
     icon: image().optional(),
     iconAlt: z.string().optional(),
     tags: z.array(z.string()),
-    github: z.string().url().optional(),
-    demo: z.string().url().optional(),
+    github: z.url().optional(),
+    demo: z.url().optional(),
     featured: z.boolean().default(false),
     date: z.coerce.date(),
     modDate: z.coerce.date(),

@@ -68,21 +68,13 @@ const { type, frontmatter, url } = Astro.props;
     <div class="mb-4 flex flex-wrap gap-2 max-lg:justify-center">
       {
         type === "projects" &&
-          frontmatter.tags.map((tag) => (
+          frontmatter.tags.map((tag: string) => (
             <a
               href={`/${type}/tag/${slugify(tag)}`}
               class="bg-accent/20 text-text rounded-full p-2 text-center text-sm"
             >
               {tag}
             </a>
-          ))
-      }
-      {
-        type != "projects" &&
-          frontmatter.tags.map((tag) => (
-            <p class="bg-accent/20 text-text rounded-full p-2 text-center text-sm">
-              {tag}
-            </p>
           ))
       }
     </div>

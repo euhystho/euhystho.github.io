@@ -5,7 +5,6 @@ import { filterPosts, getURL } from "../../utils/utils.ts";
 import BlogCard from "../../components/blog/blogCard.astro";
 import BlogLayout from "../../components/layouts/BlogLayout.astro";
 import NoPosts from "../../components/blog/NoPosts.astro";
-import PaginationSvelte from "../../components/ui/pagination.svelte";
 
 // @ts-ignore
 export async function getStaticPaths({ paginate }) {
@@ -37,9 +36,8 @@ const { page } = Astro.props as {
       ))
     )
   }
-  {
+  <!-- {
     page.size != page.total && (
-      <PaginationSvelte client:load="svelte" page={page} />
     )
-  }
+  } -->
 </BlogLayout>
