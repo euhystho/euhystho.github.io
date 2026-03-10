@@ -80,6 +80,17 @@ export default defineConfig({
     ],
   },
   vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id){
+            if (id.includes('node_modules/svelte') || id.includes('node_modules/svelte-toolbelt')){
+              return 'svelte-vendor';
+            }
+          }
+        }
+      }
+    },
     plugins: [tailwindcss()],
   },
 });

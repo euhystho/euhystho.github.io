@@ -30,6 +30,7 @@
     "lighthouse": "^12.8.2",
     "svelte": "^5.53.9",
     "svelte-radix": "^2.0.2",
+    "svelte-toolbelt": "^0.10.6",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "wait-on": "^9.0.4"
