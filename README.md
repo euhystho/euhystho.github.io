@@ -1,7 +1,5 @@
 # Eugene's Personal Website
 
-[![Playwright Tests](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml/badge.svg)](https://github.com/euhystho/euhystho.github.io/actions/workflows/playwright.yml)
-
 A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, and professional aspirations.
 
 ## 💻 Technology Stack
@@ -21,12 +19,7 @@ This project uses GitHub Actions for continuous integration and deployment:
    - Lints the project to verify style and reduce errors
    - Builds the project to verify there are no errors
    - Ensures code quality and prevents broken deployments
-2. **Playwright Tests** (`.github/workflows/playwright.yml`):
-   - Triggered on every push and pull request
-   - Installs Playwright browsers for testing
-   - Runs Playwright tests to automate web interactions on multiple browsers and platforms
-
-3. **Cloudflare Pages** (configured in Cloudflare dashboard):
+2. **Cloudflare Pages** (configured in Cloudflare dashboard):
    - Provides website hosting with Cloudflare's CDN capabilities
    - Automatically detects changes in the GitHub repository
    - Offers preview deployments for pull requests
