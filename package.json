@@ -28,7 +28,7 @@
     "concurrently": "^9.2.1",
     "embla-carousel-autoplay": "^8.6.0",
     "lighthouse": "^13.0.3",
-    "svelte": "^5.53.9",
+    "svelte": "^5.53.12",
     "svelte-radix": "^3.0.2",
     "svelte-toolbelt": "^0.10.6",
     "tailwindcss": "^4.2.1",
