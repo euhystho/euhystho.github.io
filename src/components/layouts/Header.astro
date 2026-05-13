@@ -21,7 +21,7 @@ import Toggle from "../ui/theme_toggle.svelte";
     @apply right-0 left-0 border-2;
   }
   .nav-items {
-    @apply text-secondary dark:text-accent max-lg:text-shadow-primary max-lg:text-text text-shadow-lg/15 max-lg:text-end;
+    @apply text-card dark:text-heading  max-lg:text-shadow-primary max-lg:text-text text-shadow-lg/15 max-lg:text-end;
   }
   .links-container {
     @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none lg:flex-row lg:justify-end;
@@ -60,9 +60,9 @@ import Toggle from "../ui/theme_toggle.svelte";
   <nav class="flex items-center justify-between">
     <a href="/" class="mr-auto" id="home-link">
       <h1
-        class="text-secondary dark:text-accent text-4xl text-shadow-lg hover:text-white"
+        class="text-card text-4xl text-shadow-lg hover:text-white text-nowrap"
       >
-        Home
+        eugene thompson
       </h1>
     </a>
 
@@ -88,16 +88,16 @@ import Toggle from "../ui/theme_toggle.svelte";
         />
       </label>
 
-      <a href="/about">
-        <h2 class="nav-items">About</h2>
-      </a>
-      <a href="/projects">
-        <h2 class="nav-items">Projects</h2>
-      </a>
-      <a href="/contact">
-        <h2 class="nav-items">Contact</h2>
-      </a>
 
+      <a href="/projects">
+        <h2 class="nav-items">projects</h2>
+      </a>
+      <a href="/Thompson_Eugene_Resume.pdf" target="_blank" rel="noopener noreferrer">
+        <h2 class="nav-items">resume</h2>
+      </a>
+      <a href="/about">
+        <h2 class="nav-items">about</h2>
+      </a>
       <div
         class="max-lg:flex max-lg:w-full max-lg:justify-center max-lg:pb-20 max-lg:pl-13"
         id="toggle-mode"

@@ -21,11 +21,14 @@
   --font-mono: "JetBrains Mono", monospace;
 
   /* Light Mode Color Palette */
-  --color-text: #1c2736;
-  --color-background: #f9fafb;
-  --color-primary: #2d5a23;
-  --color-secondary: #e8f5e8;
-  --color-accent: #afbc7e;
+  --color-background: #f5f4f1;
+  --color-surface: #eceae5;
+  --color-card: #e4e1db;
+  --color-text: #2e2c28;
+  --color-heading: #1a1917;
+  --color-primary: #156658;
+  --color-secondary: #1d8c74;
+  --color-accent: rgba(29, 140, 116, 0.1);
 
   --breakpoint-header: 58.125rem;
 
@@ -34,11 +37,14 @@
 @layer base {
   /* Dark Mode Color Palette */
   @variant dark {
-    --color-text: #c9d4e3;
-    --color-background: #1c2736;
-    --color-primary: #091509;
-    --color-secondary: #708042;
-    --color-accent: #addba3;
+    --color-background: #191c1f;
+    --color-surface: #1e2124;
+    --color-card: #242729;
+    --color-text: #c8c4bc;
+    --color-heading: #e4e0d8;
+    --color-primary: #2a8c74;
+    --color-secondary: #3bc4a2;
+    --color-accent: rgba(59, 196, 162, 0.1);
   }
 
   h1 {

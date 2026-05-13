@@ -76,22 +76,3 @@ test.describe("Project Pages", () => {
     }
   });
 });
-
-// Test contact functionality
-test.describe("Contact", () => {
-  test("contact information is accessible", async ({ page }) => {
-    await page.goto("/");
-
-    // Test social links
-    const githubLink = page.getByRole("link", { name: /github/i });
-    const emailLink = page.getByRole("link", { name: /email/i });
-
-    if (await githubLink.isVisible()) {
-      await expect(githubLink).toHaveAttribute("href", /github\.com/);
-    }
-
-    if (await emailLink.isVisible()) {
-      await expect(emailLink).toHaveAttribute("href", /mailto:/);
-    }
-  });
-});

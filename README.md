@@ -1,6 +1,6 @@
 # Eugene's Personal Website
 
-A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects, academic achievements, and professional aspirations.
+A personal website built with Astro and Svelte frameworks with Tailwind CSS to showcase technical projects
 
 ## 💻 Technology Stack
 

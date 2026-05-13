@@ -30,21 +30,21 @@ const { project } = Astro.props;
     <div class="site">
       <Header />
       <main
-        class="dark:bg-secondary/10 bg-secondary/50 mx-12 my-12 max-w-5xl rounded-4xl p-16 shadow-lg md:mx-auto"
+        class="bg-surface mx-12 my-12 max-w-5xl rounded-4xl p-16 shadow-lg md:mx-auto"
       >
         <!-- Project Header -->
         <div class="mb-8">
           <div class="mb-12">
             <a
               href="/projects"
-              class="dark:text-accent hover:text-primary dark:hover:text-text transition-colors"
+              class="text-text dark:hover:text-text transition-colors"
             >
               ← Back to Projects
             </a>
           </div>
           <div class="mb-6">
             <h1
-              class="font-heading text-primary dark:text-accent mb-4 text-4xl md:text-5xl"
+              class="font-heading text-heading mb-4 text-4xl md:text-5xl"
             >
               {project.title}
             </h1>
@@ -54,7 +54,7 @@ const { project } = Astro.props;
 
             <!-- Project Meta -->
             <div
-              class="text-primary dark:text-accent mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-base"
+              class="text-text mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-base"
             >
               <div>
                 Completed on
@@ -74,7 +74,7 @@ const { project } = Astro.props;
                 project.tags.map((tag: string) => (
                   <a
                     href={`/projects/tag/${slugify(tag)}`}
-                    class="bg-secondary dark:bg-secondary/20 text-text rounded-full px-3 py-1 text-sm"
+                    class="bg-card text-text rounded-full px-3 py-1 text-sm"
                   >
                     {tag}
                   </a>

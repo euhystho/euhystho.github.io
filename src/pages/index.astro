@@ -11,16 +11,14 @@ import Button from "../components/ui/button.svelte";
     <!-- Hero Section -->
     <section class="py-16 text-center">
       <div class="mx-auto max-w-4xl">
-        <h1
-          class="text-primary dark:text-accent mb-6 text-5xl text-shadow-lg/5 md:text-6xl"
-        >
-          Turning complex data into intuitive solutions
+        <h1 class="text-heading mb-6 text-5xl text-shadow-lg/5 md:text-6xl">
+          Turning messy data into clear decisions.
         </h1>
         <p
           class="text-text text-shadow-accent dark:text-shadow-primary mb-8 text-xl text-shadow-md/30 md:text-2xl"
         >
-          Emerging professional at the intersection of data science, software
-          engineering, and UI design.
+          Applied math background with data visualization expertise. <br />
+          Based in Philadelphia Area.
         </p>
         <div class="flex flex-col justify-center gap-4 sm:flex-row">
           <Button
@@ -39,27 +37,29 @@ import Button from "../components/ui/button.svelte";
         <div class="grid items-center gap-12 md:grid-cols-2">
           <div>
             <h2
-              class="font-heading text-primary dark:text-accent mb-6 text-3xl text-shadow-lg/10 md:text-4xl"
+              class="font-heading text-heading mb-6 text-3xl text-shadow-lg/10 md:text-4xl"
             >
-              Building Through Constant Learning
+              Turning Number Into Decisions
             </h2>
             <div class="text-text space-y-4">
               <p>
-                My journey in software development started with curiosity and
-                grew through making mistakes, learning from them, and building
-                interesting and complex projects.
+                While studying Applied Mathematics at Ursinus College, I was
+                drawn towards data science projects that allowed me to apply my
+                statistical and programming skills to real-world problems. 
               </p>
               <p>
-                From teaching myself GUI development by creating a game inspired
-                by Genshin Impact, leading a Flutter team through real-world
-                development challenges, to analyzing political data about Hong
-                Kong and Venezuela, each of these projects has pushed me to grow
-                both technically and professionally.
+                Through that passion, I honed my interest in personal finance by
+                building interactive financial calculators and Monte Carlo
+                simulations for Ursinus' Financial Services Office, to analyzing
+                commercial real estate trends with clear GIS visualizations at
+                DataFest Philly 2025, to developing R Shiny dashboards that made
+                global economic data intuitive to explore economic events.
               </p>
               <p>
-                The best way to learn programming is by building things that
-                matter, collaborating with others, and embracing the messy
-                reality of real-world development.
+                I am currently looking for data analyst and BI roles where I can
+                continue doing what I love most: asking the right questions,
+                analyzing data, and creating visualizations that drive clear
+                decisions. 
               </p>
             </div>
             <div class="mt-6">
@@ -85,16 +85,16 @@ import Button from "../components/ui/button.svelte";
           </div>
 
           <!-- Skills/Technologies -->
-          <div class="bg-secondary/50 dark:bg-secondary/10 rounded-4xl p-8">
+          <div class="bg-card rounded-4xl p-8">
             <h3
-              class="font-heading text-primary dark:text-accent mb-6 text-3xl text-shadow-lg/10 md:text-4xl"
+              class="font-heading text-heading mb-6 text-3xl text-shadow-lg/10 md:text-4xl"
             >
               Technologies I Work With
             </h3>
             <div class="grid grid-cols-2 gap-4 text-sm">
               <Skills
                 title="Languages"
-                items={["Python", "R", "SQL", "Java", "HTML/CSS/JavaScript"]}
+                items={["Python", "R", "SQL", "Java", "HTML/CSS/JS"]}
               />
               <Skills
                 title="Frameworks & Tools"
@@ -126,25 +126,6 @@ import Button from "../components/ui/button.svelte";
               />
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="dark:bg-secondary/5 bg-secondary/50 rounded-4xl py-16">
-      <div class="container mx-auto max-w-4xl px-4 text-center">
-        <h2
-          class="font-heading text-primary dark:text-accent mb-6 text-3xl text-shadow-lg/10 md:text-4xl"
-        >
-          Let's Connect!
-        </h2>
-        <h3 class="text-text mx-auto mb-8 max-w-2xl text-lg">
-          I'm always interested in new opportunities and collaborative projects.
-          Whether you're looking for a developer, want to discuss a technical
-          challenge, or just want to chat about code, I'd love to hear from you.
-        </h3>
-        <div class="flex flex-wrap justify-center gap-4">
-          <Button client:load="svelte" link="/contact" name="Get in Touch" />
         </div>
       </div>
     </section>
