@@ -1,13 +1,249 @@
 ---
 import MainLayout from "../components/layouts/MainLayout.astro";
+import Image from "astro/components/Image.astro";
+import bgImage from "public/images/about.jpeg";
 ---
 
 <MainLayout title="About Eugene">
-  <main class="flex min-h-full flex-col items-center justify-center">
-    <h2 class="mb-4 text-center">🧑🏻‍💻 Hello Everyone!</h2>
-    <p class="text-center text-3xl">
-      Unfortunately, this page is still currently in maintenance, <br />{" "}
-      please check again next time!
-    </p>
+  <main class="mx-auto w-full max-w-6xl px-4 ">
+    <!-- Hero Section -->
+    <section class="mb-12">
+      <Image
+        src={bgImage}
+        alt="Picture of Eugene"
+        class="mb-3 w-full rounded-md"
+      />
+      <div
+        class="grid grid-cols-1 items-start gap-6 md:grid-cols-[1fr_120px] md:gap-8"
+      >
+        <div>
+          <h1 class="text-heading mb-2 text-2xl font-bold md:text-3xl">
+            Eugene Thompson
+          </h1>
+          <br />
+          <p class="text-text mb-4 text-xl md:text-2xl">
+            Applied Mathematics · Data Analyst
+          </p>
+          <p class="text-text mb-4 text-base leading-relaxed">
+            I'm a senior at Ursinus College majoring in Applied Mathematics. As
+            a data analyst, I thrive on transforming complex datasets into
+            actionable insights. My passion for data is matched only by my love
+            for music — I've been playing the violin for over 15 years and have
+            performed at Carnegie Hall. I'm excited to bring my analytical skills
+            and creative problem-solving to a dynamic team.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Skills Section -->
+    <section class="mb-12">
+      <div
+        class="text-text/60 mb-6 text-lg font-semibold tracking-widest uppercase"
+      >
+        Skills
+      </div>
+      <div class="mb-4 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="space-y-6">
+          <!-- Languages -->
+          <div>
+            <div
+              class="text-text/70 mb-3 text-xs font-semibold tracking-wide uppercase"
+            >
+              Languages
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-block rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs text-teal-700 dark:border-teal-600 dark:bg-teal-900/20 dark:text-teal-300"
+                >Python</span
+              >
+              <span
+                class="inline-block rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs text-teal-700 dark:border-teal-600 dark:bg-teal-900/20 dark:text-teal-300"
+                >R</span
+              >
+              <span
+                class="inline-block rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs text-teal-700 dark:border-teal-600 dark:bg-teal-900/20 dark:text-teal-300"
+                >SQL</span
+              >
+              <span
+                class="inline-block rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs text-teal-700 dark:border-teal-600 dark:bg-teal-900/20 dark:text-teal-300"
+                >Java</span
+              >
+            </div>
+          </div>
+          <!-- Visualization & BI -->
+          <div>
+            <div
+              class="text-text/70 mb-3 text-xs font-semibold tracking-wide uppercase"
+            >
+              Visualization & BI
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-block rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-xs text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300"
+                >Tableau</span
+              >
+              <span
+                class="inline-block rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-xs text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300"
+                >R Shiny</span
+              >
+              <span
+                class="inline-block rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-xs text-blue-700 dark:border-blue-600 dark:bg-blue-900/20 dark:text-blue-300"
+                >Plotly</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <!-- Analysis -->
+          <div>
+            <div
+              class="text-text/70 mb-3 text-xs font-semibold tracking-wide uppercase"
+            >
+              Analysis
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-block rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-600 dark:bg-gray-900/20 dark:text-gray-300"
+                >Statistical Modeling</span
+              >
+              <span
+                class="inline-block rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-600 dark:bg-gray-900/20 dark:text-gray-300"
+                >Monte Carlo</span
+              >
+              <span
+                class="inline-block rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-600 dark:bg-gray-900/20 dark:text-gray-300"
+                >GIS</span
+              >
+            </div>
+          </div>
+          <!-- Tools -->
+          <div>
+            <div
+              class="text-text/70 mb-3 text-xs font-semibold tracking-wide uppercase"
+            >
+              Tools
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="inline-block rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-600 dark:bg-gray-900/20 dark:text-gray-300"
+                >Git</span
+              >
+              <span
+                class="inline-block rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-600 dark:bg-gray-900/20 dark:text-gray-300"
+                >Astro</span
+              >
+              <span
+                class="inline-block rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-700 dark:border-gray-600 dark:bg-gray-900/20 dark:text-gray-300"
+                >Flutter</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-surface my-12" />
+
+    <!-- Education Section -->
+    <section class="mb-12">
+      <div
+        class="border-surface bg-card/50 dark:bg-card/30 rounded-xl border p-5"
+      >
+        <div class="flex gap-4">
+          <div
+            class="border-surface bg-surface/50 text-text/70 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-xs font-semibold"
+          >
+            <Image
+              src="/images/uc_shield.png"
+              alt="Ursinus College logo"
+              width={45}
+              height={45}
+              class="mt-4"
+            />
+          </div>
+          <div class="flex-1">
+            <h3 class="text-heading font-semibold">Ursinus College</h3>
+            <p class="text-text mt-1 text-sm">
+              B.S. Applied Mathematics · Computer Science Minor · May 2025
+              <br> GPA: 3.91/4.0
+            </p>
+
+            <div class="mt-4">
+              <div class="text-text/70 mb-2 text-xs font-semibold">
+                Relevant Coursework
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="border-surface bg-surface/50 text-text inline-block rounded border px-2 py-1 text-xs"
+                  >Statistical Modeling</span
+                >
+                <span
+                  class="border-surface bg-surface/50 text-text inline-block rounded border px-2 py-1 text-xs"
+                  >Applied Regression</span
+                >
+                <span
+                  class="border-surface bg-surface/50 text-text inline-block rounded border px-2 py-1 text-xs"
+                  >Data Structures</span
+                >
+                <span
+                  class="border-surface bg-surface/50 text-text inline-block rounded border px-2 py-1 text-xs"
+                  >Database Design</span
+                >
+                <span
+                  class="border-surface bg-surface/50 text-text inline-block rounded border px-2 py-1 text-xs"
+                  >Real Analysis</span
+                >
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <div class="text-text/70 mb-2 text-xs font-semibold">
+                Activities & Honors
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="inline-block rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs text-teal-700 dark:border-teal-600 dark:bg-teal-900/20 dark:text-teal-300"
+                  >Inclusive Data Science Initiative</span
+                >
+                <span
+                  class="inline-block rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs text-teal-700 dark:border-teal-600 dark:bg-teal-900/20 dark:text-teal-300"
+                  >DataFest Philly 2025</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div
+        class="mt-4 inline-block rounded bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900/20 dark:text-blue-300"
+      >
+        ✎ Add GPA if 3.5+. List 4–6 courses. Highlight the initiative and any
+        awards.
+      </div> -->
+    </section>
+
+    <hr class="border-surface my-12" />
+
+    <!-- Currently Seeking Section -->
+    <section class="mb-12">
+      <div
+        class="flex flex-col gap-4 rounded-xl border border-teal-300 bg-teal-50 p-6 md:flex-row md:items-center md:justify-between dark:border-teal-600 dark:bg-teal-900/20"
+      >
+        <div>
+          <h3 class="font-semibold text-teal-900 dark:text-teal-100">
+            Open to full-time opportunities
+          </h3>
+          <p class="mt-1 text-sm text-teal-700 dark:text-teal-300">
+            Data Analyst · Business Intelligence — Philadelphia preferred, but open to remote.
+          </p>
+        </div>
+        <button
+          class="rounded-lg border border-teal-700 bg-transparent px-4 py-2 text-sm font-semibold whitespace-nowrap text-teal-700 transition-colors hover:bg-teal-100 dark:border-teal-300 dark:text-teal-300 dark:hover:bg-teal-900/40"
+        >
+      <a href="/Thompson_Eugene_Resume.pdf" target="_blank" rel="noopener noreferrer">
+          View résumé
+        </button>
+      </div>
+    </section>
   </main>
 </MainLayout>
