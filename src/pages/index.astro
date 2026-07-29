@@ -12,13 +12,17 @@ import Button from "../components/ui/button.svelte";
     <section class="py-16 text-center">
       <div class="mx-auto max-w-4xl">
         <h1 class="text-heading mb-6 text-5xl text-shadow-lg/5 md:text-6xl">
-          Turning messy data into clear decisions.
+          I love problems where the data is messy and the deadline is real.
         </h1>
         <p
           class="text-text text-shadow-accent dark:text-shadow-primary mb-8 text-xl text-shadow-md/30 md:text-2xl"
         >
-          Applied math background with data visualization expertise. <br />
-          Based in Philadelphia Area.
+          Applied Math grad with a soft spot for personal finance,<br
+          />
+          building dashboards, running the numbers, and making sense of all of it.
+          <br />
+          Currently based in the Philadelphia area, looking for my next data analyst
+          role.
         </p>
         <div class="flex flex-col justify-center gap-4 sm:flex-row">
           <Button
@@ -43,13 +47,13 @@ import Button from "../components/ui/button.svelte";
             </h2>
             <div class="text-text space-y-4">
               <p>
-                While studying Applied Mathematics at Ursinus College, Eugene
-                was fascinated by data science leading him into projects that
-                allowed him to apply his statistical and programming skills to
+                While studying Applied Mathematics at Ursinus College, I
+                was fascinated by data science leading me into projects that
+                allowed me to apply my statistical and programming skills to
                 real-world problems.
               </p>
               <p>
-                Through that passion, he honed his interest in personal finance
+                Through that passion, I honed my interest in personal finance
                 by building interactive financial calculators and Monte Carlo
                 simulations for Ursinus' Financial Services Office, analyzing
                 commercial real estate trends with clear GIS visualizations at
@@ -58,8 +62,8 @@ import Button from "../components/ui/button.svelte";
                 broad economic events.
               </p>
               <p>
-                He is currently looking for data analyst and BI roles where he
-                can continue doing what he loves most: asking the right
+                I am currently looking for data analyst and BI roles where I
+                can continue doing what I love most: asking the right
                 questions, analyzing data, and creating visualizations that
                 drive clear decisions.
               </p>
@@ -69,7 +73,7 @@ import Button from "../components/ui/button.svelte";
                 href="/about"
                 class="text-text hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
               >
-                More about him
+                More about me
                 <svg
                   class="h-4 w-4"
                   fill="none"
@@ -89,7 +93,7 @@ import Button from "../components/ui/button.svelte";
           <!-- Skills/Technologies -->
           <div class="bg-card rounded-4xl p-8">
             <h3
-              class="font-heading text-heading mb-6 text-3xl text-shadow-sm/10 md:text-4xl"
+              class="font-heading text-heading mb-8 text-2xl text-shadow-sm/10 md:text-4xl"
             >
               Technologies I Work With
             </h3>
@@ -97,25 +101,22 @@ import Button from "../components/ui/button.svelte";
               <Skills
                 title="Languages"
                 items={["Python", "R", "SQL", "Java", "HTML/CSS/JS"]}
+                color="gray"
               />
               <Skills
-                title="Frameworks & Tools"
-                items={[
-                  "Plotly",
-                  "R Shiny",
-                  "Astro & Svelte",
-                  "Flutter",
-                  "Java Swing",
-                ]}
+                title="Visualization & Frameworks"
+                items={["Plotly", "R Shiny", "Astro & Svelte", "Flutter"]}
+                color="gray"
               />
               <Skills
-                title="Data & Analysis"
+                title="Analysis"
                 items={[
-                  "Data Visualization",
                   "Statistical Analysis",
-                  "Tableau",
+                  "Monte Carlo",
+                  "GIS",
                   "Database Design",
                 ]}
+                color="gray"
               />
               <Skills
                 title="Collaboration"
@@ -125,6 +126,7 @@ import Button from "../components/ui/button.svelte";
                   "Project Management",
                   "Code Review",
                 ]}
+                color="gray"
               />
             </div>
           </div>

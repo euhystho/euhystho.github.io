@@ -57,13 +57,11 @@ const { project } = Astro.props;
               class="text-text mb-6 flex flex-col flex-wrap items-center justify-center gap-4 text-base"
             >
               <div>
-                Completed on
-                <FormattedDate date={project.date} />
+                Completed on <FormattedDate date={project.date} />
               </div>
               <div>
                 <i>
-                  Edited on
-                  <FormattedDate date={project.modDate} />
+                  Edited on <FormattedDate date={project.modDate} />
                 </i>
               </div>
             </div>
