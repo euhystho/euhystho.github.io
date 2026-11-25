@@ -13,11 +13,11 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
     <section class="mt-0.75" aria-labelledby="about-heading">
       <Image
         src={bgImage}
-        alt="Picture of Eugene"
-        class="w-full rounded-tl-md rounded-tr-md"
+        alt="Eugene in Stanley Hong Kong smiling"
+        class="w-full rounded-tl-md rounded-tr-md squircle"
       />
       <div
-        class="bg-card/50 grid grid-cols-1 items-start gap-6 rounded-br-md rounded-bl-md pt-8 pr-8 pb-4 pl-8 md:gap-8"
+        class="bg-card/50 grid grid-cols-1 items-start gap-6 rounded-br-md rounded-bl-md pt-8 pr-8 pb-4 pl-8 md:gap-8 squircle"
       >
         <div>
           <h1
@@ -52,7 +52,7 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
     <hr class="border-surface my-12" />
     <!-- Skills Section -->
     <section class="mb-12" aria-labelledby="skills-heading">
-      <div class="bg-card/30 dark:bg-card/20 rounded-4xl p-6">
+      <div class="bg-card/30 dark:bg-card/20 rounded-4xl p-6 squircle">
         <h2
           id="skills-heading"
           class="text-text mb-6 text-lg font-semibold tracking-widest uppercase"
@@ -105,7 +105,7 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
     <!-- Education Section -->
     <section class="mb-12" aria-labelledby="education-heading">
       <div
-        class="border-surface bg-card/50 dark:bg-card/30 rounded-xl border p-5"
+        class="border-surface bg-card/50 dark:bg-card/30 rounded-xl border p-5 squircle"
       >
                         <h2
           id="education-heading"
@@ -115,7 +115,7 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
         </h2>
         <div class="flex gap-4">
           <div
-            class="border-surface bg-surface/50 text-text/70 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-xs font-semibold"
+            class="border-surface bg-surface/50 text-text/70 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-xs font-semibold squircle"
           >
           
             <Image
@@ -169,7 +169,7 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
     <!-- Currently Seeking Section -->
     <section class="mb-12">
       <div
-        class="flex flex-col gap-4 rounded-xl border border-teal-300 bg-teal-50 p-6 md:flex-row md:items-center md:justify-between dark:border-teal-600 dark:bg-teal-900/20"
+        class="flex flex-col gap-4 rounded-xl border border-teal-300 bg-teal-50 p-6 md:flex-row md:items-center md:justify-between dark:border-teal-600 dark:bg-teal-900/20 squircle"
       >
         <div>
           <h2
@@ -186,7 +186,7 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
           href="https://www.linkedin.com/in/eugene-hys-thompson/"
           target="_blank"
           rel="noopener noreferrer"
-          class="rounded-lg border border-teal-700 bg-transparent px-4 py-2 text-sm font-semibold whitespace-nowrap text-teal-700 transition-colors hover:bg-teal-100 dark:border-teal-300 dark:text-teal-300 dark:hover:bg-teal-900/40"
+          class="rounded-lg border border-teal-700 bg-transparent px-4 py-2 text-sm font-semibold whitespace-nowrap text-teal-700 transition-colors hover:bg-teal-100 dark:border-teal-300 dark:text-teal-300 dark:hover:bg-teal-900/40 squircle"
         >
           Connect On Linkedln
         </a>
@@ -194,3 +194,9 @@ import AboutSEO from "../components/SEO/aboutSEO.astro";
     </section>
   </main>
 </MainLayout>
+
+<style>
+  .squircle {
+    corner-shape: squircle;
+  }
+</style>
