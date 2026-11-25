@@ -30,5 +30,5 @@ const aboutJSONLD = {
 <script
   is:inline
   type="application/ld+json"
-  set:html={JSON.stringify(aboutJSONLD)}
+  set:html={JSON.stringify(aboutJSONLD).replace(/</g, "\\u003c")}
 />

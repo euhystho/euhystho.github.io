@@ -30,7 +30,7 @@ export const ContentConfig: Record<
 > = {
   projects: {
     description:
-      "A selection of projects that showcase my growth as a developer: from passionate first attempts to worldwide insights",
-    itemLinkText: "Read more",
+      "A selection of projects that showcase my growth as a developer: from passionate first attempts to worldwide economic insights",
+    itemLinkText: "Learn more",
   },
 };

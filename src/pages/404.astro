@@ -14,59 +14,134 @@ import BaseHead from "../components/layouts/BaseHead.astro";
       is:inline
       src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
       type="module"></script>
+    <style>
+      .bunny-curtain {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bunny-curtain::before,
+      .bunny-curtain::after {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        background: #156658;
+        content: "";
+        pointer-events: none;
+      }
+
+      .bunny-curtain::before {
+        left: 0;
+        animation: open-curtain-left 900ms ease-in-out 150ms forwards;
+      }
+
+      .bunny-curtain::after {
+        right: 0;
+        animation: open-curtain-right 900ms ease-in-out 150ms forwards;
+      }
+
+      .pet-button.petted {
+        animation: pet-bunny 450ms ease-out;
+      }
+
+      @keyframes open-curtain-left {
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes open-curtain-right {
+        to {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes pet-bunny {
+        35% {
+          transform: translateY(-0.75rem) rotate(-4deg) scale(1.04);
+        }
+        70% {
+          transform: translateY(0.1rem) rotate(3deg) scale(0.98);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bunny-curtain::before,
+        .bunny-curtain::after,
+        .pet-button.petted {
+          animation: none;
+        }
+
+        .bunny-curtain::before {
+          transform: translateX(-100%);
+        }
+
+        .bunny-curtain::after {
+          transform: translateX(100%);
+        }
+      }
+    </style>
   </head>
   <body
-    class="overflow-x-hidden bg-gray-400"
+    class="bg-background overflow-x-hidden"
     style="cursor:url('/svg/carrot-pointer.svg') 12 8, auto;"
   >
     <div class="site">
       <header
         class="bg-primary rounded-b-4xl pr-4 pb-4 pl-4 shadow-lg backdrop-blur-md"
       >
-        <h1
-          class="text-secondary dark:text-accent p-3 text-center text-5xl md:text-6xl"
-        >
+        <h1 class="p-3 text-center text-5xl text-white md:text-6xl">
           🎩 Ta-da! ...
           <br />
           Wait, that's not right...
         </h1>
-        <h2
-          class="text-secondary dark:text-accent p-4 text-center font-sans text-2xl md:text-3xl"
-        >
+        <h2 class="p-4 text-center font-sans text-2xl text-white md:text-3xl">
           Our magician was supposed to pull up your page, but it looks like
-          <a
-            href="https://album.link/s/2MHUaRi9OCyTN02SoyRRBJ"
-            title="🎵 Lady Gaga - Mayhem (2024) - Click to listen"
-            class="hover:text-[#d56740] hover:underline hover:decoration-[#d56740] hover:decoration-dotted hover:decoration-from-font"
-            style="cursor:url('/svg/music.svg') 24 24, pointer;">Mayhem</a
+          <button
+            type="button"
+            id="open-music-choices"
+            aria-haspopup="dialog"
+            aria-controls="music-choices"
+            class="underline decoration-dotted underline-offset-4 hover:text-[#f3c574] focus-visible:outline-2 focus-visible:outline-offset-4"
+            style="cursor:url('/svg/music.svg') 24 24, pointer;">Mayhem</button
           >
           the Bunny got out instead!
         </h2>
       </header>
       <main>
-        <div class="rounded-xs">
+        <div class="bunny-curtain rounded-xs">
           <div
             class="mx-auto flex w-full max-w-xs flex-col items-center justify-center sm:max-w-sm md:max-w-md lg:min-h-[50vh] sm:md:lg:w-[60vw]"
-            aria-hidden="true"
           >
-            <dotlottie-player
-              src="/bunny.lottie"
-              background="transparent"
-              speed="0.85"
-              style="width: 100%; height: auto; max-width: 450px;"
-              loop
-              autoplay
+            <button
+              type="button"
+              class="pet-button focus-visible:outline-primary rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4"
+              aria-label="Pet Mayhem the Bunny"
+              aria-describedby="pet-status"
             >
-            </dotlottie-player>
+              <dotlottie-player
+                src="/bunny.lottie"
+                background="transparent"
+                speed="0.85"
+                style="width: 100%; height: auto; max-width: 450px;"
+                loop
+                autoplay
+                aria-hidden="true"
+              >
+              </dotlottie-player>
+            </button>
+            <p id="pet-status" role="status" aria-live="polite" class="sr-only">
+              Pet Mayhem for a reaction.
+            </p>
           </div>
         </div>
       </main>
       <footer
         class="bg-primary overflow-hidden rounded-t-4xl bg-cover backdrop-blur-md"
       >
-        <h3
-          class="text-secondary dark:text-accent m-8 pt-4 text-center text-3xl"
-        >
+        <h3 class="m-8 pt-4 text-center text-3xl text-white">
           Don't worry! You got some options:
         </h3>
         <ul
@@ -75,25 +150,94 @@ import BaseHead from "../components/layouts/BaseHead.astro";
           <li>
             <a
               href="/"
-              aria-label="Go back to homepage"
-              class="bg-accent/65 hover:bg-secondary hover:text-accent mb-4 flex items-center justify-center rounded-2xl border-2 border-transparent p-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:inset-shadow-sm"
+              class="mb-4 flex items-center justify-center rounded-2xl border-2 border-transparent bg-[#0b433b] p-4 text-center text-white shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-[#082e29] hover:inset-shadow-sm"
               style="cursor:url('/svg/key.svg') 12 12, pointer;"
             >
-              <h4 class="text-2xl">🏠 Guess, I'll go back home then...</h4>
+              <span class="text-2xl text-white">
+                🏠 Guess, I'll go back home then...
+              </span>
             </a>
           </li>
           <li>
             <a
-              href="/contact"
-              aria-label="Contact website owner"
-              class="bg-accent/65 hover:text-accent mb-4 flex items-center justify-center rounded-2xl border-2 border-transparent p-2 pt-4 pb-4 text-center shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-red-800 hover:inset-shadow-sm"
+              href="mailto:hello@eugenehysthompson.com"
+              class="mb-4 flex items-center justify-center rounded-2xl border-2 border-transparent bg-[#0b433b] p-2 pt-4 pb-4 text-center text-white shadow-sm backdrop-blur-md transition-colors duration-350 hover:bg-[#082e29] hover:inset-shadow-sm"
               style="cursor: url('/svg/megaphone.svg') 24 24, pointer;"
             >
-              <h4 class="text-2xl">😠 I want to complain to management!!!</h4>
+              <span class="text-2xl text-white">
+                😠 I want to complain to management!!!
+              </span>
             </a>
           </li>
         </ul>
       </footer>
+      <dialog
+        id="music-choices"
+        aria-labelledby="music-choices-title"
+        class="bg-background text-text m-auto w-[min(90vw,32rem)] rounded-2xl p-6 shadow-2xl backdrop:bg-black/60"
+      >
+        <h2 id="music-choices-title" class="text-left text-2xl font-semibold">
+          Listen to MAYHEM
+        </h2>
+        <p class="mt-2 text-base">
+          Choose your music service. Playback starts only when you choose a
+          link.
+        </p>
+        <ul class="mt-5 flex flex-wrap gap-3">
+          <li>
+            <a
+              href="https://music.apple.com/us/album/mayhem/1792666546"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-primary inline-flex rounded-lg px-4 py-2 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              Apple Music
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://open.spotify.com/album/2MHUaRi9OCyTN02SoyRRBJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-primary inline-flex rounded-lg px-4 py-2 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              Spotify
+            </a>
+          </li>
+        </ul>
+        <form method="dialog" class="mt-6 text-right">
+          <button
+            class="border-surface rounded-lg border px-4 py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            Close
+          </button>
+        </form>
+      </dialog>
     </div>
+    <script>
+      const musicButton = document.querySelector<HTMLButtonElement>(
+        "#open-music-choices",
+      );
+      const musicDialog =
+        document.querySelector<HTMLDialogElement>("#music-choices");
+      musicButton?.addEventListener("click", () => musicDialog?.showModal());
+
+      const petButton =
+        document.querySelector<HTMLButtonElement>(".pet-button");
+      const petStatus = document.querySelector<HTMLElement>("#pet-status");
+      let petCount = 0;
+
+      petButton?.addEventListener("click", () => {
+        petCount += 1;
+        petButton.classList.remove("petted");
+        requestAnimationFrame(() => petButton.classList.add("petted"));
+        if (petStatus) {
+          petStatus.textContent =
+            petCount === 1
+              ? "Mayhem enjoyed that!"
+              : `Mayhem enjoyed that! ${petCount} pets so far.`;
+        }
+      });
+    </script>
   </body>
 </html>

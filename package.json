@@ -8,11 +8,11 @@
     "preview": "astro check && astro build && astro preview",
     "astro": "astro",
     "format": "prettier . --write",
-    "test:visual": "playwright test --config=config/playwright.config.ts --project=chromium --headed",
-    "test:mobile": "playwright test --config=config/playwright.config.ts --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
-    "test:accessibility": "concurrently -k -s first \"astro dev --port 4321\" \"wait-on http://localhost:4321  && axe http://localhost:4321 --dir ./reports/accessibility/\"",
+    "test:visual": "playwright test --project=chromium",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-webkit",
+    "test:accessibility": "playwright test --project=chromium --grep \"axe audit\"",
     "lighthouse": "bunx lighthouse http://localhost:4321 --config-path=config/lighthouse.config.js --view",
-    "test:performance": "concurrently -k --success first \"astro dev --port 4321 \" \"wait-on http://localhost:4321 && bunx lighthouse http://localhost:4321 --config-path=config/lighthouse.config.js\""
+    "test:performance": "concurrently -k --success first \"bun run build && bunx astro preview --host 127.0.0.1 --port 4321\" \"wait-on http://127.0.0.1:4321 && bunx lighthouse http://127.0.0.1:4321 --config-path=config/lighthouse.config.js\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
@@ -20,7 +20,6 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.6",
     "@astrojs/svelte": "9.0.1",
-    "@axe-core/cli": "^4.14.1",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.13",
     "astro-icon": "^1.2.0",
@@ -43,6 +42,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^25.9.10",
     "autoprefixer": "^10.7.0",
+    "axe-core": "^4.14.1",
     "clsx": "^2.1.1",
     "pagefind": "^1.6.0",
     "postcss": "^8.5.33",

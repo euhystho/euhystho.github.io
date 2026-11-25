@@ -3,7 +3,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../utils/consts.ts";
 import FeaturedCard from "src/components/blog/featuredCard.astro";
 import MainLayout from "src/components/layouts/MainLayout.astro";
 import Skills from "src/components/ui/skills.astro";
-import Button from "../components/ui/button.svelte";
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -17,19 +16,19 @@ import Button from "../components/ui/button.svelte";
         <p
           class="text-text text-shadow-accent dark:text-shadow-primary mb-8 text-xl text-shadow-md/30 md:text-2xl"
         >
-          Applied Math grad with a soft spot for personal finance,<br
-          />
+          Applied Math grad with a soft spot for personal finance,<br />
           building dashboards, running the numbers, and making sense of all of it.
           <br />
           Currently based in the Philadelphia area, looking for my next data analyst
           role.
         </p>
         <div class="flex flex-col justify-center gap-4 sm:flex-row">
-          <Button
-            client:load="svelte"
-            link="#featured-projects"
-            name="View Work"
-          />
+          <a
+            href="#featured-projects"
+            class="bg-primary hover:bg-secondary flex items-center justify-center gap-2 rounded-full px-8 py-3 font-semibold text-white transition-colors dark:bg-[#237b67] dark:hover:bg-[#1d6354]"
+          >
+            View Work
+          </a>
         </div>
       </div>
     </section>
@@ -47,14 +46,14 @@ import Button from "../components/ui/button.svelte";
             </h2>
             <div class="text-text space-y-4">
               <p>
-                While studying Applied Mathematics at Ursinus College, I
-                was fascinated by data science leading me into projects that
-                allowed me to apply my statistical and programming skills to
-                real-world problems.
+                While studying Applied Mathematics at Ursinus College, I was
+                fascinated by data science leading me into projects that allowed
+                me to apply my statistical and programming skills to real-world
+                problems.
               </p>
               <p>
-                Through that passion, I honed my interest in personal finance
-                by building interactive financial calculators and Monte Carlo
+                Through that passion, I honed my interest in personal finance by
+                building interactive financial calculators and Monte Carlo
                 simulations for Ursinus' Financial Services Office, analyzing
                 commercial real estate trends with clear GIS visualizations at
                 DataFest Philly 2025, and developing R Shiny dashboards that
@@ -62,16 +61,16 @@ import Button from "../components/ui/button.svelte";
                 broad economic events.
               </p>
               <p>
-                I am currently looking for data analyst and BI roles where I
-                can continue doing what I love most: asking the right
-                questions, analyzing data, and creating visualizations that
-                drive clear decisions.
+                I am currently looking for data analyst and BI roles where I can
+                continue doing what I love most: asking the right questions,
+                analyzing data, and creating visualizations that drive clear
+                decisions.
               </p>
             </div>
             <div class="mt-6">
               <a
                 href="/about"
-                class="text-text hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
+                class="text-text hover:text-primary dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
               >
                 More about me
                 <svg
@@ -92,11 +91,11 @@ import Button from "../components/ui/button.svelte";
 
           <!-- Skills/Technologies -->
           <div class="bg-card rounded-4xl p-8">
-            <h3
+            <h2
               class="font-heading text-heading mb-8 text-2xl text-shadow-sm/10 md:text-4xl"
             >
               Technologies I Work With
-            </h3>
+            </h2>
             <div class="grid grid-cols-2 gap-4 text-sm">
               <Skills
                 title="Languages"
@@ -105,7 +104,7 @@ import Button from "../components/ui/button.svelte";
               />
               <Skills
                 title="Visualization & Frameworks"
-                items={["Plotly", "R Shiny", "Astro & Svelte", "Flutter"]}
+                items={["Power BI","Plotly", "R Shiny", "Astro & Svelte", "Flutter"]}
                 color="gray"
               />
               <Skills
@@ -133,5 +132,6 @@ import Button from "../components/ui/button.svelte";
         </div>
       </div>
     </section>
+
   </main>
 </MainLayout>

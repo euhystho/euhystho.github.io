@@ -29,7 +29,7 @@ const featuredItems = filterPosts(allItems, {
       <div class="container mx-auto max-w-6xl px-4">
         {/* Details about the Featured Posts */}
         <div class="mb-12 text-center">
-          <h2 class="font-heading  text-primary mb-4 text-3xl text-shadow-sm/10 md:text-5xl">
+          <h2 class="font-heading text-primary mb-4 text-3xl text-shadow-sm/10 md:text-5xl">
             {`Featured ${capitalize(type)}`}
           </h2>
           <p class="text-text mx-auto max-w-3xl text-lg">
@@ -51,6 +51,7 @@ const featuredItems = filterPosts(allItems, {
                     alt={item.data.imageAlt}
                     width={item.data.image.width}
                     height={item.data.image.height}
+                    sizes="(min-width: 1152px) 352px, (min-width: 1024px) calc(33.333vw - 32px), (min-width: 768px) calc(50vw - 32px), calc(100vw - 32px)"
                     loading="lazy"
                     class="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-95 group-hover:max-lg:rounded-3xl"
                   />
@@ -85,9 +86,9 @@ const featuredItems = filterPosts(allItems, {
                 <div class="max-md:text-center">
                   <a
                     href={`/${type}/${item.id}`}
-                    class="text-text group-hover:text-primary dark:group-hover:text-accent inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                    class="text-text group-hover:text-primary dark:group-hover:text-secondary inline-flex items-center gap-2 text-sm font-semibold transition-colors"
                   >
-                    {config.itemLinkText}
+                    {`${config.itemLinkText}`}
                     <svg
                       class="h-4 w-4"
                       fill="none"
@@ -110,7 +111,7 @@ const featuredItems = filterPosts(allItems, {
         <div class="mt-12 text-center">
           <a
             href={`/${type}`}
-            class="text-text hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 font-semibold transition-colors"
+            class="text-text hover:text-primary dark:hover:text-secondary inline-flex items-center gap-2 font-semibold transition-colors"
           >
             {`View All ${capitalize(type)}`}
             <svg

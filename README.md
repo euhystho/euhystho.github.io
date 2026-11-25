@@ -59,6 +59,22 @@ All commands are run from the root of the project, from a terminal:
 | `bun run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `bun run astro -- --help` | Get help using the Astro CLI                     |
 
+
+## Browser and accessibility checks
+
+`bun run test:visual` runs the desktop Chromium project. `bun run test:mobile`
+runs Playwright mobile emulation for Chromium and WebKit. CI runs all five
+projects: Chromium, Firefox, WebKit, Pixel 7 emulation, and iPhone 13 emulation.
+These checks cover browser engines and responsive layouts, not physical-device
+testing, screen-reader use, or every branded browser (for example, Microsoft
+Edge); those still need manual verification.
+
+Run `bun run test:accessibility` and `bun run test:performance` with the
+accessibility and Lighthouse scripts when auditing the local site. Production
+builds minify assets through Vite. Cloudflare Pages uses `public/_headers` to
+cache fingerprinted assets immutably and public images for one week; other
+hosts may require equivalent cache rules in their hosting configuration.
+
 ## 🚀 Development Workflow
 
 1. Clone the repository

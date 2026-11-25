@@ -21,7 +21,7 @@ import Toggle from "../ui/theme_toggle.svelte";
     @apply right-0 left-0 border-2;
   }
   .nav-items {
-    @apply text-card dark:text-heading  max-lg:text-shadow-primary max-lg:text-text text-shadow-lg/15 max-lg:text-end;
+    @apply text-card dark:text-heading max-lg:text-shadow-primary max-lg:text-text text-shadow-lg/15 max-lg:text-end;
   }
   .links-container {
     @apply flex h-full w-full flex-row items-center gap-4 max-lg:fixed max-lg:top-0 max-lg:-right-full max-lg:z-10 max-lg:w-55 max-lg:flex-col max-lg:items-start max-lg:justify-around max-lg:rounded-l-full max-lg:bg-transparent max-lg:shadow-2xl max-lg:backdrop-blur-md max-lg:duration-750 max-lg:ease-in-out max-lg:motion-reduce:transition-none lg:flex-row lg:justify-end;
@@ -52,23 +52,35 @@ import Toggle from "../ui/theme_toggle.svelte";
   #sidebar-active:checked ~ .links-container {
     @apply right-0;
   }
+  #sidebar-active:focus-visible {
+    @apply outline-accent outline-2 outline-offset-2;
+  }
+  #sidebar-active:focus-visible + label {
+    @apply outline-accent rounded-sm outline-2 outline-offset-2;
+  }
   #sidebar-active:checked ~ #overlay {
     @apply fixed top-0 left-0 z-9 h-full w-full;
   }
 </style>
 <header class="bg-primary/95 top-0 z-50 w-full rounded-b-3xl px-4">
-  <nav class="flex items-center justify-between">
+  <nav aria-label="Main navigation" class="flex items-center justify-between">
     <a href="/" class="mr-auto" id="home-link">
-      <h1
-        class="text-card text-4xl text-shadow-lg hover:text-white dark:text-white dark:hover:text-gray-300 text-nowrap"
+      <span
+        class="text-card text-4xl text-nowrap text-shadow-lg hover:text-white dark:text-white dark:hover:text-gray-300"
       >
         eugene
-      </h1>
+      </span>
     </a>
 
-    <input type="checkbox" id="sidebar-active" class="hidden" />
+    <input
+      type="checkbox"
+      id="sidebar-active"
+      class="sr-only min-[1025px]:hidden"
+      aria-label="Toggle navigation menu"
+    />
     <label for="sidebar-active" class="hidden max-lg:block max-lg:p-5">
-      <Menu class="cursor-pointer fill-white" aria-label="Open sidebar" />
+      <Menu class="cursor-pointer fill-white" aria-hidden="true" />
+      <span class="sr-only">Toggle navigation menu</span>
     </label>
 
     <label for="sidebar-active" id="overlay">
@@ -84,10 +96,10 @@ import Toggle from "../ui/theme_toggle.svelte";
       >
         <CloseMenu
           class="fill-text text-bg cursor-pointer"
-          aria-label="Close sidebar"
+          aria-hidden="true"
         />
+        <span class="sr-only">Close navigation menu</span>
       </label>
-
 
       <a href="/projects">
         <h2 class="nav-items">projects</h2>

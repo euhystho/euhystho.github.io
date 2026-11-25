@@ -3,12 +3,14 @@ import MainLayout from "../components/layouts/MainLayout.astro";
 import Image from "astro/components/Image.astro";
 import bgImage from "public/images/about.jpeg";
 import Skills from "src/components/ui/skills.astro";
+import AboutSEO from "../components/SEO/aboutSEO.astro";
 ---
 
 <MainLayout title="About Eugene">
+  <AboutSEO slot="head" work="Ursinus College" />
   <main class="mx-auto w-full max-w-6xl px-4">
     <!-- Hero Section -->
-    <section class="mt-0.75">
+    <section class="mt-0.75" aria-labelledby="about-heading">
       <Image
         src={bgImage}
         alt="Picture of Eugene"
@@ -18,40 +20,45 @@ import Skills from "src/components/ui/skills.astro";
         class="bg-card/50 grid grid-cols-1 items-start gap-6 rounded-br-md rounded-bl-md pt-8 pr-8 pb-4 pl-8 md:gap-8"
       >
         <div>
-          <h1 class="text-heading mb-6 text-2xl font-bold md:text-3xl">
+          <h1
+            id="about-heading"
+            class="text-heading mb-6 text-left text-2xl font-bold md:text-3xl"
+          >
             Eugene Thompson
           </h1>
 
           <p class="text-text/80 mb-4 text-base leading-relaxed">
-            I'm an Applied Mathematics graduate from Ursinus College, where I combined my interest in 
-            personal finance and data exploration into working with Ursinus currently with their career services office. 
-            <br> <br> My vested interest in personal finance got me involved with
-            Ursinus' Financial Services Office, where I helped build interactive
-            financial calculators that are distinctly Gen Z, not your typical
-            old-fashioned beige finance tool. Through suggestions from my
-            professor during the project, I added Monte Carlo simulations to
-            make the calculator more realistic, albeit a lot harder to build
-            than a typical financial calculator. <br> <br> I also mapped
-            out commercial real estate trends at DataFest Philly 2025, 
-            built economic R Shiny dashboards that got me genuinely excited 
-            about data analytics as a path. I currently work at Ursinus College's Career and Professional 
-            Development office doing API work, SharePoint sites and Power BI reports<s>
-              </s> I'm currently looking for data analyst and BI roles
-            where I can do what I do best: ask the right questions, then build
-            the visualization that makes the answer painfully obvious.
+            I'm an Applied Mathematics graduate from Ursinus College, where I
+            combined my interest in personal finance and data exploration with
+            hands-on projects and work in career services.
+          </p>
+          <p class="text-text/80 mb-4 text-base leading-relaxed">
+            My interest in personal finance led me to help Ursinus' Financial
+            Services Office build interactive financial calculators. I added
+            Monte Carlo simulations to make the calculators more realistic. At
+            DataFest Philly 2025, I mapped commercial real estate trends and
+            built economic R Shiny dashboards.
+          </p>
+          <p class="text-text/80 mb-4 text-base leading-relaxed">
+            Since September 2026, I have worked with Ursinus College's Career
+            and Professional Development office on API work, SharePoint sites,
+            and Power BI reports. I'm looking for data analyst and BI roles
+            where I can ask the right questions, analyze data, and build
+            visualizations that make the answers clear.
           </p>
         </div>
       </div>
     </section>
     <hr class="border-surface my-12" />
     <!-- Skills Section -->
-    <section class="mb-12">
+    <section class="mb-12" aria-labelledby="skills-heading">
       <div class="bg-card/30 dark:bg-card/20 rounded-4xl p-6">
-        <div
+        <h2
+          id="skills-heading"
           class="text-text mb-6 text-lg font-semibold tracking-widest uppercase"
         >
           Skills
-        </div>
+        </h2>
         <div class="mb-4 grid grid-cols-1 gap-8 md:grid-cols-2">
           <div class="space-y-6">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -96,14 +103,21 @@ import Skills from "src/components/ui/skills.astro";
     <hr class="border-surface my-12" />
 
     <!-- Education Section -->
-    <section class="mb-12">
+    <section class="mb-12" aria-labelledby="education-heading">
       <div
         class="border-surface bg-card/50 dark:bg-card/30 rounded-xl border p-5"
       >
+                        <h2
+          id="education-heading"
+          class="text-text mb-6 text-lg font-semibold tracking-widest uppercase"
+        >
+          Education
+        </h2>
         <div class="flex gap-4">
           <div
             class="border-surface bg-surface/50 text-text/70 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-xs font-semibold"
           >
+          
             <Image
               src="/images/uc_shield.png"
               alt="Ursinus College logo"
@@ -158,25 +172,24 @@ import Skills from "src/components/ui/skills.astro";
         class="flex flex-col gap-4 rounded-xl border border-teal-300 bg-teal-50 p-6 md:flex-row md:items-center md:justify-between dark:border-teal-600 dark:bg-teal-900/20"
       >
         <div>
-          <h3 class="font-semibold text-teal-900 dark:text-teal-100">
+          <h2
+            class="text-left text-lg font-semibold text-teal-900 dark:text-teal-100"
+          >
             Open to full-time opportunities
-          </h3>
+          </h2>
           <p class="mt-1 text-sm text-teal-700 dark:text-teal-300">
             Data Analyst · Business Intelligence — Philadelphia area preferred,
             but open to remote.
           </p>
         </div>
-        <button
+        <a
+          href="https://www.linkedin.com/in/eugene-hys-thompson/"
+          target="_blank"
+          rel="noopener noreferrer"
           class="rounded-lg border border-teal-700 bg-transparent px-4 py-2 text-sm font-semibold whitespace-nowrap text-teal-700 transition-colors hover:bg-teal-100 dark:border-teal-300 dark:text-teal-300 dark:hover:bg-teal-900/40"
         >
-          <a
-            href="/Thompson_Eugene_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View resume
-          </a>
-        </button>
+          Connect On Linkedln
+        </a>
       </div>
     </section>
   </main>
