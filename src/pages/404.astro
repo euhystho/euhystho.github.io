@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import BaseHead from "../components/layouts/BaseHead.astro";
 ---
 
@@ -9,53 +10,30 @@ import BaseHead from "../components/layouts/BaseHead.astro";
       title="Oops, Page Was Not Found!"
       description="Error 404: Your page was not found, enjoy Mayhem the Bunny!"
     />
-    <!-- Dotlottie Player Script -->
-    <script
-      is:inline
-      src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-      type="module"></script>
+    <Font cssVariable="--font-gothic" />
     <style>
       .bunny-curtain {
         position: relative;
         overflow: hidden;
       }
 
-      .bunny-curtain::before,
-      .bunny-curtain::after {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        bottom: 0;
-        width: 50%;
-        background: #156658;
-        content: "";
+      .curtain-overlay {
+        position: fixed;
+        z-index: 100;
+        inset: 0;
+        width: 100vw;
+        height: 100dvh;
         pointer-events: none;
       }
 
-      .bunny-curtain::before {
-        left: 0;
-        animation: open-curtain-left 900ms ease-in-out 150ms forwards;
-      }
-
-      .bunny-curtain::after {
-        right: 0;
-        animation: open-curtain-right 900ms ease-in-out 150ms forwards;
+      .static-bunny {
+        display: none;
+        font-size: 14rem;
+        line-height: 1;
       }
 
       .pet-button.petted {
-        animation: pet-bunny 450ms ease-out;
-      }
-
-      @keyframes open-curtain-left {
-        to {
-          transform: translateX(-100%);
-        }
-      }
-
-      @keyframes open-curtain-right {
-        to {
-          transform: translateX(100%);
-        }
+        animation: pet-bunny 450ms ease-in-out ;
       }
 
       @keyframes pet-bunny {
@@ -68,32 +46,29 @@ import BaseHead from "../components/layouts/BaseHead.astro";
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .bunny-curtain::before,
-        .bunny-curtain::after,
+        .curtain-overlay,
+        .pet-bunny {
+          display: none;
+        }
+
         .pet-button.petted {
           animation: none;
         }
 
-        .bunny-curtain::before {
-          transform: translateX(-100%);
-        }
-
-        .bunny-curtain::after {
-          transform: translateX(100%);
+        .static-bunny {
+          display: block;
         }
       }
     </style>
   </head>
   <body
-    class="bg-background overflow-x-hidden"
+    class="bg-card overflow-x-hidden"
     style="cursor:url('/svg/carrot-pointer.svg') 12 8, auto;"
   >
     <div class="site">
-      <header
-        class="bg-primary rounded-b-4xl pr-4 pb-4 pl-4 shadow-lg backdrop-blur-md"
-      >
+      <header class="bg-primary pr-4 pb-4 pl-4 shadow-lg backdrop-blur-md">
         <h1 class="p-3 text-center text-5xl text-white md:text-6xl">
-          🎩 Ta-da! ...
+          🎩 Ta-da!
           <br />
           Wait, that's not right...
         </h1>
@@ -104,9 +79,11 @@ import BaseHead from "../components/layouts/BaseHead.astro";
             id="open-music-choices"
             aria-haspopup="dialog"
             aria-controls="music-choices"
-            class="underline decoration-dotted underline-offset-4 hover:text-[#f3c574] focus-visible:outline-2 focus-visible:outline-offset-4"
-            style="cursor:url('/svg/music.svg') 24 24, pointer;">Mayhem</button
+            class="mr-2 ml-2 underline decoration-dotted underline-offset-4 hover:text-[#FF5D36] focus-visible:outline-2 focus-visible:outline-offset-4"
+            style="cursor:url('/svg/music.svg') 24 24, pointer;"
           >
+            Mayhem
+          </button>
           the Bunny got out instead!
         </h2>
       </header>
@@ -121,16 +98,13 @@ import BaseHead from "../components/layouts/BaseHead.astro";
               aria-label="Pet Mayhem the Bunny"
               aria-describedby="pet-status"
             >
-              <dotlottie-player
-                src="/bunny.lottie"
-                background="transparent"
-                speed="0.85"
-                style="width: 100%; height: auto; max-width: 450px;"
-                loop
-                autoplay
+              <img
+                src="/svg/mayhem_the_bunny.svg"
+                alt=""
                 aria-hidden="true"
-              >
-              </dotlottie-player>
+                class="pet-bunny block h-auto w-full max-w-112.5"
+              />
+              <span class="static-bunny" aria-hidden="true">🐰</span>
             </button>
             <p id="pet-status" role="status" aria-live="polite" class="sr-only">
               Pet Mayhem for a reaction.
@@ -138,9 +112,7 @@ import BaseHead from "../components/layouts/BaseHead.astro";
           </div>
         </div>
       </main>
-      <footer
-        class="bg-primary overflow-hidden rounded-t-4xl bg-cover backdrop-blur-md"
-      >
+      <footer class="bg-primary overflow-hidden bg-cover backdrop-blur-md">
         <h3 class="m-8 pt-4 text-center text-3xl text-white">
           Don't worry! You got some options:
         </h3>
@@ -176,45 +148,80 @@ import BaseHead from "../components/layouts/BaseHead.astro";
         aria-labelledby="music-choices-title"
         class="bg-background text-text m-auto w-[min(90vw,32rem)] rounded-2xl p-6 shadow-2xl backdrop:bg-black/60"
       >
-        <h2 id="music-choices-title" class="text-left text-2xl font-semibold">
-          Listen to MAYHEM
+        <h2 id="music-choices-title" class="font-gothic text-[#603454] dark:text-[#FF5D36] text-center text-2xl font-semibold">
+          Listen to MAYHEM the Bunny's favorite album!
         </h2>
-        <p class="mt-2 text-base">
-          Choose your music service. Playback starts only when you choose a
-          link.
+        <p class="font-serif mt-2 text-center text-base">
+          Select your preferred music service for some hoppin tunes!
         </p>
-        <ul class="mt-5 flex flex-wrap gap-3">
+        <ul class="mt-5 flex flex-row items-center justify-center gap-3">
           <li>
             <a
-              href="https://music.apple.com/us/album/mayhem/1792666546"
+              href="https://music.apple.com/us/album/apple-music-live-mayhem-requiem/6768201775"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-primary inline-flex rounded-lg px-4 py-2 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+              class="font-gothic inline-flex rounded-lg bg-black px-4 py-2 font-semibold text-white italic underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              Apple Music
+              Apple Music Requiem
             </a>
           </li>
           <li>
             <a
-              href="https://open.spotify.com/album/2MHUaRi9OCyTN02SoyRRBJ"
+              href="https://open.spotify.com/album/3ARwSvDQv2OHYnLeDC3Lxi"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-primary inline-flex rounded-lg px-4 py-2 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+              class="font-gothic inline-flex rounded-lg bg-[#1ED760] px-4 py-2 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              Spotify
+              Spotify Mayhem
             </a>
           </li>
         </ul>
         <form method="dialog" class="mt-6 text-right">
           <button
-            class="border-surface rounded-lg border px-4 py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2"
+            class="font-gothic bg-[#FF5D36] dark:bg-accent dark:text-[#FF5D36] rounded-lg px-4 py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Close
           </button>
         </form>
       </dialog>
     </div>
+    <object
+      id="curtain-overlay"
+      data="/svg/error_curtains.svg"
+      type="image/svg+xml"
+      aria-hidden="true"
+      tabindex="-1"
+      class="curtain-overlay"></object>
     <script>
+      const curtainObject =
+        document.querySelector<HTMLObjectElement>("#curtain-overlay");
+      let curtainAnimationStarted = false;
+
+      function startCurtainReveal() {
+        if (curtainAnimationStarted) return;
+        const curtainSvg = curtainObject?.contentDocument?.querySelector("svg");
+        if (!curtainSvg) return;
+
+        curtainAnimationStarted = true;
+        curtainSvg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+        curtainSvg.pauseAnimations();
+        curtainSvg.setCurrentTime(0);
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          curtainSvg.unpauseAnimations();
+          window.setTimeout(() => {
+            curtainObject?.remove();
+          }, 655);
+        }
+      }
+
+      curtainObject?.addEventListener("load", startCurtainReveal, {
+        once: true,
+      });
+      if (curtainObject?.contentDocument?.readyState === "complete") {
+        startCurtainReveal();
+      }
+
       const musicButton = document.querySelector<HTMLButtonElement>(
         "#open-music-choices",
       );

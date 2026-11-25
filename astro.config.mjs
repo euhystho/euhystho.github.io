@@ -59,6 +59,20 @@ export default defineConfig({
     },
     {
       provider: fontProviders.local(),
+      name: "New Rocker",
+      cssVariable: "--font-gothic",
+      fallbacks: ["serif"],
+      options: {
+        variants: [
+          {
+            weight: 400,
+            src: ["./src/assets/fonts/NewRocker-Regular.woff2"],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
       name: "JetBrains Mono",
       cssVariable: "--font-mono",
       fallbacks: ["monospace"],

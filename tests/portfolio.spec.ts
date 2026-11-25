@@ -179,12 +179,50 @@ test.describe("Axe accessibility audit", () => {
 });
 
 test.describe("404 page interactions", () => {
+  test("uses the supplied artwork and removes the curtain after its reveal", async ({
+    page,
+  }) => {
+    await page.goto("/missing-page-for-test");
+
+    await expect(page.locator("#curtain-overlay")).toHaveAttribute(
+      "data",
+      "/svg/error_curtains.svg",
+    );
+    await expect(page.locator(".pet-bunny")).toHaveAttribute(
+      "src",
+      "/svg/mayhem_the_bunny.svg",
+    );
+    await expect(page.locator("#curtain-overlay")).toBeVisible();
+    await expect(page.locator("#curtain-overlay")).toHaveCount(0, {
+      timeout: 2_000,
+    });
+  });
+
+  test("respects reduced motion", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/missing-page-for-test");
+
+    await expect(page.locator(".curtain-overlay")).toBeHidden();
+    await expect(page.locator(".pet-bunny")).toBeHidden();
+    await expect(page.locator(".static-bunny")).toBeVisible();
+  });
+
   test("offers music choices and supports petting Mayhem", async ({ page }) => {
     await page.goto("/missing-page-for-test");
 
     await page.getByRole("button", { name: "Mayhem", exact: true }).click();
     const musicDialog = page.getByRole("dialog", { name: "Listen to MAYHEM" });
     await expect(musicDialog).toBeVisible();
+    await expect
+      .poll(() =>
+        page.evaluate(() =>
+          Array.from(document.fonts).some(
+            (font) =>
+              font.family.includes("New Rocker") && font.status === "loaded",
+          ),
+        ),
+      )
+      .toBe(true);
     await expect(
       musicDialog.getByRole("link", { name: "Apple Music" }),
     ).toHaveAttribute("href", /music\.apple\.com/);
